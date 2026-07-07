@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'preact/hooks';
+import { useState } from 'preact/hooks';
 import { loadAll, loadDrafts, clearDrafts, draftCount, withBase, type Mode } from '../lib/store';
 import { buildFiles } from '../lib/export';
 import { buildDeltaPayload, buildSuggestionIssueUrl, buildPrBodyFromSummary, summaryOfDrafts, REPO_URL } from '../lib/publish';
-import { getToken, setToken, clearToken, whoAmI, createDataPr, GhAuthError, OWNER, REPO } from '../lib/github';
+import { whoAmI, createDataPr, GhAuthError, OWNER, REPO } from '../lib/github';
 
 const TOKEN_CODE_URL = `${REPO_URL}/blob/main/src/lib/github.ts`;
 const NEW_TOKEN_URL = 'https://github.com/settings/personal-access-tokens/new';
@@ -24,7 +24,7 @@ async function copyText(text: string): Promise<boolean> {
   }
 }
 
-function TokenSetup({ onReady }: { onReady: (login: string) => void }) {
+function TokenSetup({ onReady }: { onReady: (token: string, login: string) => void }) {
   const [value, setValue] = useState('');
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
@@ -33,9 +33,10 @@ function TokenSetup({ onReady }: { onReady: (login: string) => void }) {
     setBusy(true);
     setErr(null);
     try {
-      const me = await whoAmI(value.trim());
-      setToken(value);
-      onReady(me.login);
+      const t = value.trim();
+      const me = await whoAmI(t);
+      setValue('');
+      onReady(t, me.login);
     } catch (e) {
       setErr(e instanceof Error ? e.message : String(e));
     } finally {
@@ -64,14 +65,16 @@ function TokenSetup({ onReady }: { onReady: (login: string) => void }) {
       <ul class="space-y-1 rounded-lg border border-zinc-800 bg-zinc-950 p-3 text-[11px] leading-relaxed text-zinc-400">
         <li>🔒 Used <strong>only</strong> to open the data pull request — nothing else.</li>
         <li>🔒 Sent from your browser <strong>directly to api.github.com</strong>; this site has no server and nothing else ever sees it.</li>
-        <li>🔒 Stored only in this browser (localStorage). Remove it anytime with “Sign out”, or revoke it on GitHub.</li>
+        <li>🧠 Held <strong>in memory only</strong> while this tab is open — never saved to localStorage, sessionStorage, or cookies, so no other page on this origin could ever read it.</li>
+        <li>🗑️ Discarded <strong>automatically right after your PR is created</strong> (and on reload). You paste it fresh each time.</li>
         <li>
-          👀 Don’t trust, verify — <a class="underline text-emerald-400" href={TOKEN_CODE_URL} target="_blank" rel="noopener">read the exact code that uses it (src/lib/github.ts)</a>.
+          👀 Don’t trust, verify — <a class="underline text-emerald-400" href={TOKEN_CODE_URL} target="_blank" rel="noopener">read the exact code that uses it (src/lib/github.ts)</a>: it contains no storage calls at all.
         </li>
         <li>
           🎫 <a class="underline text-emerald-400" href={NEW_TOKEN_URL} target="_blank" rel="noopener">Create a fine-grained token</a>:
           Repository access → <em>Only select repositories</em> → <code>{OWNER}/{REPO}</code> (or your fork) · Permissions →
-          <em> Contents: Read and write</em> + <em>Pull requests: Read and write</em>. A classic token with <code>public_repo</code> also works.
+          <em> Contents: Read and write</em> + <em>Pull requests: Read and write</em> · <strong>Expiration: 7 days max</strong>.
+          Avoid classic tokens — they grant access to <em>all</em> your public repos.
         </li>
         <li>🍴 Not a collaborator? No problem — the PR is opened from an automatic fork of the repo under your account.</li>
       </ul>
@@ -82,6 +85,7 @@ function TokenSetup({ onReady }: { onReady: (login: string) => void }) {
 export default function PublishPanel({ mode }: { mode: Mode }) {
   const [open, setOpen] = useState(false);
   const [busy, setBusy] = useState(false);
+  const [token, setTokenState] = useState<string | null>(null);
   const [login, setLogin] = useState<string | null>(null);
   const [title, setTitle] = useState(`Data update (${new Date().toISOString().slice(0, 10)})`);
   const [progress, setProgress] = useState<string | null>(null);
@@ -90,11 +94,6 @@ export default function PublishPanel({ mode }: { mode: Mode }) {
   const drafts = loadDrafts();
   const nDrafts = draftCount(drafts);
   const lines = summaryOfDrafts(drafts);
-
-  useEffect(() => {
-    const t = getToken();
-    if (t && mode === 'static') whoAmI(t).then((me) => setLogin(me.login)).catch(() => clearToken());
-  }, [mode]);
 
   const createLocalPr = async () => {
     setBusy(true);
@@ -116,7 +115,6 @@ export default function PublishPanel({ mode }: { mode: Mode }) {
   };
 
   const createTokenPr = async () => {
-    const token = getToken();
     if (!token) return;
     setBusy(true);
     setStatus(null);
@@ -140,12 +138,14 @@ export default function PublishPanel({ mode }: { mode: Mode }) {
         via: 'Merchant Studio **⇪ Publish data** button (hosted, GitHub token)',
       });
       const result = await createDataPr(buildFiles(docs), title, body, token, setProgress);
-      setStatus({ kind: 'ok', text: `Pull request created (${result.changedFiles.length} files):`, url: result.url });
+      setTokenState(null);
+      setLogin(null);
+      setStatus({ kind: 'ok', text: `Pull request created (${result.changedFiles.length} files) — your token was discarded from memory:`, url: result.url });
     } catch (e) {
       if (e instanceof GhAuthError) {
-        clearToken();
+        setTokenState(null);
         setLogin(null);
-        setStatus({ kind: 'err', text: `${e.message} — the token was removed from this browser; paste a new one.` });
+        setStatus({ kind: 'err', text: `${e.message} — the token was discarded; paste a new one.` });
       } else {
         setStatus({ kind: 'err', text: e instanceof Error ? e.message : String(e) });
       }
@@ -208,16 +208,16 @@ export default function PublishPanel({ mode }: { mode: Mode }) {
               )}
 
               {!login ? (
-                <TokenSetup onReady={(l) => { setLogin(l); setStatus({ kind: 'ok', text: `Authenticated as ${l}.` }); }} />
+                <TokenSetup onReady={(t, l) => { setTokenState(t); setLogin(l); setStatus({ kind: 'ok', text: `Authenticated as ${l} — token held in memory only.` }); }} />
               ) : (
                 <div class="space-y-2">
                   <div class="flex items-center justify-between text-xs">
                     <span class="chip border-emerald-700 text-emerald-300">✓ {login}</span>
                     <button
                       class="text-zinc-500 underline hover:text-zinc-300"
-                      onClick={() => { clearToken(); setLogin(null); }}
+                      onClick={() => { setTokenState(null); setLogin(null); }}
                     >
-                      Sign out (forget token)
+                      Forget token now
                     </button>
                   </div>
                   <input class="input" value={title} onInput={(e) => setTitle((e.target as HTMLInputElement).value)} />

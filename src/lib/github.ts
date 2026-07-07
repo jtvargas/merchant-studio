@@ -8,12 +8,16 @@
  *    files under data/ in jtvargas/merchant-studio (or your fork of it).
  *  • Every request goes directly from YOUR browser to https://api.github.com
  *    — there is no backend, proxy, or analytics; nothing else ever sees it.
- *  • It is stored only in this browser's localStorage
- *    (key "merchant-studio.gh-token.v1") and you can remove it any time with
- *    the "Sign out" button, or revoke it at https://github.com/settings/tokens.
- *  • Recommended token: a fine-grained PAT scoped to ONE repository with
- *    Contents (read/write) + Pull requests (read/write). A classic token with
- *    the "public_repo" scope also works.
+ *  • It is held ONLY IN MEMORY (a JavaScript variable) while this tab is
+ *    open. It is NEVER written to localStorage, sessionStorage, cookies, or
+ *    anywhere else — note this module contains no storage API calls at all.
+ *    It is discarded automatically the moment your PR is created, and it is
+ *    gone if you reload or close the tab.
+ *  • Recommended token: a FINE-GRAINED personal access token scoped to ONE
+ *    repository, with Contents (read/write) + Pull requests (read/write) and
+ *    an expiration of AT MOST 7 DAYS. Avoid classic tokens — they grant
+ *    access to all your public repositories.
+ *  • Revoke any token at https://github.com/settings/tokens.
  *
  *  API calls made (in order): GET /user · GET /repos/... (permission check) ·
  *  [fork flow if you can't push: POST /forks, POST /merge-upstream] ·
@@ -26,12 +30,6 @@ export const OWNER = 'jtvargas';
 export const REPO = 'merchant-studio';
 export const BASE_BRANCH = 'main';
 const API = 'https://api.github.com';
-
-const TOKEN_KEY = 'merchant-studio.gh-token.v1';
-
-export const getToken = (): string | null => localStorage.getItem(TOKEN_KEY);
-export const setToken = (t: string): void => localStorage.setItem(TOKEN_KEY, t.trim());
-export const clearToken = (): void => localStorage.removeItem(TOKEN_KEY);
 
 export class GhAuthError extends Error {}
 
