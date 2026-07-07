@@ -27356,6 +27356,27 @@
       "negativeAliases": [],
       "defaultConfidence": 0.92,
       "notes": null
+    },
+    {
+      "id": "test_pr_flow_merchant",
+      "canonicalName": "Test PR Flow",
+      "displayName": "Test PR Flow",
+      "category": "shopping",
+      "subcategory": "online_marketplace",
+      "mccHints": [
+        "5399"
+      ],
+      "website": null,
+      "iconSlug": null,
+      "countryHints": [
+        "US"
+      ],
+      "aliases": [
+        "test pr flow merchant"
+      ],
+      "negativeAliases": [],
+      "defaultConfidence": 0.92,
+      "notes": null
     }
   ]
 }
