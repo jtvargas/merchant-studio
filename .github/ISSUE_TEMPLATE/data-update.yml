@@ -1,0 +1,26 @@
+name: Suggest a data update
+description: Propose new/updated merchants for the enrichment pack. The maintainer reviews and applies it — no automation runs on issue content.
+title: "Data update: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for contributing merchant data! The easiest way to build this payload is the
+        [Merchant Studio UI](https://jtvargas.github.io/merchant-studio/): add/edit merchants,
+        then press **⇪ Publish data → Suggest via GitHub issue** and it fills this form for you.
+
+        The maintainer reviews every suggestion and applies it locally with
+        `node scripts/apply-update.mjs` — nothing automated runs on this issue.
+  - type: textarea
+    id: payload
+    attributes:
+      label: JSON payload
+      description: 'Shape: {"merchants": [...], "deleteMerchants": [...], "testDescriptors": [...]}'
+      render: json
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context (optional)
+      description: Where do these descriptors come from? Anything the maintainer should double-check?

@@ -46,7 +46,18 @@ git add data && git commit -m "Add <merchant>" && git push   # Pages site update
 The site deploys automatically to **https://jtvargas.github.io/merchant-studio/** on every
 push to `main`. Static hosting can't write files, so there the app runs in **draft mode**:
 edits are stored in your browser (localStorage) and merged into everything you see. When
-you're done, press **Export pack**, drop the downloaded JSON files into `data/`, and push.
+you're done, publish them with the **⇪ Publish data** button (below) or **Export pack**.
+
+## Publishing data updates (the ⇪ Publish data button)
+
+All flows end in a pull request against `data/` — **no tokens, no API keys, and no CI ever
+runs on third-party input** (by design):
+
+| Where | Flow |
+|---|---|
+| **Local** (`npm run dev`) | **Create PR now** — the dev server branches from `origin/main` in a temporary git worktree, commits your current `data/*.json`, pushes with *your own* git/gh credentials, and opens the PR (title + change summary auto-generated). Your working tree is never touched. |
+| **Hosted, repo owner** | **Upload on GitHub → PR** — exports the pack zip and opens GitHub's `data/` upload page; drag the 6 files in, choose *"Create a new branch … and start a pull request"*. GitHub's own UI does the branch + PR. |
+| **Hosted, anyone** | **Suggest via GitHub issue** — opens a prefilled issue containing only the *delta* payload (added/updated/deleted entries from browser drafts). The maintainer reviews it and applies it with `node scripts/apply-update.mjs payload.json`, which validates (categories, MCCs, alias collisions), upserts, recomputes the manifest, and prints a summary — then publishes via flow 1. |
 
 ## The data contract (`data/`)
 

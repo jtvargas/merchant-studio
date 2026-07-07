@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'preact/hooks';
 import { detectMode, draftCount, clearDrafts, loadAll, type Mode } from '../lib/store';
 import { downloadZip } from '../lib/export';
+import PublishPanel from './PublishPanel';
 
 export default function ModeBadge() {
   const [mode, setMode] = useState<Mode | null>(null);
@@ -54,6 +55,7 @@ export default function ModeBadge() {
       <button class="btn" disabled={busy} onClick={exportZip} title="Download the full pack (6 JSON files, manifest recomputed, drafts merged)">
         {busy ? 'Exporting…' : '⬇ Export pack'}
       </button>
+      {mode && <PublishPanel mode={mode} />}
     </div>
   );
 }
