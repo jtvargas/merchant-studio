@@ -5,6 +5,7 @@ import { execFileSync } from 'node:child_process';
 import { cpSync, mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { buildPrBodyFromSummary } from '../publish';
 
 const CWD = process.cwd();
 
@@ -55,14 +56,7 @@ export function summarizeDataChanges(
 }
 
 export function buildPrBody(s: DataSummary): string {
-  const list = (ids: string[]) => ids.map((i) => `- \`${i}\``).join('\n');
-  const parts = ['## Data update from Merchant Studio', ''];
-  if (s.countDeltas.length) parts.push(...s.countDeltas.map((d) => `- ${d}`), '');
-  if (s.added.length) parts.push(`### Added merchants (${s.added.length})`, list(s.added), '');
-  if (s.updated.length) parts.push(`### Updated merchants (${s.updated.length})`, list(s.updated), '');
-  if (s.deleted.length) parts.push(`### Deleted merchants (${s.deleted.length})`, list(s.deleted), '');
-  parts.push('_Created with the Merchant Studio Publish button._');
-  return parts.join('\n');
+  return buildPrBodyFromSummary({ ...s, via: 'Merchant Studio **⇪ Publish data** button (local mode)' });
 }
 
 export function createDataPr(title: string, body: string): string {

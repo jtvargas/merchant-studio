@@ -118,38 +118,6 @@
     }
   ],
   "mcc": {
-    "0742": {
-      "code": "0742",
-      "description": "Veterinary Services",
-      "category": "pets",
-      "subcategory": "veterinary",
-      "group": "professional_services",
-      "defaultDirection": "expense",
-      "keywords": [
-        "veterinary",
-        "veterinaria",
-        "veterinario",
-        "clinica veterinaria"
-      ]
-    },
-    "0763": {
-      "code": "0763",
-      "description": "Agricultural Cooperatives",
-      "category": "business",
-      "subcategory": "agriculture",
-      "group": "business_services",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "0780": {
-      "code": "0780",
-      "description": "Landscaping and Horticultural Services",
-      "category": "home",
-      "subcategory": "landscaping",
-      "group": "home_services",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
     "1520": {
       "code": "1520",
       "description": "General Contractors - Residential and Commercial",
@@ -321,6 +289,15 @@
       "defaultDirection": "expense",
       "keywords": []
     },
+    "3012": {
+      "code": "3012",
+      "description": "Qantas",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
     "3013": {
       "code": "3013",
       "description": "Alitalia",
@@ -330,9 +307,117 @@
       "defaultDirection": "expense",
       "keywords": []
     },
+    "3015": {
+      "code": "3015",
+      "description": "Swiss International Air Lines",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3016": {
+      "code": "3016",
+      "description": "SAS Scandinavian Airlines",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3025": {
+      "code": "3025",
+      "description": "Air New Zealand",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
     "3026": {
       "code": "3026",
       "description": "Emirates Airlines",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3030": {
+      "code": "3030",
+      "description": "Aerolineas Argentinas",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3035": {
+      "code": "3035",
+      "description": "TAP Air Portugal",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3039": {
+      "code": "3039",
+      "description": "Avianca",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3042": {
+      "code": "3042",
+      "description": "Finnair",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3043": {
+      "code": "3043",
+      "description": "Aer Lingus",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3047": {
+      "code": "3047",
+      "description": "Turkish Airlines",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3050": {
+      "code": "3050",
+      "description": "Icelandair",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3051": {
+      "code": "3051",
+      "description": "Austrian Airlines",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3052": {
+      "code": "3052",
+      "description": "LATAM (LAN) Airlines",
       "category": "travel",
       "subcategory": "airline",
       "group": "travel",
@@ -357,6 +442,24 @@
       "defaultDirection": "expense",
       "keywords": []
     },
+    "3075": {
+      "code": "3075",
+      "description": "Singapore Airlines",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3076": {
+      "code": "3076",
+      "description": "Aeromexico",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
     "3077": {
       "code": "3077",
       "description": "Thai Airways",
@@ -366,9 +469,27 @@
       "defaultDirection": "expense",
       "keywords": []
     },
+    "3082": {
+      "code": "3082",
+      "description": "Korean Air",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
     "3088": {
       "code": "3088",
       "description": "Croatia Airlines",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3096": {
+      "code": "3096",
+      "description": "Iberia",
       "category": "travel",
       "subcategory": "airline",
       "group": "travel",
@@ -387,6 +508,24 @@
     "3132": {
       "code": "3132",
       "description": "Frontier Airlines",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3136": {
+      "code": "3136",
+      "description": "Qatar Airways",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3144": {
+      "code": "3144",
+      "description": "Virgin Atlantic",
       "category": "travel",
       "subcategory": "airline",
       "group": "travel",
@@ -447,10 +586,55 @@
       "defaultDirection": "expense",
       "keywords": []
     },
+    "3381": {
+      "code": "3381",
+      "description": "Europcar",
+      "category": "auto_transport",
+      "subcategory": "car_rental",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3387": {
+      "code": "3387",
+      "description": "Alamo Rent A Car",
+      "category": "auto_transport",
+      "subcategory": "car_rental",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
     "3389": {
       "code": "3389",
       "description": "Avis Rent-A-Car",
       "category": "travel",
+      "subcategory": "car_rental",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3390": {
+      "code": "3390",
+      "description": "Dollar Rent A Car",
+      "category": "auto_transport",
+      "subcategory": "car_rental",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3393": {
+      "code": "3393",
+      "description": "National Car Rental",
+      "category": "auto_transport",
+      "subcategory": "car_rental",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3395": {
+      "code": "3395",
+      "description": "Thrifty Car Rental",
+      "category": "auto_transport",
       "subcategory": "car_rental",
       "group": "travel",
       "defaultDirection": "expense",
@@ -510,6 +694,24 @@
       "defaultDirection": "expense",
       "keywords": []
     },
+    "3510": {
+      "code": "3510",
+      "description": "Days Inn",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3512": {
+      "code": "3512",
+      "description": "InterContinental Hotels",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
     "3513": {
       "code": "3513",
       "description": "Westin Hotels",
@@ -519,9 +721,180 @@
       "defaultDirection": "expense",
       "keywords": []
     },
+    "3516": {
+      "code": "3516",
+      "description": "La Quinta Inns",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3520": {
+      "code": "3520",
+      "description": "Le Meridien",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3543": {
+      "code": "3543",
+      "description": "Four Seasons Hotels",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3548": {
+      "code": "3548",
+      "description": "Hoteles Melia",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3577": {
+      "code": "3577",
+      "description": "Mandarin Oriental",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3590": {
+      "code": "3590",
+      "description": "Fairmont Hotels",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3615": {
+      "code": "3615",
+      "description": "Travelodge",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3637": {
+      "code": "3637",
+      "description": "Ramada Inns",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3638": {
+      "code": "3638",
+      "description": "Howard Johnson",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
     "3640": {
       "code": "3640",
       "description": "Hyatt Hotels",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3641": {
+      "code": "3641",
+      "description": "Sofitel Hotels",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3649": {
+      "code": "3649",
+      "description": "Radisson Hotels",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3650": {
+      "code": "3650",
+      "description": "Red Roof Inns",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3654": {
+      "code": "3654",
+      "description": "Loews Hotels",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3665": {
+      "code": "3665",
+      "description": "Hampton Inns",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3700": {
+      "code": "3700",
+      "description": "Motel 6",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3710": {
+      "code": "3710",
+      "description": "The Ritz-Carlton",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3722": {
+      "code": "3722",
+      "description": "Wyndham Hotels and Resorts",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3742": {
+      "code": "3742",
+      "description": "Club Med",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3750": {
+      "code": "3750",
+      "description": "Crowne Plaza Hotels",
       "category": "travel",
       "subcategory": "hotel",
       "group": "travel",
@@ -716,6 +1089,15 @@
         "agencia de viagens",
         "tour"
       ]
+    },
+    "4723": {
+      "code": "4723",
+      "description": "Package Tour Operators",
+      "category": "travel",
+      "subcategory": "travel_agency",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
     },
     "4784": {
       "code": "4784",
@@ -1132,6 +1514,19 @@
       "defaultDirection": "expense",
       "keywords": []
     },
+    "5262": {
+      "code": "5262",
+      "description": "Marketplaces (Online Marketplaces)",
+      "category": "shopping",
+      "subcategory": "online_marketplace",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "marketplace",
+        "mercado en linea",
+        "marketplace online"
+      ]
+    },
     "5271": {
       "code": "5271",
       "description": "Mobile Home Dealers",
@@ -1337,6 +1732,20 @@
       "defaultDirection": "expense",
       "keywords": []
     },
+    "5531": {
+      "code": "5531",
+      "description": "Auto and Home Supply Stores",
+      "category": "auto_transport",
+      "subcategory": "auto_parts",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "auto supply",
+        "refacciones",
+        "autopecas",
+        "auto parts"
+      ]
+    },
     "5532": {
       "code": "5532",
       "description": "Automotive Tire Stores",
@@ -1406,6 +1815,21 @@
       "keywords": [
         "boat dealer",
         "marina"
+      ]
+    },
+    "5552": {
+      "code": "5552",
+      "description": "Electric Vehicle Charging",
+      "category": "auto_transport",
+      "subcategory": "ev_charging",
+      "group": "auto",
+      "defaultDirection": "expense",
+      "keywords": [
+        "ev charging",
+        "supercharger",
+        "carga electrica",
+        "eletroposto",
+        "recarga electrica"
       ]
     },
     "5561": {
@@ -2018,6 +2442,15 @@
       "defaultDirection": "expense",
       "keywords": []
     },
+    "5963": {
+      "code": "5963",
+      "description": "Door-to-Door Sales",
+      "category": "shopping",
+      "subcategory": "direct_sales",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
     "5964": {
       "code": "5964",
       "description": "Direct Marketing - Catalog Merchants",
@@ -2352,6 +2785,55 @@
         "arrendamiento"
       ]
     },
+    "6536": {
+      "code": "6536",
+      "description": "MoneySend Intracountry",
+      "category": "transfers",
+      "subcategory": "p2p",
+      "group": "financial",
+      "defaultDirection": "expense",
+      "keywords": [
+        "moneysend",
+        "transferencia",
+        "transferencia nacional"
+      ]
+    },
+    "6537": {
+      "code": "6537",
+      "description": "MoneySend Intercountry",
+      "category": "transfers",
+      "subcategory": "p2p",
+      "group": "financial",
+      "defaultDirection": "expense",
+      "keywords": [
+        "moneysend",
+        "transferencia internacional",
+        "remesa"
+      ]
+    },
+    "6538": {
+      "code": "6538",
+      "description": "MoneySend Funding",
+      "category": "transfers",
+      "subcategory": "wallet_funding",
+      "group": "financial",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "6540": {
+      "code": "6540",
+      "description": "POI Funding / Stored Value Load",
+      "category": "transfers",
+      "subcategory": "wallet_funding",
+      "group": "financial",
+      "defaultDirection": "expense",
+      "keywords": [
+        "recarga",
+        "stored value",
+        "wallet load",
+        "fondeo"
+      ]
+    },
     "7011": {
       "code": "7011",
       "description": "Lodging - Hotels, Motels, Resorts",
@@ -2367,6 +2849,15 @@
         "pousada",
         "hospedaje"
       ]
+    },
+    "7012": {
+      "code": "7012",
+      "description": "Timeshares",
+      "category": "travel",
+      "subcategory": "timeshare",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
     },
     "7032": {
       "code": "7032",
@@ -2718,6 +3209,15 @@
       "defaultDirection": "expense",
       "keywords": []
     },
+    "7511": {
+      "code": "7511",
+      "description": "Truck Stops",
+      "category": "auto_transport",
+      "subcategory": "gas",
+      "group": "auto",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
     "7512": {
       "code": "7512",
       "description": "Automobile Rental Agency",
@@ -2892,6 +3392,48 @@
       "category": "home",
       "subcategory": "repair",
       "group": "services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7800": {
+      "code": "7800",
+      "description": "Government-Owned Lottery (US)",
+      "category": "entertainment",
+      "subcategory": "lottery",
+      "group": "entertainment",
+      "defaultDirection": "expense",
+      "keywords": [
+        "lottery",
+        "loteria"
+      ]
+    },
+    "7801": {
+      "code": "7801",
+      "description": "Government-Licensed Online Casinos (US)",
+      "category": "entertainment",
+      "subcategory": "casino",
+      "group": "entertainment",
+      "defaultDirection": "expense",
+      "keywords": [
+        "casino",
+        "online casino"
+      ]
+    },
+    "7802": {
+      "code": "7802",
+      "description": "Government-Licensed Horse/Dog Racing (US)",
+      "category": "entertainment",
+      "subcategory": "betting",
+      "group": "entertainment",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7829": {
+      "code": "7829",
+      "description": "Motion Picture Distribution",
+      "category": "entertainment",
+      "subcategory": "movies",
+      "group": "entertainment",
       "defaultDirection": "expense",
       "keywords": []
     },
@@ -3545,580 +4087,6 @@
       "defaultDirection": "expense",
       "keywords": []
     },
-    "3012": {
-      "code": "3012",
-      "description": "Qantas",
-      "category": "travel",
-      "subcategory": "airline",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3015": {
-      "code": "3015",
-      "description": "Swiss International Air Lines",
-      "category": "travel",
-      "subcategory": "airline",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3016": {
-      "code": "3016",
-      "description": "SAS Scandinavian Airlines",
-      "category": "travel",
-      "subcategory": "airline",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3025": {
-      "code": "3025",
-      "description": "Air New Zealand",
-      "category": "travel",
-      "subcategory": "airline",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3030": {
-      "code": "3030",
-      "description": "Aerolineas Argentinas",
-      "category": "travel",
-      "subcategory": "airline",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3035": {
-      "code": "3035",
-      "description": "TAP Air Portugal",
-      "category": "travel",
-      "subcategory": "airline",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3039": {
-      "code": "3039",
-      "description": "Avianca",
-      "category": "travel",
-      "subcategory": "airline",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3042": {
-      "code": "3042",
-      "description": "Finnair",
-      "category": "travel",
-      "subcategory": "airline",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3043": {
-      "code": "3043",
-      "description": "Aer Lingus",
-      "category": "travel",
-      "subcategory": "airline",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3047": {
-      "code": "3047",
-      "description": "Turkish Airlines",
-      "category": "travel",
-      "subcategory": "airline",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3050": {
-      "code": "3050",
-      "description": "Icelandair",
-      "category": "travel",
-      "subcategory": "airline",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3051": {
-      "code": "3051",
-      "description": "Austrian Airlines",
-      "category": "travel",
-      "subcategory": "airline",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3052": {
-      "code": "3052",
-      "description": "LATAM (LAN) Airlines",
-      "category": "travel",
-      "subcategory": "airline",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3075": {
-      "code": "3075",
-      "description": "Singapore Airlines",
-      "category": "travel",
-      "subcategory": "airline",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3076": {
-      "code": "3076",
-      "description": "Aeromexico",
-      "category": "travel",
-      "subcategory": "airline",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3082": {
-      "code": "3082",
-      "description": "Korean Air",
-      "category": "travel",
-      "subcategory": "airline",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3096": {
-      "code": "3096",
-      "description": "Iberia",
-      "category": "travel",
-      "subcategory": "airline",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3136": {
-      "code": "3136",
-      "description": "Qatar Airways",
-      "category": "travel",
-      "subcategory": "airline",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3144": {
-      "code": "3144",
-      "description": "Virgin Atlantic",
-      "category": "travel",
-      "subcategory": "airline",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3381": {
-      "code": "3381",
-      "description": "Europcar",
-      "category": "auto_transport",
-      "subcategory": "car_rental",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3387": {
-      "code": "3387",
-      "description": "Alamo Rent A Car",
-      "category": "auto_transport",
-      "subcategory": "car_rental",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3390": {
-      "code": "3390",
-      "description": "Dollar Rent A Car",
-      "category": "auto_transport",
-      "subcategory": "car_rental",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3393": {
-      "code": "3393",
-      "description": "National Car Rental",
-      "category": "auto_transport",
-      "subcategory": "car_rental",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3395": {
-      "code": "3395",
-      "description": "Thrifty Car Rental",
-      "category": "auto_transport",
-      "subcategory": "car_rental",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3510": {
-      "code": "3510",
-      "description": "Days Inn",
-      "category": "travel",
-      "subcategory": "hotel",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3512": {
-      "code": "3512",
-      "description": "InterContinental Hotels",
-      "category": "travel",
-      "subcategory": "hotel",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3516": {
-      "code": "3516",
-      "description": "La Quinta Inns",
-      "category": "travel",
-      "subcategory": "hotel",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3520": {
-      "code": "3520",
-      "description": "Le Meridien",
-      "category": "travel",
-      "subcategory": "hotel",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3543": {
-      "code": "3543",
-      "description": "Four Seasons Hotels",
-      "category": "travel",
-      "subcategory": "hotel",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3548": {
-      "code": "3548",
-      "description": "Hoteles Melia",
-      "category": "travel",
-      "subcategory": "hotel",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3577": {
-      "code": "3577",
-      "description": "Mandarin Oriental",
-      "category": "travel",
-      "subcategory": "hotel",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3590": {
-      "code": "3590",
-      "description": "Fairmont Hotels",
-      "category": "travel",
-      "subcategory": "hotel",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3615": {
-      "code": "3615",
-      "description": "Travelodge",
-      "category": "travel",
-      "subcategory": "hotel",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3637": {
-      "code": "3637",
-      "description": "Ramada Inns",
-      "category": "travel",
-      "subcategory": "hotel",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3638": {
-      "code": "3638",
-      "description": "Howard Johnson",
-      "category": "travel",
-      "subcategory": "hotel",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3641": {
-      "code": "3641",
-      "description": "Sofitel Hotels",
-      "category": "travel",
-      "subcategory": "hotel",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3649": {
-      "code": "3649",
-      "description": "Radisson Hotels",
-      "category": "travel",
-      "subcategory": "hotel",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3650": {
-      "code": "3650",
-      "description": "Red Roof Inns",
-      "category": "travel",
-      "subcategory": "hotel",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3654": {
-      "code": "3654",
-      "description": "Loews Hotels",
-      "category": "travel",
-      "subcategory": "hotel",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3665": {
-      "code": "3665",
-      "description": "Hampton Inns",
-      "category": "travel",
-      "subcategory": "hotel",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3700": {
-      "code": "3700",
-      "description": "Motel 6",
-      "category": "travel",
-      "subcategory": "hotel",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3710": {
-      "code": "3710",
-      "description": "The Ritz-Carlton",
-      "category": "travel",
-      "subcategory": "hotel",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3722": {
-      "code": "3722",
-      "description": "Wyndham Hotels and Resorts",
-      "category": "travel",
-      "subcategory": "hotel",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3742": {
-      "code": "3742",
-      "description": "Club Med",
-      "category": "travel",
-      "subcategory": "hotel",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "3750": {
-      "code": "3750",
-      "description": "Crowne Plaza Hotels",
-      "category": "travel",
-      "subcategory": "hotel",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "4723": {
-      "code": "4723",
-      "description": "Package Tour Operators",
-      "category": "travel",
-      "subcategory": "travel_agency",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "5262": {
-      "code": "5262",
-      "description": "Marketplaces (Online Marketplaces)",
-      "category": "shopping",
-      "subcategory": "online_marketplace",
-      "group": "retail",
-      "defaultDirection": "expense",
-      "keywords": [
-        "marketplace",
-        "mercado en linea",
-        "marketplace online"
-      ]
-    },
-    "5531": {
-      "code": "5531",
-      "description": "Auto and Home Supply Stores",
-      "category": "auto_transport",
-      "subcategory": "auto_parts",
-      "group": "retail",
-      "defaultDirection": "expense",
-      "keywords": [
-        "auto supply",
-        "refacciones",
-        "autopecas",
-        "auto parts"
-      ]
-    },
-    "5552": {
-      "code": "5552",
-      "description": "Electric Vehicle Charging",
-      "category": "auto_transport",
-      "subcategory": "ev_charging",
-      "group": "auto",
-      "defaultDirection": "expense",
-      "keywords": [
-        "ev charging",
-        "supercharger",
-        "carga electrica",
-        "eletroposto",
-        "recarga electrica"
-      ]
-    },
-    "5963": {
-      "code": "5963",
-      "description": "Door-to-Door Sales",
-      "category": "shopping",
-      "subcategory": "direct_sales",
-      "group": "retail",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "6536": {
-      "code": "6536",
-      "description": "MoneySend Intracountry",
-      "category": "transfers",
-      "subcategory": "p2p",
-      "group": "financial",
-      "defaultDirection": "expense",
-      "keywords": [
-        "moneysend",
-        "transferencia",
-        "transferencia nacional"
-      ]
-    },
-    "6537": {
-      "code": "6537",
-      "description": "MoneySend Intercountry",
-      "category": "transfers",
-      "subcategory": "p2p",
-      "group": "financial",
-      "defaultDirection": "expense",
-      "keywords": [
-        "moneysend",
-        "transferencia internacional",
-        "remesa"
-      ]
-    },
-    "6538": {
-      "code": "6538",
-      "description": "MoneySend Funding",
-      "category": "transfers",
-      "subcategory": "wallet_funding",
-      "group": "financial",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "6540": {
-      "code": "6540",
-      "description": "POI Funding / Stored Value Load",
-      "category": "transfers",
-      "subcategory": "wallet_funding",
-      "group": "financial",
-      "defaultDirection": "expense",
-      "keywords": [
-        "recarga",
-        "stored value",
-        "wallet load",
-        "fondeo"
-      ]
-    },
-    "7012": {
-      "code": "7012",
-      "description": "Timeshares",
-      "category": "travel",
-      "subcategory": "timeshare",
-      "group": "travel",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "7511": {
-      "code": "7511",
-      "description": "Truck Stops",
-      "category": "auto_transport",
-      "subcategory": "gas",
-      "group": "auto",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "7800": {
-      "code": "7800",
-      "description": "Government-Owned Lottery (US)",
-      "category": "entertainment",
-      "subcategory": "lottery",
-      "group": "entertainment",
-      "defaultDirection": "expense",
-      "keywords": [
-        "lottery",
-        "loteria"
-      ]
-    },
-    "7801": {
-      "code": "7801",
-      "description": "Government-Licensed Online Casinos (US)",
-      "category": "entertainment",
-      "subcategory": "casino",
-      "group": "entertainment",
-      "defaultDirection": "expense",
-      "keywords": [
-        "casino",
-        "online casino"
-      ]
-    },
-    "7802": {
-      "code": "7802",
-      "description": "Government-Licensed Horse/Dog Racing (US)",
-      "category": "entertainment",
-      "subcategory": "betting",
-      "group": "entertainment",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
-    "7829": {
-      "code": "7829",
-      "description": "Motion Picture Distribution",
-      "category": "entertainment",
-      "subcategory": "movies",
-      "group": "entertainment",
-      "defaultDirection": "expense",
-      "keywords": []
-    },
     "9406": {
       "code": "9406",
       "description": "Government-Owned Lottery (Non-US)",
@@ -4139,6 +4107,38 @@
       "category": "business",
       "subcategory": "intra_company",
       "group": "business",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "0742": {
+      "code": "0742",
+      "description": "Veterinary Services",
+      "category": "pets",
+      "subcategory": "veterinary",
+      "group": "professional_services",
+      "defaultDirection": "expense",
+      "keywords": [
+        "veterinary",
+        "veterinaria",
+        "veterinario",
+        "clinica veterinaria"
+      ]
+    },
+    "0763": {
+      "code": "0763",
+      "description": "Agricultural Cooperatives",
+      "category": "business",
+      "subcategory": "agriculture",
+      "group": "business_services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "0780": {
+      "code": "0780",
+      "description": "Landscaping and Horticultural Services",
+      "category": "home",
+      "subcategory": "landscaping",
+      "group": "home_services",
       "defaultDirection": "expense",
       "keywords": []
     }

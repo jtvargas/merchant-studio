@@ -50,14 +50,24 @@ you're done, publish them with the **⇪ Publish data** button (below) or **Expo
 
 ## Publishing data updates (the ⇪ Publish data button)
 
-All flows end in a pull request against `data/` — **no tokens, no API keys, and no CI ever
-runs on third-party input** (by design):
+All flows end in a **pull request against `data/`** that waits for maintainer review:
 
 | Where | Flow |
 |---|---|
-| **Local** (`npm run dev`) | **Create PR now** — the dev server branches from `origin/main` in a temporary git worktree, commits your current `data/*.json`, pushes with *your own* git/gh credentials, and opens the PR (title + change summary auto-generated). Your working tree is never touched. |
-| **Hosted, repo owner** | **Upload on GitHub → PR** — exports the pack zip and opens GitHub's `data/` upload page; drag the 6 files in, choose *"Create a new branch … and start a pull request"*. GitHub's own UI does the branch + PR. |
-| **Hosted, anyone** | **Suggest via GitHub issue** — opens a prefilled issue containing only the *delta* payload (added/updated/deleted entries from browser drafts). The maintainer reviews it and applies it with `node scripts/apply-update.mjs payload.json`, which validates (categories, MCCs, alias collisions), upserts, recomputes the manifest, and prints a summary — then publishes via flow 1. |
+| **Local** (`npm run dev`) | **Create PR now** — the dev server branches from `origin/main` in a temporary git worktree, commits your current `data/*.json`, pushes with *your own* git/gh credentials, and opens the PR. No token needed; your working tree is never touched. |
+| **Hosted (recommended)** | **Create PR with your GitHub token** — paste a token once and the PR is created straight from your browser. Transparency: the token is used *only* to open the data PR, is sent *only* to `api.github.com` (this site has no server), is stored *only* in your browser's localStorage, and the exact code that touches it is [`src/lib/github.ts`](src/lib/github.ts). Recommended token: fine-grained PAT scoped to this repo (or your fork) with *Contents* + *Pull requests* read/write. Not a collaborator? The flow automatically forks the repo under your account and opens a cross-fork PR. |
+| **Hosted, no token** | **Suggest via GitHub issue** — opens a prefilled issue containing only the *delta* payload. The maintainer applies it with `node scripts/apply-update.mjs payload.json` (validates categories, MCCs, alias collisions; recomputes the manifest) and publishes via the local flow. |
+
+## Repository safety
+
+- `main` is protected by a branch **ruleset**: changes land only through pull requests, and
+  force-pushes / branch deletion are blocked. Only the owner and explicitly authorized
+  collaborators can merge; everyone else contributes by opening PRs for review.
+- Every PR opens with an auto-filled [template](.github/pull_request_template.md) describing
+  the merchants/data/features it adds — the Publish flows generate the same structure.
+- Merged `data-update-*` branches are deleted automatically.
+- No GitHub Action ever executes third-party input; the only workflow is the Pages deploy,
+  triggered exclusively by pushes to `main`.
 
 ## The data contract (`data/`)
 

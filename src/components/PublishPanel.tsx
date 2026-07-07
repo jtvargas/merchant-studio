@@ -1,7 +1,11 @@
-import { useState } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 import { loadAll, loadDrafts, clearDrafts, draftCount, withBase, type Mode } from '../lib/store';
-import { downloadZip } from '../lib/export';
-import { buildDeltaPayload, buildSuggestionIssueUrl, summaryOfDrafts, UPLOAD_URL, REPO_URL } from '../lib/publish';
+import { buildFiles } from '../lib/export';
+import { buildDeltaPayload, buildSuggestionIssueUrl, buildPrBodyFromSummary, summaryOfDrafts, REPO_URL } from '../lib/publish';
+import { getToken, setToken, clearToken, whoAmI, createDataPr, GhAuthError, OWNER, REPO } from '../lib/github';
+
+const TOKEN_CODE_URL = `${REPO_URL}/blob/main/src/lib/github.ts`;
+const NEW_TOKEN_URL = 'https://github.com/settings/personal-access-tokens/new';
 
 async function copyText(text: string): Promise<boolean> {
   try {
@@ -20,16 +24,77 @@ async function copyText(text: string): Promise<boolean> {
   }
 }
 
+function TokenSetup({ onReady }: { onReady: (login: string) => void }) {
+  const [value, setValue] = useState('');
+  const [busy, setBusy] = useState(false);
+  const [err, setErr] = useState<string | null>(null);
+
+  const save = async () => {
+    setBusy(true);
+    setErr(null);
+    try {
+      const me = await whoAmI(value.trim());
+      setToken(value);
+      onReady(me.login);
+    } catch (e) {
+      setErr(e instanceof Error ? e.message : String(e));
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <div class="space-y-2">
+      <p class="text-xs text-zinc-300">
+        Paste a GitHub token to create the pull request straight from this page:
+      </p>
+      <div class="flex gap-2">
+        <input
+          class="input font-mono"
+          type="password"
+          placeholder="github_pat_… or ghp_…"
+          value={value}
+          onInput={(e) => setValue((e.target as HTMLInputElement).value)}
+        />
+        <button class="btn btn-primary shrink-0" disabled={busy || !value.trim()} onClick={save}>
+          {busy ? 'Checking…' : 'Save'}
+        </button>
+      </div>
+      {err && <p class="rounded-lg border border-red-800 bg-red-900/30 px-3 py-2 text-xs text-red-300">{err}</p>}
+      <ul class="space-y-1 rounded-lg border border-zinc-800 bg-zinc-950 p-3 text-[11px] leading-relaxed text-zinc-400">
+        <li>🔒 Used <strong>only</strong> to open the data pull request — nothing else.</li>
+        <li>🔒 Sent from your browser <strong>directly to api.github.com</strong>; this site has no server and nothing else ever sees it.</li>
+        <li>🔒 Stored only in this browser (localStorage). Remove it anytime with “Sign out”, or revoke it on GitHub.</li>
+        <li>
+          👀 Don’t trust, verify — <a class="underline text-emerald-400" href={TOKEN_CODE_URL} target="_blank" rel="noopener">read the exact code that uses it (src/lib/github.ts)</a>.
+        </li>
+        <li>
+          🎫 <a class="underline text-emerald-400" href={NEW_TOKEN_URL} target="_blank" rel="noopener">Create a fine-grained token</a>:
+          Repository access → <em>Only select repositories</em> → <code>{OWNER}/{REPO}</code> (or your fork) · Permissions →
+          <em> Contents: Read and write</em> + <em>Pull requests: Read and write</em>. A classic token with <code>public_repo</code> also works.
+        </li>
+        <li>🍴 Not a collaborator? No problem — the PR is opened from an automatic fork of the repo under your account.</li>
+      </ul>
+    </div>
+  );
+}
+
 export default function PublishPanel({ mode }: { mode: Mode }) {
   const [open, setOpen] = useState(false);
   const [busy, setBusy] = useState(false);
-  const [title, setTitle] = useState(`Update enrichment data (${new Date().toISOString().slice(0, 10)})`);
+  const [login, setLogin] = useState<string | null>(null);
+  const [title, setTitle] = useState(`Data update (${new Date().toISOString().slice(0, 10)})`);
+  const [progress, setProgress] = useState<string | null>(null);
   const [status, setStatus] = useState<{ kind: 'ok' | 'err' | 'info'; text: string; url?: string } | null>(null);
-  const [showUploadGuide, setShowUploadGuide] = useState(false);
 
   const drafts = loadDrafts();
   const nDrafts = draftCount(drafts);
   const lines = summaryOfDrafts(drafts);
+
+  useEffect(() => {
+    const t = getToken();
+    if (t && mode === 'static') whoAmI(t).then((me) => setLogin(me.login)).catch(() => clearToken());
+  }, [mode]);
 
   const createLocalPr = async () => {
     setBusy(true);
@@ -41,14 +106,51 @@ export default function PublishPanel({ mode }: { mode: Mode }) {
         body: JSON.stringify({ title }),
       });
       const body = (await r.json()) as { url?: string; error?: string };
-      if (r.ok && body.url) {
-        setStatus({ kind: 'ok', text: 'Pull request created — review and merge it on GitHub:', url: body.url });
-      } else {
-        setStatus({ kind: 'err', text: body.error ?? `Failed (${r.status})` });
-      }
+      if (r.ok && body.url) setStatus({ kind: 'ok', text: 'Pull request created:', url: body.url });
+      else setStatus({ kind: 'err', text: body.error ?? `Failed (${r.status})` });
     } catch (e) {
       setStatus({ kind: 'err', text: String(e) });
     } finally {
+      setBusy(false);
+    }
+  };
+
+  const createTokenPr = async () => {
+    const token = getToken();
+    if (!token) return;
+    setBusy(true);
+    setStatus(null);
+    try {
+      const { docs, drafts: d } = await loadAll();
+      const payload = buildDeltaPayload(d);
+      // classify added vs updated against the BASE data (without drafts merged)
+      let baseIds = new Set<string>();
+      let baseCount = 0;
+      try {
+        const base = await fetch(withBase('/data/merchant_aliases.json')).then((r) => r.json());
+        baseIds = new Set((base.merchants as { id: string }[]).map((m) => m.id));
+        baseCount = baseIds.size;
+      } catch { /* summary stays approximate */ }
+      const body = buildPrBodyFromSummary({
+        added: payload.merchants.filter((m) => !baseIds.has(m.id)).map((m) => m.id),
+        updated: payload.merchants.filter((m) => baseIds.has(m.id)).map((m) => m.id),
+        deleted: payload.deleteMerchants,
+        countDeltas: baseCount ? [`merchants: ${baseCount} → ${docs.merchants.merchants.length}`] : [],
+        testsNote: payload.replaceTests ? `replaced (${payload.testDescriptors?.length ?? 0})` : undefined,
+        via: 'Merchant Studio **⇪ Publish data** button (hosted, GitHub token)',
+      });
+      const result = await createDataPr(buildFiles(docs), title, body, token, setProgress);
+      setStatus({ kind: 'ok', text: `Pull request created (${result.changedFiles.length} files):`, url: result.url });
+    } catch (e) {
+      if (e instanceof GhAuthError) {
+        clearToken();
+        setLogin(null);
+        setStatus({ kind: 'err', text: `${e.message} — the token was removed from this browser; paste a new one.` });
+      } else {
+        setStatus({ kind: 'err', text: e instanceof Error ? e.message : String(e) });
+      }
+    } finally {
+      setProgress(null);
       setBusy(false);
     }
   };
@@ -61,7 +163,7 @@ export default function PublishPanel({ mode }: { mode: Mode }) {
       setStatus({
         kind: 'info',
         text: copied
-          ? 'The payload is too big for a prefilled link, so it was COPIED to your clipboard — paste it into the issue form that just opened.'
+          ? 'Payload copied to your clipboard — paste it into the issue form that just opened.'
           : 'Payload too large for a prefilled link and clipboard was blocked — use Export instead.',
       });
     } else {
@@ -70,26 +172,13 @@ export default function PublishPanel({ mode }: { mode: Mode }) {
     window.open(url, '_blank', 'noopener');
   };
 
-  const startUploadFlow = async () => {
-    setBusy(true);
-    try {
-      const { docs } = await loadAll();
-      downloadZip(docs);
-      setShowUploadGuide(true);
-      window.open(UPLOAD_URL, '_blank', 'noopener');
-      setStatus(null);
-    } finally {
-      setBusy(false);
-    }
-  };
-
   return (
     <div class="relative">
       <button class="btn" onClick={() => setOpen(!open)} title="Open a pull request that updates data/">
         ⇪ Publish data
       </button>
       {open && (
-        <div class="absolute right-0 top-full z-20 mt-2 w-[26rem] max-w-[90vw] rounded-xl border border-zinc-700 bg-zinc-900 p-4 shadow-2xl">
+        <div class="absolute right-0 top-full z-20 mt-2 w-[28rem] max-w-[92vw] rounded-xl border border-zinc-700 bg-zinc-900 p-4 shadow-2xl">
           <div class="mb-3 flex items-center justify-between">
             <h3 class="text-sm font-semibold text-zinc-100">Publish to data/ via pull request</h3>
             <button class="text-zinc-500 hover:text-zinc-200" onClick={() => setOpen(false)}>✕</button>
@@ -98,16 +187,13 @@ export default function PublishPanel({ mode }: { mode: Mode }) {
           {mode === 'local' ? (
             <div class="space-y-3">
               <p class="text-xs text-zinc-400">
-                Creates a branch from <code>origin/main</code> with your current <code>data/*.json</code>, pushes it with your
-                own git/gh credentials, and opens the PR. Your working tree is not touched.
+                Creates a branch from <code>origin/main</code> with your current <code>data/*.json</code> using your own
+                git/gh credentials (no token needed locally). Your working tree is not touched.
               </p>
               <input class="input" value={title} onInput={(e) => setTitle((e.target as HTMLInputElement).value)} />
               <button class="btn btn-primary w-full justify-center" disabled={busy} onClick={createLocalPr}>
                 {busy ? 'Creating PR…' : 'Create PR now'}
               </button>
-              <p class="text-[11px] leading-relaxed text-zinc-500">
-                Equivalent by hand: <code>git checkout -b data-update && git add data && git commit && git push && gh pr create</code>
-              </p>
             </div>
           ) : (
             <div class="space-y-3">
@@ -121,36 +207,41 @@ export default function PublishPanel({ mode }: { mode: Mode }) {
                 <p class="text-xs text-zinc-500">No draft changes yet — add or edit merchants first.</p>
               )}
 
-              <button class="btn w-full justify-center" disabled={busy} onClick={startUploadFlow}>
-                📤 Upload on GitHub → PR <span class="text-zinc-500">(for the repo owner)</span>
-              </button>
-              {showUploadGuide && (
-                <ol class="list-decimal space-y-1 rounded-lg border border-zinc-800 bg-zinc-950 p-3 pl-7 text-xs text-zinc-300">
-                  <li>Unzip the pack that just downloaded.</li>
-                  <li>Drag the 6 JSON files onto the GitHub upload page that opened (<code>data/</code> folder).</li>
-                  <li>Select <strong>"Create a new branch … and start a pull request"</strong>, then <strong>Propose changes</strong>.</li>
-                </ol>
+              {!login ? (
+                <TokenSetup onReady={(l) => { setLogin(l); setStatus({ kind: 'ok', text: `Authenticated as ${l}.` }); }} />
+              ) : (
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between text-xs">
+                    <span class="chip border-emerald-700 text-emerald-300">✓ {login}</span>
+                    <button
+                      class="text-zinc-500 underline hover:text-zinc-300"
+                      onClick={() => { clearToken(); setLogin(null); }}
+                    >
+                      Sign out (forget token)
+                    </button>
+                  </div>
+                  <input class="input" value={title} onInput={(e) => setTitle((e.target as HTMLInputElement).value)} />
+                  <button class="btn btn-primary w-full justify-center" disabled={busy || nDrafts === 0} onClick={createTokenPr}>
+                    {busy ? (progress ?? 'Working…') : 'Create PR with my changes'}
+                  </button>
+                </div>
               )}
 
-              <button class="btn w-full justify-center" disabled={nDrafts === 0} onClick={suggestViaIssue}>
-                💬 Suggest via GitHub issue <span class="text-zinc-500">(anyone)</span>
+              <button class="btn w-full justify-center text-xs" disabled={nDrafts === 0} onClick={suggestViaIssue}>
+                💬 No token? Suggest via GitHub issue instead
               </button>
-              <p class="text-[11px] leading-relaxed text-zinc-500">
-                Opens a prefilled issue with only your changes. The maintainer reviews it and applies it with{' '}
-                <code>scripts/apply-update.mjs</code> — no tokens, no bots run on issue content.
-              </p>
 
-              {nDrafts > 0 && (
+              {nDrafts > 0 && status?.kind === 'ok' && status.url && (
                 <button
                   class="btn w-full justify-center text-xs"
                   onClick={() => {
-                    if (confirm(`Discard ${nDrafts} draft change(s) from this browser?`)) {
+                    if (confirm(`Clear ${nDrafts} draft change(s) from this browser? (They are captured in the PR.)`)) {
                       clearDrafts();
                       location.reload();
                     }
                   }}
                 >
-                  🧹 Clear drafts (after your PR/issue is in)
+                  🧹 Clear drafts (they're in the PR now)
                 </button>
               )}
             </div>
@@ -175,7 +266,8 @@ export default function PublishPanel({ mode }: { mode: Mode }) {
             </p>
           )}
           <p class="mt-3 text-[11px] text-zinc-600">
-            Repo: <a class="underline" href={REPO_URL} target="_blank" rel="noopener">jtvargas/merchant-studio</a>
+            Only authorized collaborators can merge into <code>main</code> — every PR waits for review. Repo:{' '}
+            <a class="underline" href={REPO_URL} target="_blank" rel="noopener">{OWNER}/{REPO}</a>
           </p>
         </div>
       )}

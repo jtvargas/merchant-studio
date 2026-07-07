@@ -42,6 +42,46 @@ export function summaryOfDrafts(drafts: Drafts, docs?: AllDocs): string[] {
   return lines;
 }
 
+// PR body following .github/pull_request_template.md so automated and manual
+// PRs read the same. Used by the token flow here and the local /api/propose flow.
+export function buildPrBodyFromSummary(s: {
+  added: string[];
+  updated: string[];
+  deleted: string[];
+  countDeltas: string[];
+  testsNote?: string;
+  via: string;
+}): string {
+  const ids = (list: string[]) => (list.length ? list.map((i) => `\`${i}\``).join(', ') : '—');
+  return [
+    '## What kind of change is this?',
+    '',
+    '- [x] 📊 Data update (merchants / test descriptors in `data/`)',
+    '',
+    '## Summary',
+    '',
+    `Data update: ${s.added.length} added, ${s.updated.length} updated, ${s.deleted.length} deleted merchant(s).`,
+    '',
+    '## Data changes',
+    '',
+    '| | ids |',
+    '|---|---|',
+    `| **Added merchants** | ${ids(s.added)} |`,
+    `| **Updated merchants** | ${ids(s.updated)} |`,
+    `| **Deleted merchants** | ${ids(s.deleted)} |`,
+    `| **Test descriptors** | ${s.testsNote ?? '—'} |`,
+    '',
+    `**Counts:** ${s.countDeltas.length ? s.countDeltas.join(' · ') : 'unchanged'}`,
+    '',
+    '- [x] Categories come from the taxonomy, aliases are lowercase/unaccented',
+    '- [x] Validated by Merchant Studio before submission',
+    '',
+    '## How was this PR created?',
+    '',
+    `- [x] ${s.via}`,
+  ].join('\n');
+}
+
 // Practical limit for prefilled-issue URLs before browsers/GitHub choke.
 const MAX_URL = 6500;
 
