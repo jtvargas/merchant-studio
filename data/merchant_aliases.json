@@ -27356,6 +27356,54 @@
       "negativeAliases": [],
       "defaultConfidence": 0.92,
       "notes": null
+    },
+    {
+      "id": "fiverr",
+      "canonicalName": "Fiverr",
+      "displayName": "Fiverr",
+      "category": "professional_services",
+      "subcategory": "freelance_marketplace",
+      "mccHints": [],
+      "website": "fiverr.com",
+      "iconSlug": "fiverr",
+      "countryHints": [
+        "GLOBAL"
+      ],
+      "aliases": [
+        "fiverr",
+        "fiverr.com",
+        "www.fiverr.com",
+        "fiverr com",
+        "fiverreu",
+        "fiverreu nicosia",
+        "fiverrinc"
+      ],
+      "negativeAliases": [],
+      "defaultConfidence": 0.95,
+      "notes": "EU/intl purchases are billed via Fiverr's Cyprus entity and show a Limassol or Nicosia CYP location suffix (e.g. FIVERREU NICOSIA); descriptor location does not indicate a local merchant."
+    },
+    {
+      "id": "monako_ai",
+      "canonicalName": "Monako AI",
+      "displayName": "Monako AI",
+      "category": "shopping",
+      "subcategory": "electronics",
+      "mccHints": [],
+      "website": "monako.ai",
+      "iconSlug": "monako",
+      "countryHints": [
+        "HK"
+      ],
+      "aliases": [
+        "monako ai",
+        "monakoai",
+        "monako.ai",
+        "monako glass",
+        "monako ai tsim sha tsui"
+      ],
+      "negativeAliases": [],
+      "defaultConfidence": 0.92,
+      "notes": "Hong Kong startup selling Monako Glass AI smart glasses; charges bill from Tsim Sha Tsui HK and are typically $19 reservations or $399 unit preorders via monako.ai."
     }
   ]
 }
