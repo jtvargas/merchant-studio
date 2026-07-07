@@ -25,13 +25,18 @@ async function copyToClipboard(text: string): Promise<boolean> {
 function AiAssist({ mcc, onImport }: { mcc: MccDoc; onImport: (m: Merchant, warnings: string[]) => void }) {
   const [descriptor, setDescriptor] = useState('');
   const [pasted, setPasted] = useState('');
+  const [copied, setCopied] = useState(false);
   const [status, setStatus] = useState<{ kind: 'ok' | 'err'; text: string } | null>(null);
 
   const copyPrompt = async () => {
     const ok = await copyToClipboard(buildLlmPrompt(descriptor, mcc));
-    setStatus(ok
-      ? { kind: 'ok', text: 'Prompt copied — paste it into ChatGPT / Claude / Gemini, then paste the JSON reply below.' }
-      : { kind: 'err', text: 'Could not access the clipboard — allow clipboard permission and try again.' });
+    if (ok) {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+      setStatus({ kind: 'ok', text: 'Prompt copied — paste it into ChatGPT / Claude / Gemini. The AI is instructed to research and verify (using web search or subagents when it has them) and answer with confidence ≥ 0.83.' });
+    } else {
+      setStatus({ kind: 'err', text: 'Could not access the clipboard — allow clipboard permission and try again.' });
+    }
   };
 
   const importJson = () => {
@@ -44,18 +49,18 @@ function AiAssist({ mcc, onImport }: { mcc: MccDoc; onImport: (m: Merchant, warn
     setPasted('');
     setStatus({
       kind: 'ok',
-      text: `Form filled with "${result.entry.canonicalName || result.entry.id}". Review the fields and warnings below, then save.`,
+      text: `Form filled with "${result.entry.canonicalName || result.entry.id}" — step 3: review the fields and warnings below, then save.`,
     });
   };
 
   return (
     <details class="card" open>
       <summary class="cursor-pointer text-sm font-semibold text-zinc-200">
-        ✨ Fill with an LLM <span class="ml-1 font-normal text-zinc-500">copy a prompt, paste the JSON reply</span>
+        ✨ Fill with an LLM <span class="ml-1 font-normal text-zinc-500">copy a prompt → paste the JSON reply → review &amp; save</span>
       </summary>
       <div class="mt-4 space-y-4">
         <div>
-          <label class="label">1 · Transaction descriptor or merchant name</label>
+          <label class="label">1 · Copy the prompt (with your descriptor baked in)</label>
           <div class="flex flex-col gap-2 sm:flex-row">
             <input
               class="input font-mono"
@@ -63,14 +68,16 @@ function AiAssist({ mcc, onImport }: { mcc: MccDoc; onImport: (m: Merchant, warn
               value={descriptor}
               onInput={(e) => setDescriptor((e.target as HTMLInputElement).value)}
             />
-            <button type="button" class="btn shrink-0" onClick={copyPrompt}>📋 Copy LLM prompt</button>
+            <button type="button" class={`btn shrink-0 ${copied ? 'border-emerald-600 text-emerald-300' : ''}`} onClick={copyPrompt}>
+              {copied ? '✓ Copied' : '📋 Copy LLM prompt'}
+            </button>
           </div>
           <p class="mt-1 text-xs text-zinc-500">
-            The prompt teaches the AI this pack's exact schema: taxonomy categories, alias conventions, MCC cheat-sheet, and the JSON-only output contract.
+            The prompt makes the AI research each field (web search/subagents when available), forbids guessing and filler notes, and requires confidence ≥ 0.83.
           </p>
         </div>
         <div>
-          <label class="label">2 · Paste the JSON reply</label>
+          <label class="label">2 · Paste the AI's JSON reply</label>
           <textarea
             class="input h-28 font-mono text-xs"
             placeholder={'{ "id": "panaderia_la_espiga", "canonicalName": "Panadería La Espiga", ... }\nMarkdown fences and surrounding text are OK — they get stripped.'}
@@ -81,6 +88,7 @@ function AiAssist({ mcc, onImport }: { mcc: MccDoc; onImport: (m: Merchant, warn
             ⤵ Fill form from JSON
           </button>
         </div>
+        <p class="text-xs text-zinc-600">3 · Review the pre-filled form below (collisions and invalid values are flagged live), then save.</p>
         {status && (
           <p class={`rounded-lg border px-3 py-2 text-sm ${status.kind === 'ok'
             ? 'border-emerald-700 bg-emerald-900/30 text-emerald-300'

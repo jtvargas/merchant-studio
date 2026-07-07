@@ -1,6 +1,6 @@
 // Form-level and pack-level integrity checks (mirrors the Python merge/validate tooling)
 import type { Merchant, MerchantsDoc, MccDoc, RulesDoc, NoiseDoc, TestsDoc, Manifest } from './schema';
-import { COUNTRY_HINTS, RISKY_GENERIC_WORDS, RULE_ONLY_CATEGORIES, normalizeAlias } from './schema';
+import { isValidCountryHint, RISKY_GENERIC_WORDS, RULE_ONLY_CATEGORIES, normalizeAlias } from './schema';
 import { recomputeCounts } from './manifest';
 
 export interface FieldIssue {
@@ -39,8 +39,8 @@ export function validateMerchant(
     issues.push({ field: 'countryHints', level: 'warning', message: 'no country hints set' });
   }
   for (const c of entry.countryHints) {
-    if (!(COUNTRY_HINTS as readonly string[]).includes(c)) {
-      issues.push({ field: 'countryHints', level: 'error', message: `invalid country hint ${c}` });
+    if (!isValidCountryHint(c)) {
+      issues.push({ field: 'countryHints', level: 'error', message: `invalid country hint "${c}" — use an ISO 3166-1 alpha-2 code (HK, JP, …) or LATAM/EU/APAC/GLOBAL` });
     }
   }
 

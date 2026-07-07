@@ -105,7 +105,11 @@ export default function MerchantsExplorer() {
               <span class="chip">{m.aliases.length} alias{m.aliases.length === 1 ? '' : 'es'}</span>
             </button>
           ))}
-          {filtered.length === 0 && <p class="p-4 text-sm text-zinc-500">No merchants match.</p>}
+          {filtered.length === 0 && (
+            <p class="p-4 text-sm text-zinc-500">
+              Nothing matches — try fewer filters, or search by an alias fragment (e.g. "oxxo").
+            </p>
+          )}
         </div>
         {filtered.length > limit && (
           <button class="btn mt-3" onClick={() => setLimit(limit + PAGE)}>
@@ -122,8 +126,14 @@ export default function MerchantsExplorer() {
             <div class="flex items-start justify-between gap-3">
               <div>
                 <h2 class="text-xl font-bold text-white">{sel.canonicalName}</h2>
-                <p class="text-sm text-zinc-400">
-                  <span class="font-mono">{sel.id}</span> · {sel.category}/{sel.subcategory} · conf {sel.defaultConfidence}
+                <p class="flex flex-wrap items-center gap-1.5 text-sm text-zinc-400">
+                  <span class="font-mono">{sel.id}</span> · {sel.category}/{sel.subcategory}
+                  <span
+                    class={`chip ${sel.defaultConfidence >= 0.9 ? 'border-emerald-700 text-emerald-300' : 'border-amber-700 text-amber-300'}`}
+                    title="Matching confidence: ≥0.90 distinctive aliases · 0.83–0.86 short/risky aliases"
+                  >
+                    conf {sel.defaultConfidence.toFixed(2)} {sel.defaultConfidence >= 0.9 ? '· distinctive' : '· risky aliases'}
+                  </span>
                 </p>
               </div>
               <div class="flex shrink-0 gap-2">

@@ -132,7 +132,19 @@ export const DATA_FILES = [
   'manifest.json',
 ] as const;
 
-export const COUNTRY_HINTS = ['US', 'DO', 'MX', 'BR', 'ES', 'LATAM'] as const;
+// Curated quick-pick list shown as chips in the UI. Any ISO 3166-1 alpha-2
+// code is also valid (see isValidCountryHint) — the list is not a limit.
+export const COUNTRY_HINTS = [
+  'US', 'DO', 'MX', 'BR', 'ES', 'HK', 'CA', 'GB', 'FR', 'DE', 'IT', 'PT',
+  'JP', 'SG', 'AU', 'CO', 'AR', 'CL', 'PE', 'PA', 'PR',
+  'LATAM', 'EU', 'APAC', 'GLOBAL',
+] as const;
+
+export const REGION_TOKENS = ['LATAM', 'EU', 'APAC', 'GLOBAL'] as const;
+
+export function isValidCountryHint(c: string): boolean {
+  return /^[A-Z]{2}$/.test(c) || (REGION_TOKENS as readonly string[]).includes(c);
+}
 
 export const REGIONS = ['US', 'FL', 'CA', 'DO', 'MX', 'BR', 'ES'] as const;
 

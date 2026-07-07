@@ -3,7 +3,10 @@
 //    merchant JSON entry following the pack's conventions
 //  - parseLlmJson(): tolerant parser/normalizer for whatever the LLM replies
 import type { Merchant, MccDoc } from './schema';
-import { COUNTRY_HINTS, EMPTY_MERCHANT, RISKY_GENERIC_WORDS, normalizeAlias, orderMerchant } from './schema';
+import { EMPTY_MERCHANT, RISKY_GENERIC_WORDS, isValidCountryHint, normalizeAlias, orderMerchant } from './schema';
+
+// LLM-produced entries must carry confidence strictly greater than 0.82
+export const LLM_MIN_CONFIDENCE = 0.83;
 
 // Common MCCs worth teaching the LLM (descriptions come from the loaded doc)
 const CHEATSHEET_CODES = [
@@ -24,7 +27,21 @@ export function buildLlmPrompt(descriptor: string, mcc: MccDoc): string {
     .join('\n');
   const target = descriptor.trim() || '<PASTE THE TRANSACTION DESCRIPTOR OR MERCHANT NAME HERE>';
 
-  return `You are helping me fill ONE entry of a merchant database used for bank-transaction enrichment (turning raw card descriptors into clean merchant names and spending categories). I will give you a raw transaction descriptor or a merchant name; research what you know about that merchant and reply with a single JSON object in EXACTLY this shape:
+  return `# ROLE & GOAL
+
+You are filling ONE entry of a merchant database used for bank-transaction enrichment (turning raw card descriptors into clean merchant names and spending categories). The entry is machine-validated on import: any rule you break gets your answer rejected. ACCURACY BEATS COMPLETENESS — a verified half-filled entry is worth more than a guessed complete one.
+
+# PROCESS (follow in order)
+
+1. Identify the REAL merchant behind the descriptor below (brands are often truncated or prefixed by payment processors like SQ*, TST*, PAYPAL*).
+2. If your assistant supports web search, tools, or subagents, USE THEM — verify each uncertain field independently (run parallel lookups/subagents per field when available):
+   - how this merchant actually appears on real bank statements (search "<merchant> charge on statement"),
+   - its typical MCC code,
+   - the countries where it operates,
+   - sibling brands that could collide with its name.
+3. For every field: if you could not verify it and cannot state it with high confidence, use the SAFE DEFAULT (empty array [] or null) instead of guessing. Never invent statement formats, MCC codes, or domains.
+
+# OUTPUT SHAPE (exactly these 13 keys, in this order)
 
 {
   "id": "",
@@ -42,22 +59,38 @@ export function buildLlmPrompt(descriptor: string, mcc: MccDoc): string {
   "notes": null
 }
 
-Field rules (follow them strictly — the entry is machine-validated):
+# FIELD RULES (machine-validated — follow strictly)
+
 - id: snake_case, lowercase letters/digits/underscores only, short and stable (e.g. "pollo_tropical").
 - canonicalName: the merchant's proper brand name. displayName: what a user should see on the transaction (usually the same).
 - category: EXACTLY one of: ${taxonomy}
+  DO NOT invent categories. If two fit, pick the one matching where the MONEY goes (a gas-station convenience purchase is still auto_transport/gas only when fuel; food purchases at OXXO are groceries).
 - subcategory: short snake_case, e.g. supermarket, fast_casual, pharmacy, gas, tolls, streaming_video, bank, rideshare, clothing.
-- mccHints: 1-3 four-digit MCC code strings that card networks would use for this merchant. Common codes:
+- mccHints: 1-3 four-digit MCC code strings card networks use for this merchant. VERIFIED codes only — an empty array is better than a wrong code. Common codes:
 ${cheatsheet}
-Any other valid ISO 18245 MCC is acceptable if you are confident; if unsure use an empty array.
-- website: bare domain like "example.com" or null. iconSlug: lowercase brand slug without spaces, or null.
-- countryHints: where this merchant operates, from: ${COUNTRY_HINTS.join(', ')} (LATAM = multi-country Latin America). Multiple allowed.
-- aliases: 3-8 strings showing how this merchant ACTUALLY appears on bank statements: truncated forms, domain forms, processor-prefixed forms, common misspacings. All lowercase, ASCII only — strip every accent (ñ→n, é→e, ã→a). NEVER use a bare common dictionary word as an alias (bad: ${RISKY_GENERIC_WORDS.slice(0, 10).join(', ')}); use a distinguishing phrase instead ("gol linhas aereas", not "gol").
+Any other valid ISO 18245 MCC is acceptable ONLY if you verified it.
+- website: bare domain like "example.com" (no https://, no path) or null. iconSlug: lowercase brand slug without spaces, or null.
+- countryHints: countries where this merchant actually operates. Use ISO 3166-1 alpha-2 codes (US, DO, MX, BR, ES, HK, CA, GB, FR, DE, JP, SG, …) and/or region tokens LATAM, EU, APAC, GLOBAL. Multiple allowed. DO NOT list countries you have not verified.
+- aliases: 3-8 strings showing how this merchant ACTUALLY appears on statements: truncated forms ("pollo trop"), domain forms ("chewy.com"), processor-prefixed forms, common misspacings. All lowercase, ASCII only — strip every accent (ñ→n, é→e, ã→a). DO include the plain brand name when it is distinctive. DO NOT use a bare common dictionary word (bad: ${RISKY_GENERIC_WORDS.slice(0, 10).join(', ')}) — use a distinguishing phrase instead ("gol linhas aereas", never "gol"). DO NOT invent alias variants you have no evidence for; 3 real ones beat 8 fabricated ones.
 - negativeAliases: phrases that indicate a DIFFERENT merchant despite overlapping text (e.g. "oxxo gas" on the OXXO store entry). Usually [].
-- defaultConfidence: 0.92 normally; 0.80-0.86 if the aliases are short/generic/risky.
-- notes: null, or one short warning about collision risks.
+- defaultConfidence: a number between 0.83 and 0.99 — NEVER 0.82 or below.
+  · 0.92 = default when the aliases are verified and distinctive.
+  · 0.95-0.99 = aliases verified against real statement samples and impossible to confuse.
+  · 0.83-0.86 = aliases are short, generic-ish, or only partially verified.
+- notes: null, OR one short note that genuinely helps a human reviewer.
+  GOOD notes: "Statements often truncate to POLLO TROP", "Sibling brand of OXXO Gas — negativeAliases added", "Operates only in Hong Kong and Macau".
+  BAD notes (use null instead): restating the category, "popular merchant", "added by AI", any filler that repeats other fields.
 
-Reply with ONLY the JSON object. No markdown fences, no explanations, no extra keys.
+# SELF-CHECK BEFORE REPLYING
+
+Verify every box, fix anything that fails, THEN reply:
+[ ] Exactly one JSON object, all 13 keys, in the order shown, no extra keys.
+[ ] No markdown fences, no commentary, no trailing commas.
+[ ] id is snake_case; category is copied verbatim from the list.
+[ ] Every alias is lowercase ASCII, accent-free, and not a bare dictionary word.
+[ ] Every mccHint and countryHint was verified (or the array is empty).
+[ ] defaultConfidence >= 0.83.
+[ ] notes is null or genuinely useful (no filler).
 
 Transaction descriptor / merchant: ${target}`;
 }
@@ -145,10 +178,10 @@ export function parseLlmJson(text: string, mcc: MccDoc): ParseResult {
   const countries: string[] = [];
   for (const c of strList(raw.countryHints)) {
     const up = c.toUpperCase();
-    if ((COUNTRY_HINTS as readonly string[]).includes(up)) {
+    if (isValidCountryHint(up)) {
       if (!countries.includes(up)) countries.push(up);
     } else {
-      warnings.push(`Dropped invalid country hint "${c}".`);
+      warnings.push(`Dropped invalid country hint "${c}" (expect ISO alpha-2 like HK, or LATAM/EU/APAC/GLOBAL).`);
     }
   }
   entry.countryHints = countries.length ? countries : ['US'];
@@ -164,8 +197,17 @@ export function parseLlmJson(text: string, mcc: MccDoc): ParseResult {
     .filter((a) => a && !seenNeg.has(a) && (seenNeg.add(a), true));
 
   const conf = Number(raw.defaultConfidence);
-  entry.defaultConfidence = Number.isFinite(conf) ? Math.min(0.99, Math.max(0.5, Math.round(conf * 100) / 100)) : 0.92;
-  entry.notes = str(raw.notes) || null;
+  let confidence = Number.isFinite(conf) ? Math.min(0.99, Math.round(conf * 100) / 100) : 0.92;
+  if (confidence < LLM_MIN_CONFIDENCE) {
+    warnings.push(`Confidence ${confidence} raised to ${LLM_MIN_CONFIDENCE} (minimum for LLM imports) — review the aliases if the AI was unsure.`);
+    confidence = LLM_MIN_CONFIDENCE;
+  }
+  entry.defaultConfidence = confidence;
+
+  // notes: keep only genuinely useful text — drop empty filler
+  const note = str(raw.notes);
+  entry.notes = note.length >= 8 ? note : null;
+  if (note && note.length < 8) warnings.push(`Dropped filler note "${note}".`);
 
   return { entry: orderMerchant(entry), warnings };
 }

@@ -19,7 +19,9 @@ import { join } from 'node:path';
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const DATA = join(ROOT, 'data');
 
-const COUNTRY = new Set(['US', 'DO', 'MX', 'BR', 'ES', 'LATAM']);
+// Any ISO 3166-1 alpha-2 code, or a region token — mirrors isValidCountryHint in src/lib/schema.ts
+const REGION_TOKENS = new Set(['LATAM', 'EU', 'APAC', 'GLOBAL']);
+const isValidCountryHint = (c) => /^[A-Z]{2}$/.test(c) || REGION_TOKENS.has(c);
 const FIELD_ORDER = [
   'id', 'canonicalName', 'displayName', 'category', 'subcategory', 'mccHints',
   'website', 'iconSlug', 'countryHints', 'aliases', 'negativeAliases',
@@ -94,7 +96,7 @@ for (const raw of upserts) {
   if (!taxonomy.has(m.category)) errors.push(`${id}: invalid category "${m.category}"`);
   if (!m.aliases.length) errors.push(`${id}: at least one alias is required`);
   for (const h of m.mccHints) if (!mccCodes.has(h)) errors.push(`${id}: unknown MCC hint ${h}`);
-  for (const c of m.countryHints) if (!COUNTRY.has(c)) errors.push(`${id}: invalid country hint ${c}`);
+  for (const c of m.countryHints) if (!isValidCountryHint(c)) errors.push(`${id}: invalid country hint ${c} (ISO alpha-2 or LATAM/EU/APAC/GLOBAL)`);
   for (const a of m.aliases) {
     const owner = aliasOwner.get(a);
     if (owner) errors.push(`${id}: alias "${a}" already belongs to "${owner}"`);

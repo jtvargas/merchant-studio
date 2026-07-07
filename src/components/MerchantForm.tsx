@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'preact/hooks';
 import type { Merchant, MccDoc } from '../lib/schema';
-import { COUNTRY_HINTS, EMPTY_MERCHANT, normalizeAlias } from '../lib/schema';
+import { COUNTRY_HINTS, EMPTY_MERCHANT, isValidCountryHint, normalizeAlias } from '../lib/schema';
 import { validateMerchant, type FieldIssue } from '../lib/validation';
 import { saveMerchant } from '../lib/store';
 
@@ -15,6 +15,14 @@ export interface MerchantFormProps {
   onCancel?: () => void;
 }
 
+function SectionTitle({ children }: { children: string }) {
+  return (
+    <h4 class="border-b border-zinc-800 pb-1 text-xs font-bold uppercase tracking-widest text-zinc-500">
+      {children}
+    </h4>
+  );
+}
+
 function ChipListInput(props: {
   label: string;
   values: string[];
@@ -22,6 +30,7 @@ function ChipListInput(props: {
   normalize?: boolean;
   onChange: (v: string[]) => void;
   hint?: string;
+  hasError?: boolean;
 }) {
   const [text, setText] = useState('');
   const add = () => {
@@ -38,7 +47,7 @@ function ChipListInput(props: {
       <label class="label">{props.label}</label>
       <div class="flex gap-2">
         <input
-          class="input"
+          class={`input ${props.hasError ? 'border-red-700' : ''}`}
           value={text}
           placeholder={props.placeholder}
           onInput={(e) => setText((e.target as HTMLInputElement).value)}
@@ -75,6 +84,7 @@ export default function MerchantForm({ initial, isNew, all, mcc, onSaved, onCanc
   const [saving, setSaving] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
   const [mccQuery, setMccQuery] = useState('');
+  const [countryCode, setCountryCode] = useState('');
 
   const taxonomy = useMemo(() => mcc.categoryTaxonomy.map((t) => t.id), [mcc]);
   const mccCodes = useMemo(() => new Set(Object.keys(mcc.mcc)), [mcc]);
@@ -90,7 +100,8 @@ export default function MerchantForm({ initial, isNew, all, mcc, onSaved, onCanc
   );
   const errors = issues.filter((i) => i.level === 'error');
   const warnings = issues.filter((i) => i.level === 'warning');
-  const fieldIssues = (f: string) => issues.filter((i) => i.field === f);
+  const hasError = (f: string) => issues.some((i) => i.field === f && i.level === 'error');
+  const errClass = (f: string) => (hasError(f) ? 'border-red-700' : '');
 
   const set = <K extends keyof Merchant>(k: K, v: Merchant[K]) => setM((prev) => ({ ...prev, [k]: v }));
 
@@ -101,6 +112,25 @@ export default function MerchantForm({ initial, isNew, all, mcc, onSaved, onCanc
       .filter((e) => e.code.startsWith(q) || e.description.toLowerCase().includes(q))
       .slice(0, 8);
   }, [mccQuery, mcc]);
+
+  const addCountryCode = () => {
+    const code = countryCode.trim().toUpperCase();
+    if (!code) return;
+    if (!isValidCountryHint(code)) {
+      setCountryCode('');
+      set('countryHints', [...m.countryHints, code]); // shows the inline error so the user sees why
+      return;
+    }
+    if (!m.countryHints.includes(code)) set('countryHints', [...m.countryHints, code]);
+    setCountryCode('');
+  };
+
+  const extraCountries = m.countryHints.filter((c) => !(COUNTRY_HINTS as readonly string[]).includes(c));
+
+  const confidenceLabel =
+    m.defaultConfidence >= 0.95 ? 'exact / verified' :
+    m.defaultConfidence >= 0.9 ? 'distinctive (default)' :
+    m.defaultConfidence >= 0.83 ? 'short / risky aliases' : 'below LLM floor (manual only)';
 
   const submit = async (e: Event) => {
     e.preventDefault();
@@ -118,21 +148,23 @@ export default function MerchantForm({ initial, isNew, all, mcc, onSaved, onCanc
   };
 
   return (
-    <form onSubmit={submit} class="space-y-4">
+    <form onSubmit={submit} class="space-y-5">
+      <SectionTitle>Identity — who is this merchant?</SectionTitle>
       <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label class="label">id (snake_case)</label>
           <input
-            class="input font-mono"
+            class={`input font-mono ${errClass('id')}`}
             value={m.id}
             placeholder="pollo_tropical"
             disabled={!isNew}
             onInput={(e) => set('id', (e.target as HTMLInputElement).value.toLowerCase().replace(/[^a-z0-9_]/g, '_'))}
           />
+          <p class="mt-1 text-xs text-zinc-500">Permanent unique key — auto-filled from the name.</p>
         </div>
         <div>
           <label class="label">Canonical name</label>
-          <input class="input" value={m.canonicalName} placeholder="Pollo Tropical"
+          <input class={`input ${errClass('canonicalName')}`} value={m.canonicalName} placeholder="Pollo Tropical"
             onInput={(e) => {
               const v = (e.target as HTMLInputElement).value;
               setM((prev) => ({
@@ -144,19 +176,25 @@ export default function MerchantForm({ initial, isNew, all, mcc, onSaved, onCanc
                   : prev.id,
               }));
             }} />
+          <p class="mt-1 text-xs text-zinc-500">The proper brand name.</p>
         </div>
         <div>
           <label class="label">Display name</label>
-          <input class="input" value={m.displayName} onInput={(e) => set('displayName', (e.target as HTMLInputElement).value)} />
+          <input class={`input ${errClass('displayName')}`} value={m.displayName} onInput={(e) => set('displayName', (e.target as HTMLInputElement).value)} />
+          <p class="mt-1 text-xs text-zinc-500">What the user sees on the transaction.</p>
         </div>
         <div>
           <label class="label">Website</label>
           <input class="input" value={m.website ?? ''} placeholder="example.com"
             onInput={(e) => set('website', (e.target as HTMLInputElement).value || null)} />
         </div>
+      </div>
+
+      <SectionTitle>Classification — where does the spend belong?</SectionTitle>
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label class="label">Category</label>
-          <select class="input" value={m.category} onInput={(e) => set('category', (e.target as HTMLSelectElement).value)}>
+          <select class={`input ${errClass('category')}`} value={m.category} onInput={(e) => set('category', (e.target as HTMLSelectElement).value)}>
             {taxonomy.map((t) => <option value={t} key={t}>{t}</option>)}
           </select>
         </div>
@@ -168,54 +206,11 @@ export default function MerchantForm({ initial, isNew, all, mcc, onSaved, onCanc
           <datalist id="subcat-suggestions">
             {subcategorySuggestions.map((s) => <option value={s} key={s} />)}
           </datalist>
-        </div>
-        <div>
-          <label class="label">Icon slug</label>
-          <input class="input font-mono" value={m.iconSlug ?? ''} placeholder="pollotropical"
-            onInput={(e) => set('iconSlug', (e.target as HTMLInputElement).value || null)} />
-        </div>
-        <div>
-          <label class="label">Confidence: {m.defaultConfidence.toFixed(2)}</label>
-          <input type="range" min="0.5" max="0.99" step="0.01" class="w-full accent-emerald-500"
-            value={m.defaultConfidence}
-            onInput={(e) => set('defaultConfidence', parseFloat((e.target as HTMLInputElement).value))} />
+          <p class="mt-1 text-xs text-zinc-500">Suggestions come from existing merchants in this category.</p>
         </div>
       </div>
-
       <div>
-        <label class="label">Country hints</label>
-        <div class="flex flex-wrap gap-2">
-          {COUNTRY_HINTS.map((c) => (
-            <label key={c} class={`chip cursor-pointer ${m.countryHints.includes(c) ? 'border-emerald-600 text-emerald-300' : ''}`}>
-              <input type="checkbox" class="hidden" checked={m.countryHints.includes(c)}
-                onChange={() => set('countryHints', m.countryHints.includes(c)
-                  ? m.countryHints.filter((x) => x !== c)
-                  : [...m.countryHints, c])} />
-              {c}
-            </label>
-          ))}
-        </div>
-      </div>
-
-      <ChipListInput
-        label="Aliases (how it appears on statements)"
-        values={m.aliases}
-        placeholder="pollo tropical, pollo trop  (comma-separated, Enter to add)"
-        normalize
-        hint="Auto-normalized: lowercase, accents stripped. Avoid bare generic words."
-        onChange={(v) => set('aliases', v)}
-      />
-
-      <ChipListInput
-        label="Negative aliases (skip when these appear)"
-        values={m.negativeAliases}
-        placeholder="e.g. oxxo gas on the OXXO store entry"
-        normalize
-        onChange={(v) => set('negativeAliases', v)}
-      />
-
-      <div>
-        <label class="label">MCC hints</label>
+        <label class="label">MCC hints <span class="normal-case text-zinc-600">— card-network category codes; search by name (e.g. "pharmacy")</span></label>
         <div class="flex flex-wrap items-center gap-1.5">
           {m.mccHints.map((h) => (
             <span class="chip font-mono" key={h}>
@@ -225,7 +220,7 @@ export default function MerchantForm({ initial, isNew, all, mcc, onSaved, onCanc
             </span>
           ))}
         </div>
-        <input class="input mt-2" value={mccQuery} placeholder="Search MCC by code or description…"
+        <input class={`input mt-2 ${errClass('mccHints')}`} value={mccQuery} placeholder="Search MCC by code or description…"
           onInput={(e) => setMccQuery((e.target as HTMLInputElement).value)} />
         {mccMatches.length > 0 && (
           <div class="mt-1 overflow-hidden rounded-lg border border-zinc-700">
@@ -243,11 +238,91 @@ export default function MerchantForm({ initial, isNew, all, mcc, onSaved, onCanc
           </div>
         )}
       </div>
-
       <div>
-        <label class="label">Notes</label>
-        <input class="input" value={m.notes ?? ''} placeholder="collision warnings, matching caveats…"
-          onInput={(e) => set('notes', (e.target as HTMLInputElement).value || null)} />
+        <label class="label">Country hints <span class="normal-case text-zinc-600">— where this merchant operates</span></label>
+        <div class="flex flex-wrap gap-2">
+          {COUNTRY_HINTS.map((c) => (
+            <label key={c} class={`chip cursor-pointer ${m.countryHints.includes(c) ? 'border-emerald-600 text-emerald-300' : ''}`}>
+              <input type="checkbox" class="hidden" checked={m.countryHints.includes(c)}
+                onChange={() => set('countryHints', m.countryHints.includes(c)
+                  ? m.countryHints.filter((x) => x !== c)
+                  : [...m.countryHints, c])} />
+              {c}
+            </label>
+          ))}
+        </div>
+        {extraCountries.length > 0 && (
+          <div class="mt-2 flex flex-wrap gap-1.5">
+            {extraCountries.map((c) => (
+              <span key={c} class={`chip ${isValidCountryHint(c) ? 'border-emerald-600 text-emerald-300' : 'border-red-700 text-red-300'}`}>
+                {c}
+                <button type="button" class="text-zinc-500 hover:text-red-400"
+                  onClick={() => set('countryHints', m.countryHints.filter((x) => x !== c))}>✕</button>
+              </span>
+            ))}
+          </div>
+        )}
+        <div class="mt-2 flex gap-2">
+          <input
+            class={`input w-40 font-mono uppercase ${errClass('countryHints')}`}
+            value={countryCode}
+            maxLength={6}
+            placeholder="other: KR, TW…"
+            onInput={(e) => setCountryCode((e.target as HTMLInputElement).value)}
+            onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); addCountryCode(); } }}
+          />
+          <button type="button" class="btn" onClick={addCountryCode}>Add code</button>
+        </div>
+        <p class="mt-1 text-xs text-zinc-500">Any ISO 3166-1 alpha-2 code works (HK, JP, KR…), plus LATAM / EU / APAC / GLOBAL.</p>
+      </div>
+
+      <SectionTitle>Matching — how do we recognize it on statements?</SectionTitle>
+      <ChipListInput
+        label="Aliases"
+        values={m.aliases}
+        placeholder="pollo tropical, pollo trop  (comma-separated, Enter to add)"
+        normalize
+        hasError={hasError('aliases')}
+        hint={'Exactly how it appears on real statements — truncations ("pollo trop"), domains ("chewy.com"), processor forms. Auto-normalized to lowercase ASCII. Avoid bare dictionary words like "total" or "light".'}
+        onChange={(v) => set('aliases', v)}
+      />
+      <ChipListInput
+        label="Negative aliases"
+        values={m.negativeAliases}
+        placeholder="e.g. oxxo gas on the OXXO store entry"
+        normalize
+        hint="If any of these words appear in a descriptor, this merchant is SKIPPED — use them to separate sibling brands."
+        onChange={(v) => set('negativeAliases', v)}
+      />
+      <div>
+        <label class="label">
+          Confidence: <span class="text-emerald-400">{m.defaultConfidence.toFixed(2)}</span>{' '}
+          <span class="normal-case text-zinc-500">({confidenceLabel})</span>
+        </label>
+        <input type="range" min="0.5" max="0.99" step="0.01" class="w-full accent-emerald-500"
+          value={m.defaultConfidence}
+          onInput={(e) => set('defaultConfidence', parseFloat((e.target as HTMLInputElement).value))} />
+        <div class="flex justify-between text-[10px] text-zinc-600">
+          <span>0.50 manual only</span>
+          <span>0.83 LLM floor / risky</span>
+          <span>0.92 default</span>
+          <span>0.99 exact</span>
+        </div>
+      </div>
+
+      <SectionTitle>Metadata</SectionTitle>
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div>
+          <label class="label">Icon slug</label>
+          <input class="input font-mono" value={m.iconSlug ?? ''} placeholder="pollotropical"
+            onInput={(e) => set('iconSlug', (e.target as HTMLInputElement).value || null)} />
+        </div>
+        <div>
+          <label class="label">Notes</label>
+          <input class="input" value={m.notes ?? ''} placeholder='useful reviewer note, e.g. "statements truncate to POLLO TROP"'
+            onInput={(e) => set('notes', (e.target as HTMLInputElement).value || null)} />
+          <p class="mt-1 text-xs text-zinc-500">Leave empty unless it genuinely helps — no filler.</p>
+        </div>
       </div>
 
       {(errors.length > 0 || warnings.length > 0 || serverError) && (
