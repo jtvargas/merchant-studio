@@ -27356,6 +27356,27 @@
       "negativeAliases": [],
       "defaultConfidence": 0.92,
       "notes": null
+    },
+    {
+      "id": "test_token_flow",
+      "canonicalName": "Test Token Flow",
+      "displayName": "Test Token Flow",
+      "category": "shopping",
+      "subcategory": "online_marketplace",
+      "mccHints": [
+        "5399"
+      ],
+      "website": null,
+      "iconSlug": null,
+      "countryHints": [
+        "US"
+      ],
+      "aliases": [
+        "test token flow"
+      ],
+      "negativeAliases": [],
+      "defaultConfidence": 0.92,
+      "notes": null
     }
   ]
 }
