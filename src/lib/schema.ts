@@ -148,6 +148,22 @@ export const RISKY_GENERIC_WORDS = [
   'carnival', 'pilot', 'academy',
 ];
 
+export const EMPTY_MERCHANT: Merchant = {
+  id: '',
+  canonicalName: '',
+  displayName: '',
+  category: 'shopping',
+  subcategory: '',
+  mccHints: [],
+  website: null,
+  iconSlug: null,
+  countryHints: ['US'],
+  aliases: [],
+  negativeAliases: [],
+  defaultConfidence: 0.92,
+  notes: null,
+};
+
 // Canonical field order for merchant entries — keeps git diffs stable
 export const MERCHANT_FIELD_ORDER: (keyof Merchant)[] = [
   'id', 'canonicalName', 'displayName', 'category', 'subcategory', 'mccHints',

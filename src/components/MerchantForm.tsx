@@ -1,8 +1,10 @@
 import { useMemo, useState } from 'preact/hooks';
 import type { Merchant, MccDoc } from '../lib/schema';
-import { COUNTRY_HINTS, normalizeAlias } from '../lib/schema';
+import { COUNTRY_HINTS, EMPTY_MERCHANT, normalizeAlias } from '../lib/schema';
 import { validateMerchant, type FieldIssue } from '../lib/validation';
 import { saveMerchant } from '../lib/store';
+
+export { EMPTY_MERCHANT };
 
 export interface MerchantFormProps {
   initial: Merchant;
@@ -12,22 +14,6 @@ export interface MerchantFormProps {
   onSaved: (m: Merchant, mode: string) => void;
   onCancel?: () => void;
 }
-
-export const EMPTY_MERCHANT: Merchant = {
-  id: '',
-  canonicalName: '',
-  displayName: '',
-  category: 'shopping',
-  subcategory: '',
-  mccHints: [],
-  website: null,
-  iconSlug: null,
-  countryHints: ['US'],
-  aliases: [],
-  negativeAliases: [],
-  defaultConfidence: 0.92,
-  notes: null,
-};
 
 function ChipListInput(props: {
   label: string;
