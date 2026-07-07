@@ -1,0 +1,9 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ValidatePanel from '../components/ValidatePanel';
+---
+
+<Layout title="Validate" active="validate">
+  <h1 class="mb-6 text-2xl font-bold text-white">Pack integrity</h1>
+  <ValidatePanel client:load />
+</Layout>

@@ -1,0 +1,2288 @@
+{
+  "schemaVersion": "1.1.0",
+  "generatedAt": "2026-07-06",
+  "name": "Labeled sample descriptors for enrichment hit-rate testing",
+  "description": "Synthetic but realistic raw bank/card descriptors labeled with expected merchantId/category. A test passes when the pipeline resolves the expected merchantId, or (when merchantId is null) the expected category. Target: >=80% recognition.",
+  "descriptors": [
+    {
+      "rawDescription": "POLLO TROPICAL #10241 HIALEAH FL",
+      "region": "FL",
+      "expected": {
+        "merchantId": "pollo_tropical",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "PURCHASE AUTHORIZED ON 06/14 FRESCO Y MAS #290 MIAMI FL CARD 1123",
+      "region": "FL",
+      "expected": {
+        "merchantId": "fresco_y_mas",
+        "category": "groceries"
+      }
+    },
+    {
+      "rawDescription": "SQ *VICKY BAKERY WEST HIALEAH FL",
+      "region": "FL",
+      "expected": {
+        "merchantId": "vicky_bakery",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "TST* FLANIGANS 60 FT LAUDERDALE FL",
+      "region": "FL",
+      "expected": {
+        "merchantId": "flanigans",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "POS DEBIT VERSAILLES RESTAURANT MIAMI FL",
+      "region": "FL",
+      "expected": {
+        "merchantId": "versailles_restaurant",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "WDW MAGIC KINGDOM TIX LAKE BUENA VIFL",
+      "region": "FL",
+      "expected": {
+        "merchantId": "walt_disney_world",
+        "category": "entertainment"
+      }
+    },
+    {
+      "rawDescription": "DISNEY PLUS 888-905-7888 CA",
+      "region": "US",
+      "expected": {
+        "merchantId": "disney_plus",
+        "category": "subscriptions"
+      }
+    },
+    {
+      "rawDescription": "UNIVERSAL ORLANDO RESORT F&B ORLANDO FL",
+      "region": "FL",
+      "expected": {
+        "merchantId": "universal_orlando",
+        "category": "entertainment"
+      }
+    },
+    {
+      "rawDescription": "CARNIVAL CRUIS2453188 800-2276482 FL",
+      "region": "FL",
+      "expected": {
+        "merchantId": "carnival_cruise_line",
+        "category": "travel"
+      }
+    },
+    {
+      "rawDescription": "ROYAL CARIBBEAN CRUISES MIAMI FL",
+      "region": "FL",
+      "expected": {
+        "merchantId": "royal_caribbean",
+        "category": "travel"
+      }
+    },
+    {
+      "rawDescription": "TOLL BY PLATE POMPANO BEACH FL REF 88213",
+      "region": "FL",
+      "expected": {
+        "merchantId": "florida_turnpike",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "CFX E-PASS ACCT REPLENISH ORLANDO FL",
+      "region": "FL",
+      "expected": {
+        "merchantId": "epass_cfx",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "TECO TAMPA ELECTRIC BILL PMT 813-2238111 FL",
+      "region": "FL",
+      "expected": {
+        "merchantId": "teco_energy",
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "JEA JACKSONVILLE FL WEB PMT",
+      "region": "FL",
+      "expected": {
+        "merchantId": "jea",
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "OUC ORLANDO UTIL BILLPAY ORLANDO FL",
+      "region": "FL",
+      "expected": {
+        "merchantId": "ouc_orlando",
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "FLORIDA BLUE PREMIUM ACH JACKSONVILLE FL",
+      "region": "FL",
+      "expected": {
+        "merchantId": "florida_blue",
+        "category": "insurance"
+      }
+    },
+    {
+      "rawDescription": "CITIZENS PROP INS CORP PREM TALLAHASSEE FL",
+      "region": "FL",
+      "expected": {
+        "merchantId": "citizens_property_insurance",
+        "category": "insurance"
+      }
+    },
+    {
+      "rawDescription": "CHEWY.COM 800-672-4399 FL",
+      "region": "FL",
+      "expected": {
+        "merchantId": "chewy",
+        "category": "pets"
+      }
+    },
+    {
+      "rawDescription": "POS DEBIT TRULIEVE #62 TAMPA FL",
+      "region": "FL",
+      "expected": {
+        "merchantId": "trulieve",
+        "category": "health"
+      }
+    },
+    {
+      "rawDescription": "BAPTIST HEALTH SO FLA PT PMT MIAMI FL",
+      "region": "FL",
+      "expected": {
+        "merchantId": "baptist_health_south_florida",
+        "category": "health"
+      }
+    },
+    {
+      "rawDescription": "ADVENTHEALTH ORLANDO 407-303-5600 FL",
+      "region": "FL",
+      "expected": {
+        "merchantId": "adventhealth",
+        "category": "health"
+      }
+    },
+    {
+      "rawDescription": "MIAMI DADE TRANSIT EASY CARD 305 MIAMI FL",
+      "region": "FL",
+      "expected": {
+        "merchantId": "miami_dade_transit",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "ORANGE COUNTY TAX COLLECTOR DMV ORLANDO FL",
+      "region": "FL",
+      "expected": {
+        "merchantId": "fl_tax_collector",
+        "category": "government_taxes"
+      }
+    },
+    {
+      "rawDescription": "FLORIDA LOTTERY TALLAHASSEE FL",
+      "region": "FL",
+      "expected": {
+        "merchantId": "florida_lottery",
+        "category": "entertainment"
+      }
+    },
+    {
+      "rawDescription": "ROOMS TO GO #625 SEFFNER FL",
+      "region": "FL",
+      "expected": {
+        "merchantId": "rooms_to_go",
+        "category": "home"
+      }
+    },
+    {
+      "rawDescription": "PAGO PRESTAMO SCOTIABANK REP DOM 0012345",
+      "region": "DO",
+      "expected": {
+        "merchantId": "scotiabank_rd",
+        "category": "financial"
+      }
+    },
+    {
+      "rawDescription": "APAP PAGO PRESTAMO CUOTA 034 STO DGO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "apap",
+        "category": "financial"
+      }
+    },
+    {
+      "rawDescription": "TARJ. DGII IMPUESTOS INTERNOS RNC 401505577",
+      "region": "DO",
+      "expected": {
+        "merchantId": "dgii",
+        "category": "taxes"
+      }
+    },
+    {
+      "rawDescription": "COMPRA POS RECARGA VIVA DOMINICANA 809XXX1234",
+      "region": "DO",
+      "expected": {
+        "merchantId": "viva_do",
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "COMPRA EN WIND TELECOM SANTIAGO DE LOS CABALLEROS",
+      "region": "DO",
+      "expected": {
+        "merchantId": "wind_telecom",
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "PAGO CAASD FACT 00988122 SANTO DOMINGO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "caasd",
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "INAPA PAGO SERVICIO AGUA POTABLE RNC 401037272",
+      "region": "DO",
+      "expected": {
+        "merchantId": "inapa",
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "CORAASAN PAGO FACTURA SANTIAGO RD",
+      "region": "DO",
+      "expected": {
+        "merchantId": "coraasan",
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "CEPM CONSORCIO ENERGETICO PUNTA CANA MACAO BAVARO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "cepm",
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "COMPRA POS PROPAGAS AUT DUARTE KM 9 1/2",
+      "region": "DO",
+      "expected": {
+        "merchantId": "propagas",
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "TROPIGAS DOMINICANA SA SANTO DOMINGO ESTE",
+      "region": "DO",
+      "expected": {
+        "merchantId": "tropigas",
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "PAGO POLIZA ARS HUMANO PLAN ROYAL STO DGO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "ars_humano",
+        "category": "insurance"
+      }
+    },
+    {
+      "rawDescription": "SEGUROS UNIVERSAL SA PAGO POLIZA AUTO 445210",
+      "region": "DO",
+      "expected": {
+        "merchantId": "seguros_universal",
+        "category": "insurance"
+      }
+    },
+    {
+      "rawDescription": "TARJ. MAPFRE BHD SEGUROS SANTO DOMINGO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "mapfre",
+        "category": "insurance"
+      }
+    },
+    {
+      "rawDescription": "SENASA ARS REGIMEN CONTRIBUTIVO PAGO 8812",
+      "region": "DO",
+      "expected": {
+        "merchantId": "senasa",
+        "category": "insurance"
+      }
+    },
+    {
+      "rawDescription": "RECARGA METRO DE SANTO DOMINGO EST CENTRO OLIMPICO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "metro_santo_domingo",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "CARIBE TOURS TERMINAL SANTIAGO BOLETO 2X",
+      "region": "DO",
+      "expected": {
+        "merchantId": "caribe_tours",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "COMPRA POS ARAJET S A AEROP LAS AMERICAS SDQ",
+      "region": "DO",
+      "expected": {
+        "merchantId": "arajet",
+        "category": "travel"
+      }
+    },
+    {
+      "rawDescription": "PEAJE RD VIAL AUT LAS AMERICAS CANAL 04",
+      "region": "DO",
+      "expected": {
+        "merchantId": "rd_vial",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "AUTOPISTA DEL CORAL PEAJE VERON PUNTA CANA",
+      "region": "DO",
+      "expected": {
+        "merchantId": "autopista_del_coral",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "ENVIOS LA NACIONAL SUC 27 DE FEBRERO STO DGO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "la_nacional",
+        "category": "transfers"
+      }
+    },
+    {
+      "rawDescription": "INDRIVE.COM VIAJE SANTO DOMINGO DO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "indrive",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "QIK BANCO DIGITAL PAGO TC 4531XXXX",
+      "region": "DO",
+      "expected": {
+        "merchantId": "qik_banco_digital",
+        "category": "financial"
+      }
+    },
+    {
+      "rawDescription": "BANESCO BANCO MULTIPLE PAGO PRESTAMO 8873",
+      "region": "DO",
+      "expected": {
+        "merchantId": "banesco_rd",
+        "category": "financial"
+      }
+    },
+    {
+      "rawDescription": "COMPRA POS FARMACIA SAN MIGUEL RNC 131882211 STO DGO",
+      "region": "DO",
+      "expected": {
+        "merchantId": null,
+        "category": "health"
+      }
+    },
+    {
+      "rawDescription": "COMPRA POS PRICESMART ARROYO HONDO SANTO DOMINGO DO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "pricesmart",
+        "category": "groceries"
+      }
+    },
+    {
+      "rawDescription": "TARJ. PLAZA LAMA AV DUARTE STO DGO 4521",
+      "region": "DO",
+      "expected": {
+        "merchantId": "plaza_lama",
+        "category": "shopping"
+      }
+    },
+    {
+      "rawDescription": "COMPRA EN SUPER POLA NUNEZ DE CACERES SD",
+      "region": "DO",
+      "expected": {
+        "merchantId": "super_pola",
+        "category": "groceries"
+      }
+    },
+    {
+      "rawDescription": "CCN SERVICIOS SA SANTO DOMINGO DO REF 88213",
+      "region": "DO",
+      "expected": {
+        "merchantId": "ccn_servicios",
+        "category": "groceries"
+      }
+    },
+    {
+      "rawDescription": "POS DEBIT FERRETERIA AMERICANA JVM SANTIAGO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "ferreteria_americana",
+        "category": "home"
+      }
+    },
+    {
+      "rawDescription": "COMPRA POS FARMACIA GBC PIANTINI SANTO DOMINGO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "farmacia_gbc",
+        "category": "health"
+      }
+    },
+    {
+      "rawDescription": "CEDIMAT PLAZA DE LA SALUD STO DGO DO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "cedimat",
+        "category": "health"
+      }
+    },
+    {
+      "rawDescription": "PURCHASE AUTHORIZED ON 05/12 ESTACION TEXACO KM 9 AUT DUARTE SANTO DOMINGO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "texaco_do",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "TOTALENERGIES AV LUPERON STO DGO DO 003214",
+      "region": "DO",
+      "expected": {
+        "merchantId": "totalenergies_do",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "COMPRA EN SUNIX PETROLEUM SFM REF 002314",
+      "region": "DO",
+      "expected": {
+        "merchantId": "sunix",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "ADRIAN TROPICAL MALECON SANTO DOMINGO DO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "adrian_tropical",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "TARJ. PIZZARELLI #12 AV ABRAHAM LINCOLN SD",
+      "region": "DO",
+      "expected": {
+        "merchantId": "pizzarelli",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "COMPRA POS HELADOS BON AGORA MALL SANTO DOMINGO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "helados_bon",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "BARRA PAYAN AV 27 DE FEBRERO STO DGO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "barra_payan",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "POS DEBIT POLLOS VICTORINA AV DUARTE SANTO DOMINGO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "pollos_victorina",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "CARIBBEAN CINEMAS DOWNTOWN CENTER SD DO 7788",
+      "region": "DO",
+      "expected": {
+        "merchantId": "caribbean_cinemas",
+        "category": "entertainment"
+      }
+    },
+    {
+      "rawDescription": "COMPRA EN PALACIO DEL CINE BLUE MALL SANTO DOMINGO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "palacio_del_cine",
+        "category": "entertainment"
+      }
+    },
+    {
+      "rawDescription": "BANCA LOTEKA NO 452 SANTIAGO DO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "loteka",
+        "category": "entertainment"
+      }
+    },
+    {
+      "rawDescription": "LEIDSA VENTA DIRECTA STO DGO REF 5567",
+      "region": "DO",
+      "expected": {
+        "merchantId": "leidsa",
+        "category": "entertainment"
+      }
+    },
+    {
+      "rawDescription": "PUCMM PAGO MATRICULA SANTIAGO DE LOS CABALLEROS",
+      "region": "DO",
+      "expected": {
+        "merchantId": "pucmm",
+        "category": "education"
+      }
+    },
+    {
+      "rawDescription": "COLECTURIA UNIBE SANTO DOMINGO DO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "unibe",
+        "category": "education"
+      }
+    },
+    {
+      "rawDescription": "EPS STO DGO ZONA COLONIAL REF 001122",
+      "region": "DO",
+      "expected": {
+        "merchantId": "eps_courier",
+        "category": "shipping"
+      }
+    },
+    {
+      "rawDescription": "BMCARGO SUC PIANTINI SANTO DOMINGO DO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "bm_cargo",
+        "category": "shipping"
+      }
+    },
+    {
+      "rawDescription": "GIMNASIO BODY SHOP NACO SANTO DOMINGO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "body_shop_fitness",
+        "category": "health"
+      }
+    },
+    {
+      "rawDescription": "COMPRA POS FARMACIA SAN RAFAEL LOS ALCARRIZOS DO",
+      "region": "DO",
+      "expected": {
+        "merchantId": null,
+        "category": "health"
+      }
+    },
+    {
+      "rawDescription": "CHASE CREDIT CRD AUTOPAY PPD ID: 4760039224",
+      "region": "US",
+      "expected": {
+        "merchantId": "chase",
+        "category": "financial"
+      }
+    },
+    {
+      "rawDescription": "BANK OF AMERICA CREDIT CARD BILL PAYMENT WEB ID: 9500000000",
+      "region": "US",
+      "expected": {
+        "merchantId": "bank_of_america",
+        "category": "financial"
+      }
+    },
+    {
+      "rawDescription": "CAPITAL ONE MOBILE PMT WEB ID: 9279744380",
+      "region": "US",
+      "expected": {
+        "merchantId": "capital_one",
+        "category": "financial"
+      }
+    },
+    {
+      "rawDescription": "DISCOVER E-PAYMENT 3372 WEB ID: 2510020270",
+      "region": "US",
+      "expected": {
+        "merchantId": "discover",
+        "category": "financial"
+      }
+    },
+    {
+      "rawDescription": "AMERICAN EXPRESS ACH PMT W3947 WEB ID: 2005032111",
+      "region": "US",
+      "expected": {
+        "merchantId": "american_express",
+        "category": "financial"
+      }
+    },
+    {
+      "rawDescription": "CREDIT ONE BANK PAYMENT 877-825-3242 NV",
+      "region": "US",
+      "expected": {
+        "merchantId": "credit_one",
+        "category": "financial"
+      }
+    },
+    {
+      "rawDescription": "PURCHASE AUTHORIZED ON 06/12 METRO BY T-MOBILE 800-999-6389 WA CARD 1234",
+      "region": "US",
+      "expected": {
+        "merchantId": "metro_by_tmobile",
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "CRICKET WIRELESS AUTO PAY 800-274-2538 GA",
+      "region": "US",
+      "expected": {
+        "merchantId": "cricket_wireless",
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "POS DEBIT MINT MOBILE 800-683-7392 COSTA MESA CA",
+      "region": "CA",
+      "expected": {
+        "merchantId": "mint_mobile",
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "GOOGLE *FI Y2PWZ3 G.CO/HELPPAY# CA",
+      "region": "CA",
+      "expected": {
+        "merchantId": "google_fi",
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "IRS TREAS 310 TAX REF PPD ID: 9111036170",
+      "region": "US",
+      "expected": {
+        "merchantId": "irs",
+        "category": "taxes"
+      }
+    },
+    {
+      "rawDescription": "IRS USATAXPYMT PPD ID: 3387702000",
+      "region": "US",
+      "expected": {
+        "merchantId": "irs",
+        "category": "taxes"
+      }
+    },
+    {
+      "rawDescription": "INTUIT *TURBOTAX CL.INTUIT.COM CA",
+      "region": "CA",
+      "expected": {
+        "merchantId": "turbotax",
+        "category": "taxes"
+      }
+    },
+    {
+      "rawDescription": "ADT SECURITY SERV 800-238-2727 FL RECURRING",
+      "region": "FL",
+      "expected": {
+        "merchantId": "adt",
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "WASTE MGMT WM EZPAY 866-964-2729 TX",
+      "region": "US",
+      "expected": {
+        "merchantId": "waste_management",
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "KLARNA PAYMENTS 855-456-5467 OH",
+      "region": "US",
+      "expected": {
+        "merchantId": "klarna",
+        "category": "financial"
+      }
+    },
+    {
+      "rawDescription": "AFFIRM * PAY 855-423-3729 CA",
+      "region": "CA",
+      "expected": {
+        "merchantId": "affirm",
+        "category": "financial"
+      }
+    },
+    {
+      "rawDescription": "CHIME SPOT ME SAN FRANCISCO CA",
+      "region": "US",
+      "expected": {
+        "merchantId": "chime",
+        "category": "financial"
+      }
+    },
+    {
+      "rawDescription": "RIA MONEY TRANSFER 877-443-1399 SANTO DOMINGO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "ria_money_transfer",
+        "category": "transfers"
+      }
+    },
+    {
+      "rawDescription": "NELNET ED SERV STUDNTLOAN PPD ID: 3470533629",
+      "region": "US",
+      "expected": {
+        "merchantId": "nelnet",
+        "category": "financial"
+      }
+    },
+    {
+      "rawDescription": "USAA P&C AUTOPAY SAN ANTONIO TX",
+      "region": "US",
+      "expected": {
+        "merchantId": "usaa",
+        "category": "insurance"
+      }
+    },
+    {
+      "rawDescription": "KAISER PERM PREMIUM PASADENA CA",
+      "region": "CA",
+      "expected": {
+        "merchantId": "kaiser_permanente",
+        "category": "insurance"
+      }
+    },
+    {
+      "rawDescription": "TXU ENERGY BILL PAY 800-818-6132 TX",
+      "region": "US",
+      "expected": {
+        "merchantId": "txu_energy",
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "RING MONTHLY PLAN RING.COM CA",
+      "region": "CA",
+      "expected": {
+        "merchantId": "ring",
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "PURCHASE AUTHORIZED ON 05/22 SPRING GARDEN CATERING PHILADELPHIA PA",
+      "region": "US",
+      "expected": {
+        "merchantId": null,
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "DOLLAR GENERAL #10234 BESSEMER AL",
+      "region": "US",
+      "expected": {
+        "merchantId": "dollar_general",
+        "category": "shopping"
+      }
+    },
+    {
+      "rawDescription": "PURCHASE AUTHORIZED ON 05/12 DOLLAR TREE #4512 ORLANDO FL",
+      "region": "FL",
+      "expected": {
+        "merchantId": "dollar_tree",
+        "category": "shopping"
+      }
+    },
+    {
+      "rawDescription": "FAMILY DOLLAR #8921 MEMPHIS TN",
+      "region": "US",
+      "expected": {
+        "merchantId": "family_dollar",
+        "category": "shopping"
+      }
+    },
+    {
+      "rawDescription": "ROSS STORES #455 HIALEAH FL",
+      "region": "FL",
+      "expected": {
+        "merchantId": "ross_stores",
+        "category": "shopping"
+      }
+    },
+    {
+      "rawDescription": "POS DEBIT DICKSSPORTINGGOODS.COM 866-677-4771 PA",
+      "region": "US",
+      "expected": {
+        "merchantId": "dicks_sporting_goods",
+        "category": "shopping"
+      }
+    },
+    {
+      "rawDescription": "AUTOZONE #4821 HOUSTON TX",
+      "region": "US",
+      "expected": {
+        "merchantId": "autozone",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "OREILLY AUTO PARTS 2216 TULSA OK",
+      "region": "US",
+      "expected": {
+        "merchantId": "oreilly_auto_parts",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "SHEETZ 0344 ALTOONA PA",
+      "region": "US",
+      "expected": {
+        "merchantId": "sheetz",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "CASEYS GEN STORE #2210 ANKENY IA",
+      "region": "US",
+      "expected": {
+        "merchantId": "caseys",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "MURPHY USA #7683 CONWAY AR REF 003412",
+      "region": "US",
+      "expected": {
+        "merchantId": "murphy_usa",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "BUC-EE'S #35 TEMPLE TX",
+      "region": "US",
+      "expected": {
+        "merchantId": "bucees",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "THE UPS STORE 4471 CHARLOTTE NC",
+      "region": "US",
+      "expected": {
+        "merchantId": "ups",
+        "category": "shipping"
+      }
+    },
+    {
+      "rawDescription": "USPS PO 3452800406 SEATTLE WA",
+      "region": "US",
+      "expected": {
+        "merchantId": "usps",
+        "category": "shipping"
+      }
+    },
+    {
+      "rawDescription": "FEDEX OFFICE #0479 MEMPHIS TN",
+      "region": "US",
+      "expected": {
+        "merchantId": "fedex",
+        "category": "shipping"
+      }
+    },
+    {
+      "rawDescription": "U-HAUL MOVING & STORAGE OF SOUTH PHOENIX AZ",
+      "region": "US",
+      "expected": {
+        "merchantId": "uhaul",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "PUBLIC STORAGE 25871 WEB PMT 800-567-0759 CA",
+      "region": "CA",
+      "expected": {
+        "merchantId": "public_storage",
+        "category": "home"
+      }
+    },
+    {
+      "rawDescription": "TESLA SUPERCHARGER US KETTLEMAN CITY CA",
+      "region": "CA",
+      "expected": {
+        "merchantId": "tesla",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "PANDORA JEWELRY #1284 TAMPA FL",
+      "region": "FL",
+      "expected": {
+        "merchantId": "pandora_jewelry",
+        "category": "shopping"
+      }
+    },
+    {
+      "rawDescription": "KAY JEWELERS #0921 COLUMBUS OH",
+      "region": "US",
+      "expected": {
+        "merchantId": "kay_jewelers",
+        "category": "shopping"
+      }
+    },
+    {
+      "rawDescription": "FOOD LION #1622 RALEIGH NC",
+      "region": "US",
+      "expected": {
+        "merchantId": "food_lion",
+        "category": "groceries"
+      }
+    },
+    {
+      "rawDescription": "PURCHASE AUTHORIZED ON 06/28 SHOPRITE OF WESTBURY NY CARD 1123",
+      "region": "US",
+      "expected": {
+        "merchantId": "shoprite",
+        "category": "groceries"
+      }
+    },
+    {
+      "rawDescription": "HY-VEE 1441 OMAHA NE",
+      "region": "US",
+      "expected": {
+        "merchantId": "hyvee",
+        "category": "groceries"
+      }
+    },
+    {
+      "rawDescription": "LOVE'S TRAVEL STOP #348 AMARILLO TX",
+      "region": "US",
+      "expected": {
+        "merchantId": "loves_travel_stops",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "PAYPAL *CARVANA 402-935-7733 AZ",
+      "region": "US",
+      "expected": {
+        "merchantId": "carvana",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "JOE'S TIRE & AUTO REPAIR LLC LUBBOCK TX",
+      "region": "US",
+      "expected": {
+        "merchantId": null,
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "SONIC DRIVE IN #5823 OKLAHOMA CITY OK",
+      "region": "US",
+      "expected": {
+        "merchantId": "sonic_drive_in",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "PURCHASE AUTHORIZED ON 05/12 RAISING CANES 0412 ORLANDO FL CARD 1234",
+      "region": "FL",
+      "expected": {
+        "merchantId": "raising_canes",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "WAFFLE HOUSE 1204 ATLANTA GA",
+      "region": "US",
+      "expected": {
+        "merchantId": "waffle_house",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "TEXAS ROADHOUSE #2415 TAMPA FL",
+      "region": "FL",
+      "expected": {
+        "merchantId": "texas_roadhouse",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "POS DEBIT JERSEY MIKES 31042 MIAMI FL",
+      "region": "FL",
+      "expected": {
+        "merchantId": "jersey_mikes",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "LITTLE CAESARS 1543 0009 HOUSTON TX",
+      "region": "US",
+      "expected": {
+        "merchantId": "little_caesars",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "DUTCH BROS #402 PHOENIX AZ",
+      "region": "US",
+      "expected": {
+        "merchantId": "dutch_bros",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "CRUMBL * WINTER PARK ORLANDO FL",
+      "region": "FL",
+      "expected": {
+        "merchantId": "crumbl",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "POS DEBIT WHATABURGER 1023 SAN ANTONIO TX",
+      "region": "US",
+      "expected": {
+        "merchantId": "whataburger",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "TST* CHUYS - AUSTIN TX",
+      "region": "US",
+      "expected": {
+        "merchantId": "chuys",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "PLANET FIT CLUB FEES 844-880-7180 NH",
+      "region": "US",
+      "expected": {
+        "merchantId": "planet_fitness",
+        "category": "health"
+      }
+    },
+    {
+      "rawDescription": "LA FITNESS MEMBERSHIP 949-255-7330 CA",
+      "region": "CA",
+      "expected": {
+        "merchantId": "la_fitness",
+        "category": "health"
+      }
+    },
+    {
+      "rawDescription": "GREAT CLIPS AT WESTCHASE TAMPA FL",
+      "region": "FL",
+      "expected": {
+        "merchantId": "great_clips",
+        "category": "personal_care"
+      }
+    },
+    {
+      "rawDescription": "TICKETMASTER *EVENT TICKETS 800-653-8000 CA",
+      "region": "CA",
+      "expected": {
+        "merchantId": "ticketmaster",
+        "category": "entertainment"
+      }
+    },
+    {
+      "rawDescription": "AMC ONLINE 6749 WWW.AMCTHEATRE KS",
+      "region": "US",
+      "expected": {
+        "merchantId": "amc_theatres",
+        "category": "entertainment"
+      }
+    },
+    {
+      "rawDescription": "FANDANGO 866-857-5191 CA",
+      "region": "CA",
+      "expected": {
+        "merchantId": "fandango",
+        "category": "entertainment"
+      }
+    },
+    {
+      "rawDescription": "PURCHASE AUTHORIZED ON 03/02 CRUNCHYROLL *MEMBERSHIP SAN FRANCISCO CA",
+      "region": "CA",
+      "expected": {
+        "merchantId": "crunchyroll",
+        "category": "subscriptions"
+      }
+    },
+    {
+      "rawDescription": "GOTINDER.COM DALLAS TX",
+      "region": "US",
+      "expected": {
+        "merchantId": "tinder",
+        "category": "subscriptions"
+      }
+    },
+    {
+      "rawDescription": "PAYPAL *ROBLOX 4029357733 CA",
+      "region": "CA",
+      "expected": {
+        "merchantId": "roblox",
+        "category": "entertainment"
+      }
+    },
+    {
+      "rawDescription": "NYTIMES*NYTIMES 800-698-4637 NY",
+      "region": "US",
+      "expected": {
+        "merchantId": "new_york_times",
+        "category": "subscriptions"
+      }
+    },
+    {
+      "rawDescription": "GOPUFF DELIVERY PHILADELPHIA PA",
+      "region": "US",
+      "expected": {
+        "merchantId": "gopuff",
+        "category": "groceries"
+      }
+    },
+    {
+      "rawDescription": "VRBO HA-PAYMENTS 512-7822754 TX",
+      "region": "US",
+      "expected": {
+        "merchantId": "vrbo",
+        "category": "travel"
+      }
+    },
+    {
+      "rawDescription": "ALASKA AIR 0272182353334 SEATTLE WA",
+      "region": "US",
+      "expected": {
+        "merchantId": "alaska_airlines",
+        "category": "travel"
+      }
+    },
+    {
+      "rawDescription": "EB *SUMMER MUSIC FEST SAN FRANCISCO CA",
+      "region": "CA",
+      "expected": {
+        "merchantId": "eventbrite",
+        "category": "entertainment"
+      }
+    },
+    {
+      "rawDescription": "SQ *THE FADE FACTORY BARBERSHOP MIAMI FL",
+      "region": "FL",
+      "expected": {
+        "merchantId": null,
+        "category": "personal_care"
+      }
+    },
+    {
+      "rawDescription": "OXXO GAS RIO NILO GUADALAJARA JAL",
+      "region": "MX",
+      "expected": {
+        "merchantId": "oxxo_gas",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "CARGO TDC OXXO CENTRO 50123 MONTERREY NL MX",
+      "region": "MX",
+      "expected": {
+        "merchantId": "oxxo",
+        "category": "groceries"
+      }
+    },
+    {
+      "rawDescription": "SPIN BY OXXO RECARGA CDMX MX",
+      "region": "MX",
+      "expected": {
+        "merchantId": "spin_by_oxxo",
+        "category": "financial"
+      }
+    },
+    {
+      "rawDescription": "COMPRA EN SORIANA HIPER 216 MONTERREY NL",
+      "region": "MX",
+      "expected": {
+        "merchantId": "soriana",
+        "category": "groceries"
+      }
+    },
+    {
+      "rawDescription": "CHEDRAUI SELECTO POLANCO CDMX RFC CCH850701TQ8",
+      "region": "MX",
+      "expected": {
+        "merchantId": "chedraui",
+        "category": "groceries"
+      }
+    },
+    {
+      "rawDescription": "BODEGA AURRERA EXP 4521 ECATEPEC MEX",
+      "region": "MX",
+      "expected": {
+        "merchantId": "bodega_aurrera",
+        "category": "groceries"
+      }
+    },
+    {
+      "rawDescription": "POS DEBIT FARM GUADALAJARA 1043 ZAPOPAN JAL",
+      "region": "MX",
+      "expected": {
+        "merchantId": "farmacias_guadalajara",
+        "category": "health"
+      }
+    },
+    {
+      "rawDescription": "FARMACIAS SIMILARES SUC 2210 PUEBLA PUE MX",
+      "region": "MX",
+      "expected": {
+        "merchantId": "farmacias_similares",
+        "category": "health"
+      }
+    },
+    {
+      "rawDescription": "PEMEX ES 06731 CUAUTITLAN IZCALLI MEX",
+      "region": "MX",
+      "expected": {
+        "merchantId": "pemex",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "CARGO TDC BBVA BANCOMER COMISION ANUALIDAD",
+      "region": "MX",
+      "expected": {
+        "merchantId": "bbva",
+        "category": "fees_charges"
+      }
+    },
+    {
+      "rawDescription": "TELCEL PAQUETE AMIGO SIN LIMITE R DIPSA CDMX",
+      "region": "MX",
+      "expected": {
+        "merchantId": "telcel",
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "CFE CFEMATICO PAGO REF 001122334455",
+      "region": "MX",
+      "expected": {
+        "merchantId": "cfe",
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "LIVERPOOL POR INTERNET CDMX MX",
+      "region": "MX",
+      "expected": {
+        "merchantId": "liverpool",
+        "category": "shopping"
+      }
+    },
+    {
+      "rawDescription": "MERCADOPAGO*RECARGA TELEFONICA CDMX",
+      "region": "MX",
+      "expected": {
+        "merchantId": "mercado_pago",
+        "category": "financial"
+      }
+    },
+    {
+      "rawDescription": "MERCADOLIBRE*TECNOCELL MX CIUDAD DE MEXICO",
+      "region": "MX",
+      "expected": {
+        "merchantId": "mercado_libre",
+        "category": "shopping"
+      }
+    },
+    {
+      "rawDescription": "CLIP MX*ESTETICA KAREN CDMX",
+      "region": "MX",
+      "expected": {
+        "merchantId": null,
+        "category": "personal_care"
+      }
+    },
+    {
+      "rawDescription": "RAPPI RESTAURANTE PEDIDO 88213 CDMX MX",
+      "region": "MX",
+      "expected": {
+        "merchantId": "rappi",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "DIDI FOOD MX GUADALAJARA JAL",
+      "region": "MX",
+      "expected": {
+        "merchantId": "didi_food",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "DIDI RIDES CIUDAD DE MEXICO MX",
+      "region": "MX",
+      "expected": {
+        "merchantId": "didi",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "CINEPOLIS GALERIAS GUADALAJARA JAL 0446",
+      "region": "MX",
+      "expected": {
+        "merchantId": "cinepolis",
+        "category": "entertainment"
+      }
+    },
+    {
+      "rawDescription": "VIPS INSURGENTES SUR 1234 CDMX",
+      "region": "MX",
+      "expected": {
+        "merchantId": "vips",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "AEROMEXICO 1392384756123 MEXICO CITY MX",
+      "region": "MX",
+      "expected": {
+        "merchantId": "aeromexico",
+        "category": "travel"
+      }
+    },
+    {
+      "rawDescription": "TAG TELEVIA RECARGA AUTOPISTA CDMX",
+      "region": "MX",
+      "expected": {
+        "merchantId": "televia",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "SAT PAGO PROVISIONAL ISR EJERCICIO 2026",
+      "region": "MX",
+      "expected": {
+        "merchantId": "sat",
+        "category": "taxes"
+      }
+    },
+    {
+      "rawDescription": "TARJ. TAQUERIA LOS PRIMOS NORTE 45 CDMX",
+      "region": "MX",
+      "expected": {
+        "merchantId": null,
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "PAO DE ACUCAR-1409 SAO PAULO BRA",
+      "region": "BR",
+      "expected": {
+        "merchantId": "pao_de_acucar",
+        "category": "groceries"
+      }
+    },
+    {
+      "rawDescription": "IFD*BURGUER DO ZE OSASCO BRA",
+      "region": "BR",
+      "expected": {
+        "merchantId": "ifood",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "COMPRA CARTAO CARREFOUR HIPER 0114 SAO PAULO",
+      "region": "BR",
+      "expected": {
+        "merchantId": "carrefour",
+        "category": "groceries"
+      }
+    },
+    {
+      "rawDescription": "DROGASIL 786 RIO DE JANEIRO BRA",
+      "region": "BR",
+      "expected": {
+        "merchantId": "drogasil",
+        "category": "health"
+      }
+    },
+    {
+      "rawDescription": "POSTO IPIRANGA 0233 CURITIBA BRA",
+      "region": "BR",
+      "expected": {
+        "merchantId": "ipiranga",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "MAGALU *MAGAZINELUIZA SAO PAULO BRA",
+      "region": "BR",
+      "expected": {
+        "merchantId": "magazine_luiza",
+        "category": "shopping"
+      }
+    },
+    {
+      "rawDescription": "PAGSEGURO INTERNET SA SAO PAULO BRA",
+      "region": "BR",
+      "expected": {
+        "merchantId": "pagseguro",
+        "category": "financial"
+      }
+    },
+    {
+      "rawDescription": "GOL LINHAS AEREAS SA CONGONHAS SAO PAULO",
+      "region": "BR",
+      "expected": {
+        "merchantId": "gol",
+        "category": "travel"
+      }
+    },
+    {
+      "rawDescription": "TAM LINHAS AEREAS GRU GUARULHOS BRA",
+      "region": "BR",
+      "expected": {
+        "merchantId": "latam",
+        "category": "travel"
+      }
+    },
+    {
+      "rawDescription": "99APP *99APP SAO PAULO BRA",
+      "region": "BR",
+      "expected": {
+        "merchantId": "99_app",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "PARC 03/10 CASAS BAHIA 1023 CAMPINAS BRA",
+      "region": "BR",
+      "expected": {
+        "merchantId": "casas_bahia",
+        "category": "shopping"
+      }
+    },
+    {
+      "rawDescription": "PIX TRANSF JOAO M 05/07",
+      "region": "BR",
+      "expected": {
+        "merchantId": null,
+        "category": "transfers"
+      }
+    },
+    {
+      "rawDescription": "SEM PARAR CGMP OSASCO BRA",
+      "region": "BR",
+      "expected": {
+        "merchantId": "sem_parar",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "DEB AUT VIVO FIBRA 06/2026 SAO PAULO",
+      "region": "BR",
+      "expected": {
+        "merchantId": "vivo",
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "TIM S A RECARGA 11 SAO PAULO BRA",
+      "region": "BR",
+      "expected": {
+        "merchantId": "tim",
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "ASSAI ATACADISTA 45 GUARULHOS BRA",
+      "region": "BR",
+      "expected": {
+        "merchantId": "assai",
+        "category": "groceries"
+      }
+    },
+    {
+      "rawDescription": "LOJAS RENNER FL 214 PORTO ALEGRE BRA",
+      "region": "BR",
+      "expected": {
+        "merchantId": "lojas_renner",
+        "category": "shopping"
+      }
+    },
+    {
+      "rawDescription": "CACAU SHOW MORUMBI SAO PAULO BRA",
+      "region": "BR",
+      "expected": {
+        "merchantId": "cacau_show",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "LOTERICA TREVO DA SORTE SAO PAULO BRA",
+      "region": "BR",
+      "expected": {
+        "merchantId": "lotericas_caixa",
+        "category": "entertainment"
+      }
+    },
+    {
+      "rawDescription": "SHOPEE *2506ORDER SAO PAULO BRA",
+      "region": "BR",
+      "expected": {
+        "merchantId": "shopee",
+        "category": "shopping"
+      }
+    },
+    {
+      "rawDescription": "TARIFA PACOTE SERVICOS ITAU UNIBANCO SA",
+      "region": "BR",
+      "expected": {
+        "merchantId": "itau",
+        "category": "financial"
+      }
+    },
+    {
+      "rawDescription": "POSTO BR MANIA 1122 BELO HORIZONTE BRA",
+      "region": "BR",
+      "expected": {
+        "merchantId": "petrobras",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "BOBS 0233 RIO DE JANEIRO BRA",
+      "region": "BR",
+      "expected": {
+        "merchantId": "bobs",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "METRO SP BILHETE UNICO RECARGA SAO PAULO",
+      "region": "BR",
+      "expected": {
+        "merchantId": "metro_sp",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "FARMACIA SANTA RITA LTDA BELO HORIZONTE BRA",
+      "region": "BR",
+      "expected": {
+        "merchantId": null,
+        "category": "health"
+      }
+    },
+    {
+      "rawDescription": "COMPRA EN MERCADONA VALENCIA ES",
+      "region": "ES",
+      "expected": {
+        "merchantId": "mercadona",
+        "category": "groceries"
+      }
+    },
+    {
+      "rawDescription": "RECIBO IBERDROLA CLIENTES SAU REF 0034281",
+      "region": "ES",
+      "expected": {
+        "merchantId": "iberdrola",
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "TARJ. REPSOL WAYLET MADRID ES",
+      "region": "ES",
+      "expected": {
+        "merchantId": "repsol",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "COMPRA DIA SUPERMERCADO 4412 SEVILLA",
+      "region": "ES",
+      "expected": {
+        "merchantId": "dia",
+        "category": "groceries"
+      }
+    },
+    {
+      "rawDescription": "BIZUM ENVIADO A MARIA G. REF 987654",
+      "region": "ES",
+      "expected": {
+        "merchantId": "bizum",
+        "category": "transfers"
+      }
+    },
+    {
+      "rawDescription": "EL CORTE INGLES S.A. PASEO CASTELLANA MADRID",
+      "region": "ES",
+      "expected": {
+        "merchantId": "el_corte_ingles",
+        "category": "shopping"
+      }
+    },
+    {
+      "rawDescription": "COMPRA GLOVOAPP ES BARCELONA",
+      "region": "ES",
+      "expected": {
+        "merchantId": "glovo",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "RENFE VIAJEROS MADRID PTA ATOCHA",
+      "region": "ES",
+      "expected": {
+        "merchantId": "renfe",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "VUELING AIRLINES 0341234567890 BARCELONA",
+      "region": "ES",
+      "expected": {
+        "merchantId": "vueling",
+        "category": "travel"
+      }
+    },
+    {
+      "rawDescription": "IBERIA LINEAS AEREAS 0751234567 MADRID ES",
+      "region": "ES",
+      "expected": {
+        "merchantId": "iberia",
+        "category": "travel"
+      }
+    },
+    {
+      "rawDescription": "COMPRA EN 100 MONTADITOS GRAN VIA MADRID",
+      "region": "ES",
+      "expected": {
+        "merchantId": "cien_montaditos",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "RECIBO ENDESA ENERGIA XXI S.L.U.",
+      "region": "ES",
+      "expected": {
+        "merchantId": "endesa",
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "CABIFY *VIAJE MADRID ES",
+      "region": "ES",
+      "expected": {
+        "merchantId": "cabify",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "COMPRA FARMACIA LOPEZ GARCIA C.B. VALENCIA",
+      "region": "ES",
+      "expected": {
+        "merchantId": null,
+        "category": "health"
+      }
+    },
+    {
+      "rawDescription": "PULL&BEAR PORTAL DE L ANGEL BARCELONA",
+      "region": "ES",
+      "expected": {
+        "merchantId": "pull_bear",
+        "category": "shopping"
+      }
+    },
+    {
+      "rawDescription": "LOTERIAS Y APUESTAS DEL ESTADO ADMON N 23 MADRID",
+      "region": "ES",
+      "expected": {
+        "merchantId": "loterias_apuestas_estado",
+        "category": "entertainment"
+      }
+    },
+    {
+      "rawDescription": "CLIPPER SYSTEMS 877-878-8883 CA",
+      "region": "CA",
+      "expected": {
+        "merchantId": "clipper",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "PGANDE WEB ONLINE SAN FRANCISCO CA",
+      "region": "CA",
+      "expected": {
+        "merchantId": "pge",
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "SQ *PHILZ COFFEE - 24TH ST SAN FRANCISCO CA",
+      "region": "CA",
+      "expected": {
+        "merchantId": "philz_coffee",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "IN-N-OUT BURGER #278 DALY CITY CA",
+      "region": "CA",
+      "expected": {
+        "merchantId": "in_n_out",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "POS DEBIT LUCKY SUPERMARKET #705 SAN LEANDRO CA",
+      "region": "CA",
+      "expected": {
+        "merchantId": "lucky_supermarkets",
+        "category": "groceries"
+      }
+    },
+    {
+      "rawDescription": "ARCO AMPM 82710 OAKLAND CA",
+      "region": "CA",
+      "expected": {
+        "merchantId": "arco",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "LYFT *BAYWHEELS SAN FRANCISCO CA",
+      "region": "CA",
+      "expected": {
+        "merchantId": "bay_wheels",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "FASTRAK CSC PAYMENT OAKLAND CA",
+      "region": "CA",
+      "expected": {
+        "merchantId": "fastrak",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "PURCHASE AUTHORIZED ON 05/12 BI-RITE MARKET SAN FRANCISCO CA",
+      "region": "CA",
+      "expected": {
+        "merchantId": "bi_rite_market",
+        "category": "groceries"
+      }
+    },
+    {
+      "rawDescription": "PIX TRANSF JOAO S 12/05",
+      "region": "BR",
+      "expected": {
+        "merchantId": null,
+        "category": "transfers"
+      }
+    },
+    {
+      "rawDescription": "PIX QR CODE PADARIA SANTA RITA 05/06",
+      "region": "BR",
+      "expected": {
+        "merchantId": null,
+        "category": "transfers"
+      }
+    },
+    {
+      "rawDescription": "PIX RECEBIDO MARIA APARECIDA 03/07",
+      "region": "BR",
+      "expected": {
+        "merchantId": null,
+        "category": "transfers"
+      }
+    },
+    {
+      "rawDescription": "PIX ENVIADO CPF ***.456.789-** LUCAS M 28/06",
+      "region": "BR",
+      "expected": {
+        "merchantId": null,
+        "category": "transfers"
+      }
+    },
+    {
+      "rawDescription": "MAGAZINELUIZA PARC 03/10",
+      "region": "BR",
+      "expected": {
+        "merchantId": "magazine_luiza",
+        "category": "shopping"
+      }
+    },
+    {
+      "rawDescription": "CASAS BAHIA PARCELA 2/6",
+      "region": "BR",
+      "expected": {
+        "merchantId": "casas_bahia",
+        "category": "shopping"
+      }
+    },
+    {
+      "rawDescription": "MAGALU 05/12 SAO PAULO BR",
+      "region": "BR",
+      "expected": {
+        "merchantId": "magazine_luiza",
+        "category": "shopping"
+      }
+    },
+    {
+      "rawDescription": "CASASBAHIA.COM.BR PARC 01/04",
+      "region": "BR",
+      "expected": {
+        "merchantId": "casas_bahia",
+        "category": "shopping"
+      }
+    },
+    {
+      "rawDescription": "SPEI ENVIADO BANORTE 0012",
+      "region": "MX",
+      "expected": {
+        "merchantId": null,
+        "category": "transfers"
+      }
+    },
+    {
+      "rawDescription": "TRANSFERENCIA SPEI RECIBIDA",
+      "region": "MX",
+      "expected": {
+        "merchantId": null,
+        "category": "transfers"
+      }
+    },
+    {
+      "rawDescription": "SPEI ENVIADO BBVA MEXICO REF 4451",
+      "region": "MX",
+      "expected": {
+        "merchantId": null,
+        "category": "transfers"
+      }
+    },
+    {
+      "rawDescription": "ORDEN SPEI A CTA CLABE 012180001234567890",
+      "region": "MX",
+      "expected": {
+        "merchantId": null,
+        "category": "transfers"
+      }
+    },
+    {
+      "rawDescription": "LIVERPOOL 12 MSI",
+      "region": "MX",
+      "expected": {
+        "merchantId": "liverpool",
+        "category": "shopping"
+      }
+    },
+    {
+      "rawDescription": "AMAZON MX 6 MESES SIN INTERESES",
+      "region": "MX",
+      "expected": {
+        "merchantId": "amazon",
+        "category": "shopping"
+      }
+    },
+    {
+      "rawDescription": "LIVERPOOL POLANCO 3 MSI CDMX",
+      "region": "MX",
+      "expected": {
+        "merchantId": "liverpool",
+        "category": "shopping"
+      }
+    },
+    {
+      "rawDescription": "AMAZON MX 12 MSI MEXICO DF",
+      "region": "MX",
+      "expected": {
+        "merchantId": "amazon",
+        "category": "shopping"
+      }
+    },
+    {
+      "rawDescription": "BIZUM ENVIADO A CARLOS",
+      "region": "ES",
+      "expected": {
+        "merchantId": null,
+        "category": "transfers"
+      }
+    },
+    {
+      "rawDescription": "BIZUM DE ANA",
+      "region": "ES",
+      "expected": {
+        "merchantId": null,
+        "category": "transfers"
+      }
+    },
+    {
+      "rawDescription": "BIZUM A MARIA LOPEZ CONCEPTO CENA",
+      "region": "ES",
+      "expected": {
+        "merchantId": null,
+        "category": "transfers"
+      }
+    },
+    {
+      "rawDescription": "PAGO BIZUM RECIBIDO DE JORGE",
+      "region": "ES",
+      "expected": {
+        "merchantId": null,
+        "category": "transfers"
+      }
+    },
+    {
+      "rawDescription": "RETIRO CAJERO BBVA 1234",
+      "region": "MX",
+      "expected": {
+        "merchantId": null,
+        "category": "cash_atm"
+      }
+    },
+    {
+      "rawDescription": "SAQUE 24H BANCO24HORAS",
+      "region": "BR",
+      "expected": {
+        "merchantId": null,
+        "category": "cash_atm"
+      }
+    },
+    {
+      "rawDescription": "DISPOSICION DE EFECTIVO",
+      "region": "MX",
+      "expected": {
+        "merchantId": null,
+        "category": "cash_atm"
+      }
+    },
+    {
+      "rawDescription": "ATM WITHDRAWAL 00123 MAIN ST",
+      "region": "US",
+      "expected": {
+        "merchantId": null,
+        "category": "cash_atm"
+      }
+    },
+    {
+      "rawDescription": "SQ *BLUE BOTTLE COFFEE",
+      "region": "CA",
+      "expected": {
+        "merchantId": null,
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "TST* LA CARRETA 8",
+      "region": "FL",
+      "expected": {
+        "merchantId": null,
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "PAYPAL *STEAMGAMES",
+      "region": "US",
+      "expected": {
+        "merchantId": "steam",
+        "category": "entertainment"
+      }
+    },
+    {
+      "rawDescription": "MP*RESTAURANTE LA CASA",
+      "region": "MX",
+      "expected": {
+        "merchantId": null,
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "PAG*JOSESILVA",
+      "region": "BR",
+      "expected": {
+        "merchantId": null,
+        "category": "shopping"
+      }
+    },
+    {
+      "rawDescription": "CLIP MX*TACOS EL GUERO",
+      "region": "MX",
+      "expected": {
+        "merchantId": null,
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "IOF COMPRA INTERNACIONAL",
+      "region": "BR",
+      "expected": {
+        "merchantId": null,
+        "category": "fees_charges"
+      }
+    },
+    {
+      "rawDescription": "FOREIGN TRANSACTION FEE",
+      "region": "US",
+      "expected": {
+        "merchantId": null,
+        "category": "fees_charges"
+      }
+    },
+    {
+      "rawDescription": "ANUIDADE DIFERENCIADA 04/12",
+      "region": "BR",
+      "expected": {
+        "merchantId": null,
+        "category": "fees_charges"
+      }
+    },
+    {
+      "rawDescription": "COMISION MANEJO DE CUENTA",
+      "region": "DO",
+      "expected": {
+        "merchantId": null,
+        "category": "fees_charges"
+      }
+    },
+    {
+      "rawDescription": "COMPRA POS SUPERMERCADO BRAVO RNC 101234567",
+      "region": "DO",
+      "expected": {
+        "merchantId": null,
+        "category": "groceries"
+      }
+    },
+    {
+      "rawDescription": "PAGO TARJ FARMACIA CAROL SANTO DOMINGO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "farmacia_carol",
+        "category": "health"
+      }
+    },
+    {
+      "rawDescription": "RECARGA CLARO 8091234567",
+      "region": "DO",
+      "expected": {
+        "merchantId": null,
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "FARMACIA SAN MIGUEL SANTIAGO",
+      "region": "DO",
+      "expected": {
+        "merchantId": null,
+        "category": "health"
+      }
+    },
+    {
+      "rawDescription": "COLMADO EL VECINO STO DGO ESTE",
+      "region": "DO",
+      "expected": {
+        "merchantId": null,
+        "category": "groceries"
+      }
+    },
+    {
+      "rawDescription": "PANADERIA LA ESPIGA 0045",
+      "region": "MX",
+      "expected": {
+        "merchantId": null,
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "FERRETERIA EL MARTILLO SANTIAGO RD",
+      "region": "DO",
+      "expected": {
+        "merchantId": null,
+        "category": "home"
+      }
+    },
+    {
+      "rawDescription": "GASOLINERA LOS PINOS GUADALAJARA JAL",
+      "region": "MX",
+      "expected": {
+        "merchantId": null,
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "POSTO SAO JORGE LTDA SAO PAULO",
+      "region": "BR",
+      "expected": {
+        "merchantId": null,
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "PADARIA DOCE PAO RIO DE JANEIRO",
+      "region": "BR",
+      "expected": {
+        "merchantId": null,
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "ESTACIONAMENTO CENTRAL BELO HORIZONTE",
+      "region": "BR",
+      "expected": {
+        "merchantId": null,
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "PEAJE AUTOPISTA DUARTE",
+      "region": "DO",
+      "expected": {
+        "merchantId": null,
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "PARQUEO PLAZA CENTRAL SANTO DOMINGO",
+      "region": "DO",
+      "expected": {
+        "merchantId": null,
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "GIMNASIO ENERGYM MENSUALIDAD",
+      "region": "DO",
+      "expected": {
+        "merchantId": null,
+        "category": "health"
+      }
+    },
+    {
+      "rawDescription": "ACADEMIA CORPO EM FORMA MENSALIDADE 06/26",
+      "region": "BR",
+      "expected": {
+        "merchantId": null,
+        "category": "health"
+      }
+    },
+    {
+      "rawDescription": "LAVANDERIA EXPRESS SUC 02 MONTERREY",
+      "region": "MX",
+      "expected": {
+        "merchantId": null,
+        "category": "personal_care"
+      }
+    },
+    {
+      "rawDescription": "PELUQUERIA MARY MADRID ES",
+      "region": "ES",
+      "expected": {
+        "merchantId": null,
+        "category": "personal_care"
+      }
+    },
+    {
+      "rawDescription": "VETERINARIA SAN LAZARO CDMX",
+      "region": "MX",
+      "expected": {
+        "merchantId": null,
+        "category": "pets"
+      }
+    },
+    {
+      "rawDescription": "OPTICA LOPEZ SUCURSAL CENTRO",
+      "region": "MX",
+      "expected": {
+        "merchantId": null,
+        "category": "health"
+      }
+    },
+    {
+      "rawDescription": "LIBRERIA PAPELERIA CENTRAL SANTIAGO",
+      "region": "DO",
+      "expected": {
+        "merchantId": null,
+        "category": "office"
+      }
+    },
+    {
+      "rawDescription": "PURCHASE AUTHORIZED ON 05/12 WAL-MART #2334",
+      "region": "US",
+      "expected": {
+        "merchantId": "walmart",
+        "category": "shopping"
+      }
+    },
+    {
+      "rawDescription": "POS DEBIT VISA CHECK CARD 1234 NETFLIX.COM",
+      "region": "US",
+      "expected": {
+        "merchantId": "netflix",
+        "category": "subscriptions"
+      }
+    },
+    {
+      "rawDescription": "CHECKCARD 0512 STARBUCKS 800-782-7282",
+      "region": "US",
+      "expected": {
+        "merchantId": "starbucks",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "RECURRING PAYMENT AUTHORIZED ON SPOTIFY USA",
+      "region": "US",
+      "expected": {
+        "merchantId": "spotify",
+        "category": "subscriptions"
+      }
+    },
+    {
+      "rawDescription": "REEMBOLSO AMAZON MX",
+      "region": "MX",
+      "expected": {
+        "merchantId": "amazon",
+        "category": "refunds"
+      }
+    },
+    {
+      "rawDescription": "ESTORNO COMPRA MAGALU",
+      "region": "BR",
+      "expected": {
+        "merchantId": "magazine_luiza",
+        "category": "refunds"
+      }
+    }
+  ]
+}

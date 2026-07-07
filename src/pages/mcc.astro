@@ -1,0 +1,9 @@
+---
+import Layout from '../layouts/Layout.astro';
+import MccBrowser from '../components/MccBrowser';
+---
+
+<Layout title="MCC" active="mcc">
+  <h1 class="mb-6 text-2xl font-bold text-white">MCC codes</h1>
+  <MccBrowser client:load />
+</Layout>

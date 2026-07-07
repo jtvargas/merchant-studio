@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TestsEditor from '../components/TestsEditor';
+---
+
+<Layout title="Test set" active="tests">
+  <h1 class="mb-2 text-2xl font-bold text-white">Labeled test descriptors</h1>
+  <p class="mb-6 text-sm text-zinc-400">
+    Grow this set alongside new merchants — it is how you measure the recognition rate.
+  </p>
+  <TestsEditor client:load />
+</Layout>

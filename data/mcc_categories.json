@@ -1,0 +1,4146 @@
+{
+  "schemaVersion": "1.1.0",
+  "generatedAt": "2026-07-06",
+  "name": "Starter MCC categories for transaction enrichment",
+  "description": "Common Merchant Category Codes mapped to app-friendly categories. MCC assignment can vary by processor/card network/acquirer; treat as a fallback or supporting signal, not the only source of truth.",
+  "categoryTaxonomy": [
+    {
+      "id": "groceries",
+      "displayName": "Groceries"
+    },
+    {
+      "id": "food_dining",
+      "displayName": "Food & Dining"
+    },
+    {
+      "id": "shopping",
+      "displayName": "Shopping"
+    },
+    {
+      "id": "home",
+      "displayName": "Home"
+    },
+    {
+      "id": "auto_transport",
+      "displayName": "Auto & Transport"
+    },
+    {
+      "id": "travel",
+      "displayName": "Travel"
+    },
+    {
+      "id": "bills_utilities",
+      "displayName": "Bills & Utilities"
+    },
+    {
+      "id": "subscriptions",
+      "displayName": "Subscriptions"
+    },
+    {
+      "id": "software",
+      "displayName": "Software"
+    },
+    {
+      "id": "health",
+      "displayName": "Health"
+    },
+    {
+      "id": "personal_care",
+      "displayName": "Personal Care"
+    },
+    {
+      "id": "insurance",
+      "displayName": "Insurance"
+    },
+    {
+      "id": "financial",
+      "displayName": "Financial"
+    },
+    {
+      "id": "transfers",
+      "displayName": "Transfers"
+    },
+    {
+      "id": "cash_atm",
+      "displayName": "Cash & ATM"
+    },
+    {
+      "id": "investments",
+      "displayName": "Investments"
+    },
+    {
+      "id": "housing",
+      "displayName": "Housing"
+    },
+    {
+      "id": "education",
+      "displayName": "Education"
+    },
+    {
+      "id": "entertainment",
+      "displayName": "Entertainment"
+    },
+    {
+      "id": "office",
+      "displayName": "Office"
+    },
+    {
+      "id": "pets",
+      "displayName": "Pets"
+    },
+    {
+      "id": "shipping",
+      "displayName": "Shipping"
+    },
+    {
+      "id": "donations",
+      "displayName": "Donations"
+    },
+    {
+      "id": "taxes",
+      "displayName": "Taxes"
+    },
+    {
+      "id": "government_taxes",
+      "displayName": "Government & Taxes"
+    },
+    {
+      "id": "business",
+      "displayName": "Business"
+    },
+    {
+      "id": "professional_services",
+      "displayName": "Professional Services"
+    },
+    {
+      "id": "family",
+      "displayName": "Family"
+    }
+  ],
+  "mcc": {
+    "0742": {
+      "code": "0742",
+      "description": "Veterinary Services",
+      "category": "pets",
+      "subcategory": "veterinary",
+      "group": "professional_services",
+      "defaultDirection": "expense",
+      "keywords": [
+        "veterinary",
+        "veterinaria",
+        "veterinario",
+        "clinica veterinaria"
+      ]
+    },
+    "0763": {
+      "code": "0763",
+      "description": "Agricultural Cooperatives",
+      "category": "business",
+      "subcategory": "agriculture",
+      "group": "business_services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "0780": {
+      "code": "0780",
+      "description": "Landscaping and Horticultural Services",
+      "category": "home",
+      "subcategory": "landscaping",
+      "group": "home_services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "1520": {
+      "code": "1520",
+      "description": "General Contractors - Residential and Commercial",
+      "category": "home",
+      "subcategory": "contractor",
+      "group": "home_services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "1711": {
+      "code": "1711",
+      "description": "Air Conditioning, Heating, and Plumbing Contractors",
+      "category": "home",
+      "subcategory": "hvac_plumbing",
+      "group": "home_services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "1731": {
+      "code": "1731",
+      "description": "Electrical Contractors",
+      "category": "home",
+      "subcategory": "electrician",
+      "group": "home_services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "1740": {
+      "code": "1740",
+      "description": "Masonry, Stonework, Tile Setting, Plastering, Insulation Contractors",
+      "category": "home",
+      "subcategory": "contractor",
+      "group": "home_services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "1750": {
+      "code": "1750",
+      "description": "Carpentry Contractors",
+      "category": "home",
+      "subcategory": "contractor",
+      "group": "home_services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "1761": {
+      "code": "1761",
+      "description": "Roofing, Siding, and Sheet Metal Work Contractors",
+      "category": "home",
+      "subcategory": "roofing",
+      "group": "home_services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "1771": {
+      "code": "1771",
+      "description": "Concrete Work Contractors",
+      "category": "home",
+      "subcategory": "contractor",
+      "group": "home_services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "1799": {
+      "code": "1799",
+      "description": "Special Trade Contractors, Not Elsewhere Classified",
+      "category": "home",
+      "subcategory": "contractor",
+      "group": "home_services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "2741": {
+      "code": "2741",
+      "description": "Miscellaneous Publishing and Printing",
+      "category": "business",
+      "subcategory": "printing",
+      "group": "business_services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "2791": {
+      "code": "2791",
+      "description": "Typesetting, Plate Making, and Related Services",
+      "category": "business",
+      "subcategory": "printing",
+      "group": "business_services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "2842": {
+      "code": "2842",
+      "description": "Specialty Cleaning, Polishing, and Sanitation Preparations",
+      "category": "home",
+      "subcategory": "cleaning_supplies",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3000": {
+      "code": "3000",
+      "description": "United Airlines",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3001": {
+      "code": "3001",
+      "description": "American Airlines",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3005": {
+      "code": "3005",
+      "description": "British Airways",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3006": {
+      "code": "3006",
+      "description": "Japan Airlines",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3007": {
+      "code": "3007",
+      "description": "Air France",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3008": {
+      "code": "3008",
+      "description": "Lufthansa",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3009": {
+      "code": "3009",
+      "description": "Air Canada",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3010": {
+      "code": "3010",
+      "description": "KLM Royal Dutch Airlines",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3013": {
+      "code": "3013",
+      "description": "Alitalia",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3026": {
+      "code": "3026",
+      "description": "Emirates Airlines",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3058": {
+      "code": "3058",
+      "description": "Delta Air Lines",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3066": {
+      "code": "3066",
+      "description": "Southwest Airlines",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3077": {
+      "code": "3077",
+      "description": "Thai Airways",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3088": {
+      "code": "3088",
+      "description": "Croatia Airlines",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3099": {
+      "code": "3099",
+      "description": "Cathay Pacific",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3132": {
+      "code": "3132",
+      "description": "Frontier Airlines",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3174": {
+      "code": "3174",
+      "description": "JetBlue Airways",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3260": {
+      "code": "3260",
+      "description": "Spirit Airlines",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3351": {
+      "code": "3351",
+      "description": "Affiliated Auto Rental",
+      "category": "travel",
+      "subcategory": "car_rental",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3357": {
+      "code": "3357",
+      "description": "Hertz",
+      "category": "travel",
+      "subcategory": "car_rental",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3364": {
+      "code": "3364",
+      "description": "Agency Rent-A-Car",
+      "category": "travel",
+      "subcategory": "car_rental",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3366": {
+      "code": "3366",
+      "description": "Budget Rent-A-Car",
+      "category": "travel",
+      "subcategory": "car_rental",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3389": {
+      "code": "3389",
+      "description": "Avis Rent-A-Car",
+      "category": "travel",
+      "subcategory": "car_rental",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3405": {
+      "code": "3405",
+      "description": "Enterprise Rent-A-Car",
+      "category": "travel",
+      "subcategory": "car_rental",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3501": {
+      "code": "3501",
+      "description": "Holiday Inns",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3502": {
+      "code": "3502",
+      "description": "Best Western Hotels",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3503": {
+      "code": "3503",
+      "description": "Sheraton",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3504": {
+      "code": "3504",
+      "description": "Hilton Hotels",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3509": {
+      "code": "3509",
+      "description": "Marriott Hotels",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3513": {
+      "code": "3513",
+      "description": "Westin Hotels",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3640": {
+      "code": "3640",
+      "description": "Hyatt Hotels",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "4011": {
+      "code": "4011",
+      "description": "Railroads",
+      "category": "auto_transport",
+      "subcategory": "train",
+      "group": "transportation",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "4111": {
+      "code": "4111",
+      "description": "Local and Suburban Commuter Passenger Transportation",
+      "category": "auto_transport",
+      "subcategory": "public_transit",
+      "group": "transportation",
+      "defaultDirection": "expense",
+      "keywords": [
+        "transit",
+        "metro",
+        "subway",
+        "commuter rail",
+        "transporte publico",
+        "trem",
+        "cercanias"
+      ]
+    },
+    "4112": {
+      "code": "4112",
+      "description": "Passenger Railways",
+      "category": "travel",
+      "subcategory": "train",
+      "group": "transportation",
+      "defaultDirection": "expense",
+      "keywords": [
+        "railway",
+        "train",
+        "tren",
+        "ferrocarril",
+        "trem"
+      ]
+    },
+    "4119": {
+      "code": "4119",
+      "description": "Ambulance Services",
+      "category": "health",
+      "subcategory": "ambulance",
+      "group": "health",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "4121": {
+      "code": "4121",
+      "description": "Taxicabs and Limousines",
+      "category": "auto_transport",
+      "subcategory": "rideshare_taxi",
+      "group": "transportation",
+      "defaultDirection": "expense",
+      "keywords": [
+        "taxi",
+        "rideshare",
+        "limousine",
+        "radio taxi",
+        "sitio de taxis"
+      ]
+    },
+    "4131": {
+      "code": "4131",
+      "description": "Bus Lines",
+      "category": "auto_transport",
+      "subcategory": "bus",
+      "group": "transportation",
+      "defaultDirection": "expense",
+      "keywords": [
+        "bus",
+        "autobus",
+        "onibus",
+        "guagua",
+        "bus line"
+      ]
+    },
+    "4214": {
+      "code": "4214",
+      "description": "Motor Freight Carriers and Trucking",
+      "category": "business",
+      "subcategory": "freight_shipping",
+      "group": "business_services",
+      "defaultDirection": "expense",
+      "keywords": [
+        "freight",
+        "trucking",
+        "mudanza",
+        "mudanca",
+        "flete"
+      ]
+    },
+    "4215": {
+      "code": "4215",
+      "description": "Courier Services, Air and Ground, and Freight Forwarders",
+      "category": "shipping",
+      "subcategory": "courier",
+      "group": "shipping",
+      "defaultDirection": "expense",
+      "keywords": [
+        "courier",
+        "mensajeria",
+        "paqueteria",
+        "entrega",
+        "encomienda"
+      ]
+    },
+    "4225": {
+      "code": "4225",
+      "description": "Public Warehousing and Storage",
+      "category": "business",
+      "subcategory": "storage",
+      "group": "business_services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "4411": {
+      "code": "4411",
+      "description": "Cruise Lines",
+      "category": "travel",
+      "subcategory": "cruise",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "4457": {
+      "code": "4457",
+      "description": "Boat Rentals and Leasing",
+      "category": "travel",
+      "subcategory": "boat_rental",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "4468": {
+      "code": "4468",
+      "description": "Marinas, Marine Service, and Supplies",
+      "category": "travel",
+      "subcategory": "marina",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "4511": {
+      "code": "4511",
+      "description": "Airlines and Air Carriers",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": [
+        "airline",
+        "aerolinea",
+        "linhas aereas",
+        "vuelo",
+        "voo",
+        "air"
+      ]
+    },
+    "4582": {
+      "code": "4582",
+      "description": "Airports, Flying Fields, and Airport Terminals",
+      "category": "travel",
+      "subcategory": "airport",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": [
+        "airport",
+        "aeropuerto",
+        "aeroporto"
+      ]
+    },
+    "4722": {
+      "code": "4722",
+      "description": "Travel Agencies and Tour Operators",
+      "category": "travel",
+      "subcategory": "travel_agency",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": [
+        "travel agency",
+        "agencia de viajes",
+        "agencia de viagens",
+        "tour"
+      ]
+    },
+    "4784": {
+      "code": "4784",
+      "description": "Tolls and Bridge Fees",
+      "category": "auto_transport",
+      "subcategory": "tolls",
+      "group": "transportation",
+      "defaultDirection": "expense",
+      "keywords": [
+        "toll",
+        "peaje",
+        "pedagio",
+        "caseta",
+        "telepeaje",
+        "turnpike"
+      ]
+    },
+    "4789": {
+      "code": "4789",
+      "description": "Transportation Services, Not Elsewhere Classified",
+      "category": "auto_transport",
+      "subcategory": "transportation",
+      "group": "transportation",
+      "defaultDirection": "expense",
+      "keywords": [
+        "transportation",
+        "transporte"
+      ]
+    },
+    "4812": {
+      "code": "4812",
+      "description": "Telecommunication Equipment and Telephone Sales",
+      "category": "bills_utilities",
+      "subcategory": "telecom_equipment",
+      "group": "utilities",
+      "defaultDirection": "expense",
+      "keywords": [
+        "phone equipment",
+        "celulares",
+        "telefonia"
+      ]
+    },
+    "4814": {
+      "code": "4814",
+      "description": "Telecommunication Services",
+      "category": "bills_utilities",
+      "subcategory": "mobile_phone",
+      "group": "utilities",
+      "defaultDirection": "expense",
+      "keywords": [
+        "telecom",
+        "mobile",
+        "wireless",
+        "telefonia",
+        "celular",
+        "recarga",
+        "tiempo aire"
+      ]
+    },
+    "4816": {
+      "code": "4816",
+      "description": "Computer Network/Information Services",
+      "category": "software",
+      "subcategory": "online_services",
+      "group": "software",
+      "defaultDirection": "expense",
+      "keywords": [
+        "internet services",
+        "hosting",
+        "red"
+      ]
+    },
+    "4821": {
+      "code": "4821",
+      "description": "Telegraph Services",
+      "category": "bills_utilities",
+      "subcategory": "telecom",
+      "group": "utilities",
+      "defaultDirection": "expense",
+      "keywords": [
+        "wire transfer",
+        "giro",
+        "transferencia"
+      ]
+    },
+    "4829": {
+      "code": "4829",
+      "description": "Money Transfer",
+      "category": "transfers",
+      "subcategory": "money_transfer",
+      "group": "financial",
+      "defaultDirection": "income_or_transfer",
+      "keywords": [
+        "wire transfer",
+        "money order",
+        "transferencia",
+        "remesa",
+        "giro",
+        "envio de dinero"
+      ]
+    },
+    "4899": {
+      "code": "4899",
+      "description": "Cable, Satellite, and Other Pay Television/Radio/Streaming Services",
+      "category": "subscriptions",
+      "subcategory": "streaming_telecom",
+      "group": "utilities",
+      "defaultDirection": "expense",
+      "keywords": [
+        "cable",
+        "streaming",
+        "satellite",
+        "television por cable"
+      ]
+    },
+    "4900": {
+      "code": "4900",
+      "description": "Utilities - Electric, Gas, Water, Sanitary",
+      "category": "bills_utilities",
+      "subcategory": "utilities",
+      "group": "utilities",
+      "defaultDirection": "expense",
+      "keywords": [
+        "utilities",
+        "electric",
+        "water",
+        "luz",
+        "agua",
+        "energia",
+        "saneamento",
+        "gas natural"
+      ]
+    },
+    "5013": {
+      "code": "5013",
+      "description": "Motor Vehicle Supplies and New Parts",
+      "category": "auto_transport",
+      "subcategory": "auto_parts",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "auto parts wholesale",
+        "refacciones"
+      ]
+    },
+    "5021": {
+      "code": "5021",
+      "description": "Office and Commercial Furniture",
+      "category": "office",
+      "subcategory": "office_furniture",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5039": {
+      "code": "5039",
+      "description": "Construction Materials, Not Elsewhere Classified",
+      "category": "home",
+      "subcategory": "building_materials",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5044": {
+      "code": "5044",
+      "description": "Office, Photographic, Photocopy, and Microfilm Equipment",
+      "category": "office",
+      "subcategory": "office_equipment",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5045": {
+      "code": "5045",
+      "description": "Computers, Computer Peripheral Equipment, Software",
+      "category": "software",
+      "subcategory": "computer_equipment",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5046": {
+      "code": "5046",
+      "description": "Commercial Equipment, Not Elsewhere Classified",
+      "category": "business",
+      "subcategory": "equipment",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5047": {
+      "code": "5047",
+      "description": "Medical, Dental, Ophthalmic, and Hospital Equipment",
+      "category": "health",
+      "subcategory": "medical_equipment",
+      "group": "health",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5051": {
+      "code": "5051",
+      "description": "Metal Service Centers and Offices",
+      "category": "business",
+      "subcategory": "industrial",
+      "group": "business_services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5065": {
+      "code": "5065",
+      "description": "Electrical Parts and Equipment",
+      "category": "home",
+      "subcategory": "electrical_supplies",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5072": {
+      "code": "5072",
+      "description": "Hardware Equipment and Supplies",
+      "category": "home",
+      "subcategory": "hardware",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5074": {
+      "code": "5074",
+      "description": "Plumbing and Heating Equipment and Supplies",
+      "category": "home",
+      "subcategory": "plumbing_hvac_supplies",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5085": {
+      "code": "5085",
+      "description": "Industrial Supplies, Not Elsewhere Classified",
+      "category": "business",
+      "subcategory": "industrial_supplies",
+      "group": "business_services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5094": {
+      "code": "5094",
+      "description": "Precious Stones and Metals, Watches and Jewelry",
+      "category": "shopping",
+      "subcategory": "jewelry",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5099": {
+      "code": "5099",
+      "description": "Durable Goods, Not Elsewhere Classified",
+      "category": "shopping",
+      "subcategory": "durable_goods",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5111": {
+      "code": "5111",
+      "description": "Stationery, Office Supplies, Printing, and Writing Paper",
+      "category": "office",
+      "subcategory": "office_supplies",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5122": {
+      "code": "5122",
+      "description": "Drugs, Drug Proprietaries, and Druggist Sundries",
+      "category": "health",
+      "subcategory": "pharmacy_wholesale",
+      "group": "health",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5131": {
+      "code": "5131",
+      "description": "Piece Goods, Notions, and Other Dry Goods",
+      "category": "shopping",
+      "subcategory": "fabric_goods",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5137": {
+      "code": "5137",
+      "description": "Uniforms, Commercial Clothing",
+      "category": "shopping",
+      "subcategory": "clothing",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5139": {
+      "code": "5139",
+      "description": "Commercial Footwear",
+      "category": "shopping",
+      "subcategory": "shoes",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5169": {
+      "code": "5169",
+      "description": "Chemicals and Allied Products",
+      "category": "business",
+      "subcategory": "chemicals",
+      "group": "business_services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5172": {
+      "code": "5172",
+      "description": "Petroleum and Petroleum Products",
+      "category": "auto_transport",
+      "subcategory": "fuel_wholesale",
+      "group": "fuel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5192": {
+      "code": "5192",
+      "description": "Books, Periodicals, and Newspapers",
+      "category": "shopping",
+      "subcategory": "books",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5193": {
+      "code": "5193",
+      "description": "Florists Supplies, Nursery Stock and Flowers",
+      "category": "shopping",
+      "subcategory": "flowers",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5198": {
+      "code": "5198",
+      "description": "Paints, Varnishes, and Supplies",
+      "category": "home",
+      "subcategory": "paint_supplies",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5199": {
+      "code": "5199",
+      "description": "Nondurable Goods, Not Elsewhere Classified",
+      "category": "shopping",
+      "subcategory": "retail",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5200": {
+      "code": "5200",
+      "description": "Home Supply Warehouse Stores",
+      "category": "home",
+      "subcategory": "home_improvement",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5211": {
+      "code": "5211",
+      "description": "Lumber and Building Materials Stores",
+      "category": "home",
+      "subcategory": "building_materials",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "building materials",
+        "lumber",
+        "materiales de construccion",
+        "material de construcao"
+      ]
+    },
+    "5231": {
+      "code": "5231",
+      "description": "Glass, Paint, and Wallpaper Stores",
+      "category": "home",
+      "subcategory": "paint_supplies",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5251": {
+      "code": "5251",
+      "description": "Hardware Stores",
+      "category": "home",
+      "subcategory": "hardware",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "hardware",
+        "ferreteria",
+        "ferragens",
+        "tornillos"
+      ]
+    },
+    "5261": {
+      "code": "5261",
+      "description": "Nurseries, Lawn and Garden Supply Stores",
+      "category": "home",
+      "subcategory": "garden",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5271": {
+      "code": "5271",
+      "description": "Mobile Home Dealers",
+      "category": "home",
+      "subcategory": "mobile_home",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5300": {
+      "code": "5300",
+      "description": "Wholesale Clubs",
+      "category": "shopping",
+      "subcategory": "warehouse_club",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "wholesale club",
+        "club de precios",
+        "atacado",
+        "mayorista"
+      ]
+    },
+    "5309": {
+      "code": "5309",
+      "description": "Duty Free Stores",
+      "category": "shopping",
+      "subcategory": "duty_free",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "duty free",
+        "libre de impuestos"
+      ]
+    },
+    "5310": {
+      "code": "5310",
+      "description": "Discount Stores",
+      "category": "shopping",
+      "subcategory": "discount_store",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "discount store",
+        "tienda de descuento",
+        "loja de desconto"
+      ]
+    },
+    "5311": {
+      "code": "5311",
+      "description": "Department Stores",
+      "category": "shopping",
+      "subcategory": "department_store",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "department store",
+        "tienda departamental",
+        "loja de departamentos",
+        "almacenes"
+      ]
+    },
+    "5331": {
+      "code": "5331",
+      "description": "Variety Stores",
+      "category": "shopping",
+      "subcategory": "variety_store",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "variety store",
+        "bazar",
+        "miscelanea"
+      ]
+    },
+    "5399": {
+      "code": "5399",
+      "description": "Miscellaneous General Merchandise",
+      "category": "shopping",
+      "subcategory": "general_merchandise",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "general merchandise",
+        "mercancia general",
+        "variedades"
+      ]
+    },
+    "5411": {
+      "code": "5411",
+      "description": "Grocery Stores and Supermarkets",
+      "category": "groceries",
+      "subcategory": "supermarket",
+      "group": "food",
+      "defaultDirection": "expense",
+      "keywords": [
+        "grocery",
+        "supermarket",
+        "supermercado",
+        "mercado",
+        "colmado",
+        "minimarket",
+        "abarrotes",
+        "mercearia",
+        "hipermercado",
+        "almacen"
+      ]
+    },
+    "5422": {
+      "code": "5422",
+      "description": "Freezer and Locker Meat Provisioners",
+      "category": "groceries",
+      "subcategory": "meat_market",
+      "group": "food",
+      "defaultDirection": "expense",
+      "keywords": [
+        "butcher",
+        "meats",
+        "carniceria",
+        "acougue"
+      ]
+    },
+    "5441": {
+      "code": "5441",
+      "description": "Candy, Nut, and Confectionery Stores",
+      "category": "groceries",
+      "subcategory": "sweets",
+      "group": "food",
+      "defaultDirection": "expense",
+      "keywords": [
+        "candy",
+        "confectionery",
+        "dulceria",
+        "doceria",
+        "chocolates"
+      ]
+    },
+    "5451": {
+      "code": "5451",
+      "description": "Dairy Products Stores",
+      "category": "groceries",
+      "subcategory": "dairy",
+      "group": "food",
+      "defaultDirection": "expense",
+      "keywords": [
+        "dairy",
+        "lacteos",
+        "laticinios"
+      ]
+    },
+    "5462": {
+      "code": "5462",
+      "description": "Bakeries",
+      "category": "food_dining",
+      "subcategory": "bakery",
+      "group": "food",
+      "defaultDirection": "expense",
+      "keywords": [
+        "bakery",
+        "panaderia",
+        "padaria",
+        "reposteria",
+        "confeitaria",
+        "pasteleria"
+      ]
+    },
+    "5499": {
+      "code": "5499",
+      "description": "Miscellaneous Food Stores - Convenience, Markets, Specialty",
+      "category": "groceries",
+      "subcategory": "specialty_food",
+      "group": "food",
+      "defaultDirection": "expense",
+      "keywords": [
+        "convenience",
+        "food store",
+        "conveniencia",
+        "colmado",
+        "abarrotes",
+        "tienda de conveniencia"
+      ]
+    },
+    "5511": {
+      "code": "5511",
+      "description": "Car and Truck Dealers - New and Used",
+      "category": "auto_transport",
+      "subcategory": "auto_dealer",
+      "group": "auto",
+      "defaultDirection": "expense",
+      "keywords": [
+        "car dealer",
+        "concesionario",
+        "concessionaria",
+        "agencia de autos"
+      ]
+    },
+    "5521": {
+      "code": "5521",
+      "description": "Car and Truck Dealers - Used Only",
+      "category": "auto_transport",
+      "subcategory": "auto_dealer_used",
+      "group": "auto",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5532": {
+      "code": "5532",
+      "description": "Automotive Tire Stores",
+      "category": "auto_transport",
+      "subcategory": "tires",
+      "group": "auto",
+      "defaultDirection": "expense",
+      "keywords": [
+        "tires",
+        "llantas",
+        "pneus",
+        "gomas"
+      ]
+    },
+    "5533": {
+      "code": "5533",
+      "description": "Automotive Parts and Accessories Stores",
+      "category": "auto_transport",
+      "subcategory": "auto_parts",
+      "group": "auto",
+      "defaultDirection": "expense",
+      "keywords": [
+        "auto parts",
+        "refacciones",
+        "autopecas",
+        "repuestos"
+      ]
+    },
+    "5541": {
+      "code": "5541",
+      "description": "Service Stations",
+      "category": "auto_transport",
+      "subcategory": "gas",
+      "group": "fuel",
+      "defaultDirection": "expense",
+      "keywords": [
+        "gas station",
+        "gasolinera",
+        "posto",
+        "estacion de servicio",
+        "combustible",
+        "bomba"
+      ]
+    },
+    "5542": {
+      "code": "5542",
+      "description": "Automated Fuel Dispensers",
+      "category": "auto_transport",
+      "subcategory": "gas",
+      "group": "fuel",
+      "defaultDirection": "expense",
+      "keywords": [
+        "fuel dispenser",
+        "gasolina",
+        "combustivel",
+        "gasolinera",
+        "posto"
+      ]
+    },
+    "5551": {
+      "code": "5551",
+      "description": "Boat Dealers",
+      "category": "shopping",
+      "subcategory": "boats",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "boat dealer",
+        "marina"
+      ]
+    },
+    "5561": {
+      "code": "5561",
+      "description": "Camper, Recreational and Utility Trailer Dealers",
+      "category": "shopping",
+      "subcategory": "rv_trailers",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5571": {
+      "code": "5571",
+      "description": "Motorcycle Shops and Dealers",
+      "category": "auto_transport",
+      "subcategory": "motorcycle",
+      "group": "auto",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5592": {
+      "code": "5592",
+      "description": "Motor Home Dealers",
+      "category": "auto_transport",
+      "subcategory": "rv_dealer",
+      "group": "auto",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5598": {
+      "code": "5598",
+      "description": "Snowmobile Dealers",
+      "category": "shopping",
+      "subcategory": "recreational_vehicle",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5599": {
+      "code": "5599",
+      "description": "Miscellaneous Automotive, Aircraft, and Farm Equipment Dealers",
+      "category": "auto_transport",
+      "subcategory": "auto_misc",
+      "group": "auto",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5611": {
+      "code": "5611",
+      "description": "Men's and Boys' Clothing and Accessories Stores",
+      "category": "shopping",
+      "subcategory": "clothing",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "menswear",
+        "ropa de hombre",
+        "roupas masculinas"
+      ]
+    },
+    "5621": {
+      "code": "5621",
+      "description": "Women's Ready-to-Wear Stores",
+      "category": "shopping",
+      "subcategory": "clothing",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "womenswear",
+        "ropa de mujer",
+        "roupas femininas"
+      ]
+    },
+    "5631": {
+      "code": "5631",
+      "description": "Women's Accessory and Specialty Shops",
+      "category": "shopping",
+      "subcategory": "accessories",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5641": {
+      "code": "5641",
+      "description": "Children's and Infants' Wear Stores",
+      "category": "shopping",
+      "subcategory": "children_clothing",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "children clothing",
+        "ropa infantil",
+        "roupas infantis"
+      ]
+    },
+    "5651": {
+      "code": "5651",
+      "description": "Family Clothing Stores",
+      "category": "shopping",
+      "subcategory": "clothing",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "clothing",
+        "apparel",
+        "ropa",
+        "roupas",
+        "moda",
+        "boutique"
+      ]
+    },
+    "5655": {
+      "code": "5655",
+      "description": "Sports and Riding Apparel Stores",
+      "category": "shopping",
+      "subcategory": "sports_apparel",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5661": {
+      "code": "5661",
+      "description": "Shoe Stores",
+      "category": "shopping",
+      "subcategory": "shoes",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "shoes",
+        "zapateria",
+        "calzado",
+        "calcados",
+        "tenis"
+      ]
+    },
+    "5681": {
+      "code": "5681",
+      "description": "Furriers and Fur Shops",
+      "category": "shopping",
+      "subcategory": "clothing",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5691": {
+      "code": "5691",
+      "description": "Men's and Women's Clothing Stores",
+      "category": "shopping",
+      "subcategory": "clothing",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "clothing store",
+        "tienda de ropa",
+        "loja de roupas"
+      ]
+    },
+    "5697": {
+      "code": "5697",
+      "description": "Alterations, Mending, Seamstresses, Tailors",
+      "category": "personal_care",
+      "subcategory": "tailor",
+      "group": "services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5698": {
+      "code": "5698",
+      "description": "Wig and Toupee Shops",
+      "category": "personal_care",
+      "subcategory": "beauty",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5699": {
+      "code": "5699",
+      "description": "Miscellaneous Apparel and Accessory Shops",
+      "category": "shopping",
+      "subcategory": "clothing_accessories",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5712": {
+      "code": "5712",
+      "description": "Furniture, Home Furnishings, and Equipment Stores",
+      "category": "home",
+      "subcategory": "furniture",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "furniture",
+        "muebleria",
+        "muebles",
+        "moveis"
+      ]
+    },
+    "5713": {
+      "code": "5713",
+      "description": "Floor Covering Stores",
+      "category": "home",
+      "subcategory": "flooring",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5714": {
+      "code": "5714",
+      "description": "Drapery, Window Covering, and Upholstery Stores",
+      "category": "home",
+      "subcategory": "decor",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5718": {
+      "code": "5718",
+      "description": "Fireplace, Fireplace Screens, and Accessories Stores",
+      "category": "home",
+      "subcategory": "fireplace",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5719": {
+      "code": "5719",
+      "description": "Miscellaneous Home Furnishing Specialty Stores",
+      "category": "home",
+      "subcategory": "home_goods",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "home furnishings",
+        "hogar",
+        "decoracion",
+        "casa"
+      ]
+    },
+    "5722": {
+      "code": "5722",
+      "description": "Household Appliance Stores",
+      "category": "home",
+      "subcategory": "appliances",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "appliances",
+        "electrodomesticos",
+        "eletrodomesticos",
+        "linea blanca"
+      ]
+    },
+    "5732": {
+      "code": "5732",
+      "description": "Electronics Stores",
+      "category": "shopping",
+      "subcategory": "electronics",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "electronics",
+        "electronica",
+        "eletronicos"
+      ]
+    },
+    "5733": {
+      "code": "5733",
+      "description": "Music Stores, Instruments, Pianos, Sheet Music",
+      "category": "entertainment",
+      "subcategory": "music_store",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5734": {
+      "code": "5734",
+      "description": "Computer Software Stores",
+      "category": "software",
+      "subcategory": "software",
+      "group": "software",
+      "defaultDirection": "expense",
+      "keywords": [
+        "software",
+        "computo",
+        "informatica"
+      ]
+    },
+    "5735": {
+      "code": "5735",
+      "description": "Record Shops",
+      "category": "entertainment",
+      "subcategory": "music_store",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "records",
+        "music store",
+        "discos"
+      ]
+    },
+    "5811": {
+      "code": "5811",
+      "description": "Caterers",
+      "category": "food_dining",
+      "subcategory": "catering",
+      "group": "food",
+      "defaultDirection": "expense",
+      "keywords": [
+        "catering",
+        "banquetes",
+        "buffet"
+      ]
+    },
+    "5812": {
+      "code": "5812",
+      "description": "Eating Places and Restaurants",
+      "category": "food_dining",
+      "subcategory": "restaurant",
+      "group": "food",
+      "defaultDirection": "expense",
+      "keywords": [
+        "restaurant",
+        "restaurante",
+        "comedor",
+        "churrascaria",
+        "marisqueria",
+        "parrilla"
+      ]
+    },
+    "5813": {
+      "code": "5813",
+      "description": "Drinking Places - Bars, Taverns, Nightclubs",
+      "category": "food_dining",
+      "subcategory": "bar",
+      "group": "food",
+      "defaultDirection": "expense",
+      "keywords": [
+        "bar",
+        "nightclub",
+        "cantina",
+        "cerveceria",
+        "boteco",
+        "discoteca",
+        "pub"
+      ]
+    },
+    "5814": {
+      "code": "5814",
+      "description": "Fast Food Restaurants",
+      "category": "food_dining",
+      "subcategory": "fast_food",
+      "group": "food",
+      "defaultDirection": "expense",
+      "keywords": [
+        "fast food",
+        "comida rapida",
+        "lanchonete",
+        "pica pollo",
+        "taqueria"
+      ]
+    },
+    "5815": {
+      "code": "5815",
+      "description": "Digital Goods - Media, Books, Movies, Music",
+      "category": "subscriptions",
+      "subcategory": "digital_media",
+      "group": "digital_goods",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5816": {
+      "code": "5816",
+      "description": "Digital Goods - Games",
+      "category": "entertainment",
+      "subcategory": "digital_games",
+      "group": "digital_goods",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5817": {
+      "code": "5817",
+      "description": "Digital Goods - Applications",
+      "category": "software",
+      "subcategory": "apps",
+      "group": "digital_goods",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5818": {
+      "code": "5818",
+      "description": "Digital Goods - Large Digital Goods Merchant",
+      "category": "software",
+      "subcategory": "digital_goods",
+      "group": "digital_goods",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5912": {
+      "code": "5912",
+      "description": "Drug Stores and Pharmacies",
+      "category": "health",
+      "subcategory": "pharmacy",
+      "group": "health",
+      "defaultDirection": "expense",
+      "keywords": [
+        "pharmacy",
+        "farmacia",
+        "drogaria",
+        "drugstore",
+        "botica"
+      ]
+    },
+    "5921": {
+      "code": "5921",
+      "description": "Package Stores - Beer, Wine, Liquor",
+      "category": "food_dining",
+      "subcategory": "alcohol",
+      "group": "food",
+      "defaultDirection": "expense",
+      "keywords": [
+        "liquor",
+        "licoreria",
+        "vinos y licores",
+        "adega",
+        "bebidas"
+      ]
+    },
+    "5931": {
+      "code": "5931",
+      "description": "Used Merchandise and Secondhand Stores",
+      "category": "shopping",
+      "subcategory": "secondhand",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5932": {
+      "code": "5932",
+      "description": "Antique Shops",
+      "category": "shopping",
+      "subcategory": "antiques",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5933": {
+      "code": "5933",
+      "description": "Pawn Shops",
+      "category": "shopping",
+      "subcategory": "pawn_shop",
+      "group": "financial",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5935": {
+      "code": "5935",
+      "description": "Wrecking and Salvage Yards",
+      "category": "auto_transport",
+      "subcategory": "salvage_yard",
+      "group": "auto",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5937": {
+      "code": "5937",
+      "description": "Antique Reproduction Stores",
+      "category": "shopping",
+      "subcategory": "antiques",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5940": {
+      "code": "5940",
+      "description": "Bicycle Shops",
+      "category": "auto_transport",
+      "subcategory": "bicycle",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5941": {
+      "code": "5941",
+      "description": "Sporting Goods Stores",
+      "category": "shopping",
+      "subcategory": "sporting_goods",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "sporting goods",
+        "deportes",
+        "esportes",
+        "articulos deportivos"
+      ]
+    },
+    "5942": {
+      "code": "5942",
+      "description": "Book Stores",
+      "category": "shopping",
+      "subcategory": "books",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "bookstore",
+        "libreria",
+        "livraria"
+      ]
+    },
+    "5943": {
+      "code": "5943",
+      "description": "Stationery Stores, Office, and School Supply Stores",
+      "category": "office",
+      "subcategory": "office_supplies",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "stationery",
+        "papeleria",
+        "papelaria"
+      ]
+    },
+    "5944": {
+      "code": "5944",
+      "description": "Jewelry Stores",
+      "category": "shopping",
+      "subcategory": "jewelry",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5945": {
+      "code": "5945",
+      "description": "Hobby, Toy, and Game Shops",
+      "category": "entertainment",
+      "subcategory": "toys_games",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "toys",
+        "jugueteria",
+        "brinquedos"
+      ]
+    },
+    "5946": {
+      "code": "5946",
+      "description": "Camera and Photographic Supply Stores",
+      "category": "shopping",
+      "subcategory": "camera",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5947": {
+      "code": "5947",
+      "description": "Gift, Card, Novelty, and Souvenir Shops",
+      "category": "shopping",
+      "subcategory": "gifts",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "gift shop",
+        "regalos",
+        "presentes",
+        "souvenirs"
+      ]
+    },
+    "5948": {
+      "code": "5948",
+      "description": "Luggage and Leather Goods Stores",
+      "category": "shopping",
+      "subcategory": "luggage",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5949": {
+      "code": "5949",
+      "description": "Sewing, Needlework, Fabric, and Piece Goods Stores",
+      "category": "shopping",
+      "subcategory": "fabric_crafts",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5950": {
+      "code": "5950",
+      "description": "Glassware and Crystal Stores",
+      "category": "shopping",
+      "subcategory": "home_goods",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5960": {
+      "code": "5960",
+      "description": "Direct Marketing - Insurance Services",
+      "category": "insurance",
+      "subcategory": "insurance_marketing",
+      "group": "financial",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5962": {
+      "code": "5962",
+      "description": "Direct Marketing - Travel Related Arrangement Services",
+      "category": "travel",
+      "subcategory": "travel_agency",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5964": {
+      "code": "5964",
+      "description": "Direct Marketing - Catalog Merchants",
+      "category": "shopping",
+      "subcategory": "catalog",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5965": {
+      "code": "5965",
+      "description": "Direct Marketing - Combination Catalog and Retail Merchant",
+      "category": "shopping",
+      "subcategory": "catalog",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5966": {
+      "code": "5966",
+      "description": "Direct Marketing - Outbound Telemarketing Merchants",
+      "category": "shopping",
+      "subcategory": "telemarketing",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5967": {
+      "code": "5967",
+      "description": "Direct Marketing - Inbound Telemarketing Merchants",
+      "category": "shopping",
+      "subcategory": "telemarketing",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5968": {
+      "code": "5968",
+      "description": "Direct Marketing - Continuity/Subscription Merchants",
+      "category": "subscriptions",
+      "subcategory": "subscription",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5969": {
+      "code": "5969",
+      "description": "Direct Marketing - Other Direct Marketers",
+      "category": "shopping",
+      "subcategory": "online_retail",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5970": {
+      "code": "5970",
+      "description": "Artist Supply and Craft Shops",
+      "category": "shopping",
+      "subcategory": "crafts",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5971": {
+      "code": "5971",
+      "description": "Art Dealers and Galleries",
+      "category": "entertainment",
+      "subcategory": "art",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5972": {
+      "code": "5972",
+      "description": "Stamp and Coin Stores",
+      "category": "shopping",
+      "subcategory": "collectibles",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5973": {
+      "code": "5973",
+      "description": "Religious Goods Stores",
+      "category": "shopping",
+      "subcategory": "religious_goods",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5975": {
+      "code": "5975",
+      "description": "Hearing Aids - Sales, Service, Supply",
+      "category": "health",
+      "subcategory": "hearing_aids",
+      "group": "health",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5976": {
+      "code": "5976",
+      "description": "Orthopedic Goods and Prosthetic Devices",
+      "category": "health",
+      "subcategory": "medical_equipment",
+      "group": "health",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5977": {
+      "code": "5977",
+      "description": "Cosmetic Stores",
+      "category": "personal_care",
+      "subcategory": "beauty",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "cosmetics",
+        "perfumeria",
+        "cosmeticos",
+        "belleza",
+        "beleza"
+      ]
+    },
+    "5978": {
+      "code": "5978",
+      "description": "Typewriter Stores",
+      "category": "office",
+      "subcategory": "office_equipment",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5983": {
+      "code": "5983",
+      "description": "Fuel Dealers - Fuel Oil, Wood, Coal, Liquefied Petroleum",
+      "category": "bills_utilities",
+      "subcategory": "fuel_delivery",
+      "group": "fuel",
+      "defaultDirection": "expense",
+      "keywords": [
+        "fuel oil",
+        "propano",
+        "gas lp",
+        "gas propano",
+        "botijao"
+      ]
+    },
+    "5992": {
+      "code": "5992",
+      "description": "Florists",
+      "category": "shopping",
+      "subcategory": "flowers",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "florist",
+        "floreria",
+        "floricultura",
+        "flores"
+      ]
+    },
+    "5993": {
+      "code": "5993",
+      "description": "Cigar Stores and Stands",
+      "category": "shopping",
+      "subcategory": "tobacco",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5994": {
+      "code": "5994",
+      "description": "News Dealers and Newsstands",
+      "category": "shopping",
+      "subcategory": "newsstand",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5995": {
+      "code": "5995",
+      "description": "Pet Shops, Pet Foods, and Supplies",
+      "category": "pets",
+      "subcategory": "pet_supplies",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "pet shop",
+        "veterinaria",
+        "mascotas",
+        "pet food"
+      ]
+    },
+    "5996": {
+      "code": "5996",
+      "description": "Swimming Pools Sales and Supplies",
+      "category": "home",
+      "subcategory": "pool_supplies",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5997": {
+      "code": "5997",
+      "description": "Electric Razor Stores",
+      "category": "personal_care",
+      "subcategory": "personal_care_goods",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5998": {
+      "code": "5998",
+      "description": "Tent and Awning Shops",
+      "category": "home",
+      "subcategory": "outdoor_goods",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5999": {
+      "code": "5999",
+      "description": "Miscellaneous and Specialty Retail Stores",
+      "category": "shopping",
+      "subcategory": "specialty_retail",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "specialty retail",
+        "miscelanea"
+      ]
+    },
+    "6010": {
+      "code": "6010",
+      "description": "Manual Cash Disbursements",
+      "category": "cash_atm",
+      "subcategory": "cash_withdrawal",
+      "group": "financial",
+      "defaultDirection": "income_or_transfer",
+      "keywords": [
+        "cash advance",
+        "avance de efectivo"
+      ]
+    },
+    "6011": {
+      "code": "6011",
+      "description": "Automated Cash Disbursements / ATM",
+      "category": "cash_atm",
+      "subcategory": "atm",
+      "group": "financial",
+      "defaultDirection": "income_or_transfer",
+      "keywords": [
+        "atm",
+        "cajero",
+        "cajero automatico",
+        "caixa eletronico",
+        "retiro",
+        "saque"
+      ]
+    },
+    "6012": {
+      "code": "6012",
+      "description": "Financial Institutions - Merchandise and Services",
+      "category": "financial",
+      "subcategory": "bank_service",
+      "group": "financial",
+      "defaultDirection": "income_or_transfer",
+      "keywords": [
+        "financial institution",
+        "banco",
+        "pago prestamo",
+        "pagamento emprestimo"
+      ]
+    },
+    "6051": {
+      "code": "6051",
+      "description": "Non-Financial Institutions - Foreign Currency, Money Orders, Stored Value",
+      "category": "transfers",
+      "subcategory": "money_service",
+      "group": "financial",
+      "defaultDirection": "income_or_transfer",
+      "keywords": [
+        "digital wallet",
+        "crypto",
+        "casa de cambio",
+        "monedero",
+        "carteira digital"
+      ]
+    },
+    "6211": {
+      "code": "6211",
+      "description": "Securities Brokers/Dealers",
+      "category": "investments",
+      "subcategory": "brokerage",
+      "group": "financial",
+      "defaultDirection": "income_or_transfer",
+      "keywords": [
+        "brokerage",
+        "casa de bolsa",
+        "corretora",
+        "inversiones"
+      ]
+    },
+    "6300": {
+      "code": "6300",
+      "description": "Insurance Sales, Underwriting, and Premiums",
+      "category": "insurance",
+      "subcategory": "insurance",
+      "group": "financial",
+      "defaultDirection": "expense",
+      "keywords": [
+        "insurance",
+        "seguros",
+        "aseguradora",
+        "poliza",
+        "seguro",
+        "ars"
+      ]
+    },
+    "6513": {
+      "code": "6513",
+      "description": "Real Estate Agents and Managers - Rentals",
+      "category": "housing",
+      "subcategory": "rent",
+      "group": "housing",
+      "defaultDirection": "expense",
+      "keywords": [
+        "rent",
+        "renta",
+        "alquiler",
+        "aluguel",
+        "arrendamiento"
+      ]
+    },
+    "7011": {
+      "code": "7011",
+      "description": "Lodging - Hotels, Motels, Resorts",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": [
+        "hotel",
+        "motel",
+        "resort",
+        "hostal",
+        "pousada",
+        "hospedaje"
+      ]
+    },
+    "7032": {
+      "code": "7032",
+      "description": "Sporting and Recreational Camps",
+      "category": "travel",
+      "subcategory": "camp",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7033": {
+      "code": "7033",
+      "description": "Trailer Parks and Campgrounds",
+      "category": "travel",
+      "subcategory": "campground",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7210": {
+      "code": "7210",
+      "description": "Laundry, Cleaning, and Garment Services",
+      "category": "personal_care",
+      "subcategory": "laundry",
+      "group": "services",
+      "defaultDirection": "expense",
+      "keywords": [
+        "laundry",
+        "lavanderia",
+        "tintoreria",
+        "dry clean"
+      ]
+    },
+    "7211": {
+      "code": "7211",
+      "description": "Laundry Services - Family and Commercial",
+      "category": "personal_care",
+      "subcategory": "laundry",
+      "group": "services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7216": {
+      "code": "7216",
+      "description": "Dry Cleaners",
+      "category": "personal_care",
+      "subcategory": "dry_cleaning",
+      "group": "services",
+      "defaultDirection": "expense",
+      "keywords": [
+        "dry cleaner",
+        "tintoreria",
+        "lavanderia"
+      ]
+    },
+    "7217": {
+      "code": "7217",
+      "description": "Carpet and Upholstery Cleaning",
+      "category": "home",
+      "subcategory": "cleaning_service",
+      "group": "services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7221": {
+      "code": "7221",
+      "description": "Photographic Studios",
+      "category": "personal_care",
+      "subcategory": "photography",
+      "group": "services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7230": {
+      "code": "7230",
+      "description": "Barber and Beauty Shops",
+      "category": "personal_care",
+      "subcategory": "hair_salon",
+      "group": "services",
+      "defaultDirection": "expense",
+      "keywords": [
+        "salon",
+        "peluqueria",
+        "barberia",
+        "cabeleireiro",
+        "salao de beleza",
+        "estetica"
+      ]
+    },
+    "7251": {
+      "code": "7251",
+      "description": "Shoe Repair, Hat Cleaning",
+      "category": "personal_care",
+      "subcategory": "repair",
+      "group": "services",
+      "defaultDirection": "expense",
+      "keywords": [
+        "shoe repair",
+        "zapateria reparacion"
+      ]
+    },
+    "7261": {
+      "code": "7261",
+      "description": "Funeral Services and Crematories",
+      "category": "professional_services",
+      "subcategory": "funeral",
+      "group": "services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7273": {
+      "code": "7273",
+      "description": "Dating and Escort Services",
+      "category": "personal_care",
+      "subcategory": "dating",
+      "group": "services",
+      "defaultDirection": "expense",
+      "keywords": [
+        "dating",
+        "citas"
+      ]
+    },
+    "7276": {
+      "code": "7276",
+      "description": "Tax Preparation Services",
+      "category": "taxes",
+      "subcategory": "tax_preparation",
+      "group": "services",
+      "defaultDirection": "expense",
+      "keywords": [
+        "tax preparation",
+        "preparacion de impuestos",
+        "declaracion"
+      ]
+    },
+    "7277": {
+      "code": "7277",
+      "description": "Counseling Services",
+      "category": "health",
+      "subcategory": "counseling",
+      "group": "services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7278": {
+      "code": "7278",
+      "description": "Buying/Shopping Services and Clubs",
+      "category": "shopping",
+      "subcategory": "shopping_service",
+      "group": "services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7296": {
+      "code": "7296",
+      "description": "Clothing Rental",
+      "category": "shopping",
+      "subcategory": "clothing_rental",
+      "group": "services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7297": {
+      "code": "7297",
+      "description": "Massage Parlors",
+      "category": "personal_care",
+      "subcategory": "massage",
+      "group": "services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7298": {
+      "code": "7298",
+      "description": "Health and Beauty Spas",
+      "category": "personal_care",
+      "subcategory": "spa",
+      "group": "services",
+      "defaultDirection": "expense",
+      "keywords": [
+        "spa",
+        "estetica",
+        "clinica de belleza"
+      ]
+    },
+    "7299": {
+      "code": "7299",
+      "description": "Miscellaneous Personal Services",
+      "category": "personal_care",
+      "subcategory": "personal_services",
+      "group": "services",
+      "defaultDirection": "expense",
+      "keywords": [
+        "personal services",
+        "servicios personales"
+      ]
+    },
+    "7311": {
+      "code": "7311",
+      "description": "Advertising Services",
+      "category": "business",
+      "subcategory": "advertising",
+      "group": "business_services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7321": {
+      "code": "7321",
+      "description": "Consumer Credit Reporting Agencies",
+      "category": "financial",
+      "subcategory": "credit_reporting",
+      "group": "financial",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7333": {
+      "code": "7333",
+      "description": "Commercial Photography, Art and Graphics",
+      "category": "business",
+      "subcategory": "creative_services",
+      "group": "business_services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7338": {
+      "code": "7338",
+      "description": "Quick Copy, Reproduction, and Blueprinting Services",
+      "category": "office",
+      "subcategory": "printing",
+      "group": "services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7339": {
+      "code": "7339",
+      "description": "Stenographic and Secretarial Support Services",
+      "category": "business",
+      "subcategory": "admin_services",
+      "group": "business_services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7342": {
+      "code": "7342",
+      "description": "Exterminating and Disinfecting Services",
+      "category": "home",
+      "subcategory": "pest_control",
+      "group": "home_services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7349": {
+      "code": "7349",
+      "description": "Cleaning and Maintenance Services",
+      "category": "home",
+      "subcategory": "cleaning_service",
+      "group": "home_services",
+      "defaultDirection": "expense",
+      "keywords": [
+        "cleaning",
+        "limpieza",
+        "limpeza"
+      ]
+    },
+    "7361": {
+      "code": "7361",
+      "description": "Employment Agencies and Temporary Help Services",
+      "category": "business",
+      "subcategory": "employment_agency",
+      "group": "business_services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7372": {
+      "code": "7372",
+      "description": "Computer Programming, Data Processing, Integrated Systems Design",
+      "category": "software",
+      "subcategory": "developer_services",
+      "group": "software",
+      "defaultDirection": "expense",
+      "keywords": [
+        "software services",
+        "saas",
+        "servicios de computo"
+      ]
+    },
+    "7375": {
+      "code": "7375",
+      "description": "Information Retrieval Services",
+      "category": "software",
+      "subcategory": "information_services",
+      "group": "software",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7379": {
+      "code": "7379",
+      "description": "Computer Maintenance and Repair Services",
+      "category": "software",
+      "subcategory": "computer_repair",
+      "group": "software",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7392": {
+      "code": "7392",
+      "description": "Management, Consulting, and Public Relations Services",
+      "category": "business",
+      "subcategory": "consulting",
+      "group": "business_services",
+      "defaultDirection": "expense",
+      "keywords": [
+        "consulting",
+        "consultoria"
+      ]
+    },
+    "7393": {
+      "code": "7393",
+      "description": "Detective Agencies and Protective Services",
+      "category": "business",
+      "subcategory": "security_services",
+      "group": "business_services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7394": {
+      "code": "7394",
+      "description": "Equipment Rental and Leasing Services",
+      "category": "business",
+      "subcategory": "equipment_rental",
+      "group": "services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7395": {
+      "code": "7395",
+      "description": "Photo Developing and Processing",
+      "category": "personal_care",
+      "subcategory": "photo_services",
+      "group": "services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7399": {
+      "code": "7399",
+      "description": "Business Services, Not Elsewhere Classified",
+      "category": "business",
+      "subcategory": "business_services",
+      "group": "business_services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7512": {
+      "code": "7512",
+      "description": "Automobile Rental Agency",
+      "category": "travel",
+      "subcategory": "car_rental",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": [
+        "car rental",
+        "renta de autos",
+        "locadora de veiculos",
+        "alquiler de coches",
+        "rent a car"
+      ]
+    },
+    "7513": {
+      "code": "7513",
+      "description": "Truck and Utility Trailer Rentals",
+      "category": "auto_transport",
+      "subcategory": "truck_rental",
+      "group": "auto",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7519": {
+      "code": "7519",
+      "description": "Motor Home and Recreational Vehicle Rentals",
+      "category": "travel",
+      "subcategory": "rv_rental",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7523": {
+      "code": "7523",
+      "description": "Automobile Parking Lots and Garages",
+      "category": "auto_transport",
+      "subcategory": "parking",
+      "group": "transportation",
+      "defaultDirection": "expense",
+      "keywords": [
+        "parking",
+        "estacionamiento",
+        "parqueo",
+        "estacionamento",
+        "parquimetro",
+        "aparcamiento"
+      ]
+    },
+    "7531": {
+      "code": "7531",
+      "description": "Automotive Body Repair Shops",
+      "category": "auto_transport",
+      "subcategory": "auto_repair",
+      "group": "auto",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7534": {
+      "code": "7534",
+      "description": "Tire Retreading and Repair Shops",
+      "category": "auto_transport",
+      "subcategory": "tires",
+      "group": "auto",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7535": {
+      "code": "7535",
+      "description": "Automotive Paint Shops",
+      "category": "auto_transport",
+      "subcategory": "auto_repair",
+      "group": "auto",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7538": {
+      "code": "7538",
+      "description": "Automotive Service Shops",
+      "category": "auto_transport",
+      "subcategory": "auto_service",
+      "group": "auto",
+      "defaultDirection": "expense",
+      "keywords": [
+        "auto service",
+        "taller",
+        "oficina mecanica",
+        "mecanico",
+        "servicio automotriz"
+      ]
+    },
+    "7542": {
+      "code": "7542",
+      "description": "Car Washes",
+      "category": "auto_transport",
+      "subcategory": "car_wash",
+      "group": "auto",
+      "defaultDirection": "expense",
+      "keywords": [
+        "car wash",
+        "autolavado",
+        "lava rapido",
+        "lavado de autos"
+      ]
+    },
+    "7549": {
+      "code": "7549",
+      "description": "Towing Services",
+      "category": "auto_transport",
+      "subcategory": "towing",
+      "group": "auto",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7622": {
+      "code": "7622",
+      "description": "Electronics Repair Shops",
+      "category": "shopping",
+      "subcategory": "electronics_repair",
+      "group": "services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7623": {
+      "code": "7623",
+      "description": "Air Conditioning and Refrigeration Repair Shops",
+      "category": "home",
+      "subcategory": "hvac_repair",
+      "group": "home_services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7629": {
+      "code": "7629",
+      "description": "Appliance Repair Shops",
+      "category": "home",
+      "subcategory": "appliance_repair",
+      "group": "home_services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7631": {
+      "code": "7631",
+      "description": "Watch, Clock, and Jewelry Repair",
+      "category": "personal_care",
+      "subcategory": "jewelry_repair",
+      "group": "services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7641": {
+      "code": "7641",
+      "description": "Furniture Repair, Refinishing, Upholstery",
+      "category": "home",
+      "subcategory": "furniture_repair",
+      "group": "home_services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7692": {
+      "code": "7692",
+      "description": "Welding Repair",
+      "category": "business",
+      "subcategory": "welding",
+      "group": "services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7699": {
+      "code": "7699",
+      "description": "Miscellaneous Repair Shops",
+      "category": "home",
+      "subcategory": "repair",
+      "group": "services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7832": {
+      "code": "7832",
+      "description": "Motion Picture Theaters",
+      "category": "entertainment",
+      "subcategory": "movies",
+      "group": "entertainment",
+      "defaultDirection": "expense",
+      "keywords": [
+        "cinema",
+        "cine",
+        "cinema",
+        "peliculas",
+        "movie theater"
+      ]
+    },
+    "7841": {
+      "code": "7841",
+      "description": "Video Tape Rental Stores",
+      "category": "entertainment",
+      "subcategory": "video_rental",
+      "group": "entertainment",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7911": {
+      "code": "7911",
+      "description": "Dance Halls, Studios, and Schools",
+      "category": "entertainment",
+      "subcategory": "dance",
+      "group": "entertainment",
+      "defaultDirection": "expense",
+      "keywords": [
+        "dance",
+        "baile"
+      ]
+    },
+    "7922": {
+      "code": "7922",
+      "description": "Theatrical Producers and Ticket Agencies",
+      "category": "entertainment",
+      "subcategory": "tickets",
+      "group": "entertainment",
+      "defaultDirection": "expense",
+      "keywords": [
+        "theater",
+        "teatro",
+        "boletos",
+        "ingressos",
+        "tickets"
+      ]
+    },
+    "7929": {
+      "code": "7929",
+      "description": "Bands, Orchestras, Entertainers",
+      "category": "entertainment",
+      "subcategory": "live_entertainment",
+      "group": "entertainment",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7932": {
+      "code": "7932",
+      "description": "Billiard and Pool Establishments",
+      "category": "entertainment",
+      "subcategory": "games",
+      "group": "entertainment",
+      "defaultDirection": "expense",
+      "keywords": [
+        "billiards",
+        "billar"
+      ]
+    },
+    "7933": {
+      "code": "7933",
+      "description": "Bowling Alleys",
+      "category": "entertainment",
+      "subcategory": "bowling",
+      "group": "entertainment",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7941": {
+      "code": "7941",
+      "description": "Commercial Sports, Professional Sports Clubs, Athletic Fields",
+      "category": "entertainment",
+      "subcategory": "sports_events",
+      "group": "entertainment",
+      "defaultDirection": "expense",
+      "keywords": [
+        "sports club",
+        "club deportivo",
+        "futebol",
+        "futbol"
+      ]
+    },
+    "7991": {
+      "code": "7991",
+      "description": "Tourist Attractions and Exhibits",
+      "category": "entertainment",
+      "subcategory": "attractions",
+      "group": "entertainment",
+      "defaultDirection": "expense",
+      "keywords": [
+        "tourist attraction",
+        "atraccion turistica",
+        "museo",
+        "museu"
+      ]
+    },
+    "7992": {
+      "code": "7992",
+      "description": "Public Golf Courses",
+      "category": "entertainment",
+      "subcategory": "golf",
+      "group": "entertainment",
+      "defaultDirection": "expense",
+      "keywords": [
+        "golf"
+      ]
+    },
+    "7993": {
+      "code": "7993",
+      "description": "Video Amusement Game Supplies",
+      "category": "entertainment",
+      "subcategory": "arcade",
+      "group": "entertainment",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7994": {
+      "code": "7994",
+      "description": "Video Game Arcades",
+      "category": "entertainment",
+      "subcategory": "arcade",
+      "group": "entertainment",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7995": {
+      "code": "7995",
+      "description": "Betting, Casino Gambling",
+      "category": "entertainment",
+      "subcategory": "gambling",
+      "group": "entertainment",
+      "defaultDirection": "expense",
+      "keywords": [
+        "betting",
+        "lottery",
+        "apuestas",
+        "loteria",
+        "banca",
+        "apostas",
+        "casino"
+      ]
+    },
+    "7996": {
+      "code": "7996",
+      "description": "Amusement Parks, Carnivals, Circuses",
+      "category": "entertainment",
+      "subcategory": "amusement_park",
+      "group": "entertainment",
+      "defaultDirection": "expense",
+      "keywords": [
+        "amusement park",
+        "parque de diversiones",
+        "parque tematico",
+        "parque de diversoes"
+      ]
+    },
+    "7997": {
+      "code": "7997",
+      "description": "Clubs - Country, Membership",
+      "category": "subscriptions",
+      "subcategory": "club_membership",
+      "group": "entertainment",
+      "defaultDirection": "expense",
+      "keywords": [
+        "gym",
+        "gimnasio",
+        "academia",
+        "club deportivo",
+        "fitness"
+      ]
+    },
+    "7998": {
+      "code": "7998",
+      "description": "Aquariums, Seaquariums, Dolphinariums",
+      "category": "entertainment",
+      "subcategory": "aquarium",
+      "group": "entertainment",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7999": {
+      "code": "7999",
+      "description": "Recreation Services, Not Elsewhere Classified",
+      "category": "entertainment",
+      "subcategory": "recreation",
+      "group": "entertainment",
+      "defaultDirection": "expense",
+      "keywords": [
+        "recreation",
+        "recreacion",
+        "recreacao"
+      ]
+    },
+    "8011": {
+      "code": "8011",
+      "description": "Doctors and Physicians",
+      "category": "health",
+      "subcategory": "doctor",
+      "group": "health",
+      "defaultDirection": "expense",
+      "keywords": [
+        "doctor",
+        "medico",
+        "consultorio",
+        "consulta medica"
+      ]
+    },
+    "8021": {
+      "code": "8021",
+      "description": "Dentists and Orthodontists",
+      "category": "health",
+      "subcategory": "dentist",
+      "group": "health",
+      "defaultDirection": "expense",
+      "keywords": [
+        "dentist",
+        "dentista",
+        "odontologia",
+        "clinica dental"
+      ]
+    },
+    "8031": {
+      "code": "8031",
+      "description": "Osteopathic Physicians",
+      "category": "health",
+      "subcategory": "doctor",
+      "group": "health",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "8041": {
+      "code": "8041",
+      "description": "Chiropractors",
+      "category": "health",
+      "subcategory": "chiropractor",
+      "group": "health",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "8042": {
+      "code": "8042",
+      "description": "Optometrists and Ophthalmologists",
+      "category": "health",
+      "subcategory": "vision",
+      "group": "health",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "8043": {
+      "code": "8043",
+      "description": "Opticians, Optical Goods, and Eyeglasses",
+      "category": "health",
+      "subcategory": "vision",
+      "group": "health",
+      "defaultDirection": "expense",
+      "keywords": [
+        "optician",
+        "optica",
+        "otica",
+        "lentes",
+        "oculos"
+      ]
+    },
+    "8049": {
+      "code": "8049",
+      "description": "Podiatrists and Chiropodists",
+      "category": "health",
+      "subcategory": "doctor",
+      "group": "health",
+      "defaultDirection": "expense",
+      "keywords": [
+        "chiropractor",
+        "podiatry",
+        "quiropractico"
+      ]
+    },
+    "8050": {
+      "code": "8050",
+      "description": "Nursing and Personal Care Facilities",
+      "category": "health",
+      "subcategory": "nursing_care",
+      "group": "health",
+      "defaultDirection": "expense",
+      "keywords": [
+        "nursing care",
+        "cuidados",
+        "enfermeria"
+      ]
+    },
+    "8062": {
+      "code": "8062",
+      "description": "Hospitals",
+      "category": "health",
+      "subcategory": "hospital",
+      "group": "health",
+      "defaultDirection": "expense",
+      "keywords": [
+        "hospital",
+        "clinica",
+        "centro medico",
+        "sanatorio"
+      ]
+    },
+    "8071": {
+      "code": "8071",
+      "description": "Medical and Dental Laboratories",
+      "category": "health",
+      "subcategory": "lab",
+      "group": "health",
+      "defaultDirection": "expense",
+      "keywords": [
+        "lab",
+        "laboratorio",
+        "laboratorio clinico",
+        "analisis clinicos",
+        "exames"
+      ]
+    },
+    "8099": {
+      "code": "8099",
+      "description": "Medical Services and Health Practitioners, Not Elsewhere Classified",
+      "category": "health",
+      "subcategory": "medical",
+      "group": "health",
+      "defaultDirection": "expense",
+      "keywords": [
+        "health services",
+        "servicios de salud",
+        "salud",
+        "saude"
+      ]
+    },
+    "8111": {
+      "code": "8111",
+      "description": "Legal Services and Attorneys",
+      "category": "professional_services",
+      "subcategory": "legal",
+      "group": "professional_services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "8211": {
+      "code": "8211",
+      "description": "Elementary and Secondary Schools",
+      "category": "education",
+      "subcategory": "school",
+      "group": "education",
+      "defaultDirection": "expense",
+      "keywords": [
+        "school",
+        "colegio",
+        "escuela",
+        "escola",
+        "colegiatura"
+      ]
+    },
+    "8220": {
+      "code": "8220",
+      "description": "Colleges, Universities, Professional Schools, Junior Colleges",
+      "category": "education",
+      "subcategory": "college",
+      "group": "education",
+      "defaultDirection": "expense",
+      "keywords": [
+        "university",
+        "universidad",
+        "universidade",
+        "faculdade",
+        "matricula",
+        "mensalidade"
+      ]
+    },
+    "8241": {
+      "code": "8241",
+      "description": "Correspondence Schools",
+      "category": "education",
+      "subcategory": "online_school",
+      "group": "education",
+      "defaultDirection": "expense",
+      "keywords": [
+        "correspondence school",
+        "educacion a distancia"
+      ]
+    },
+    "8244": {
+      "code": "8244",
+      "description": "Business and Secretarial Schools",
+      "category": "education",
+      "subcategory": "business_school",
+      "group": "education",
+      "defaultDirection": "expense",
+      "keywords": [
+        "business school",
+        "escuela de negocios"
+      ]
+    },
+    "8249": {
+      "code": "8249",
+      "description": "Vocational and Trade Schools",
+      "category": "education",
+      "subcategory": "trade_school",
+      "group": "education",
+      "defaultDirection": "expense",
+      "keywords": [
+        "vocational school",
+        "escuela tecnica",
+        "curso tecnico"
+      ]
+    },
+    "8299": {
+      "code": "8299",
+      "description": "Schools and Educational Services, Not Elsewhere Classified",
+      "category": "education",
+      "subcategory": "education",
+      "group": "education",
+      "defaultDirection": "expense",
+      "keywords": [
+        "education services",
+        "educacion",
+        "educacao",
+        "curso",
+        "capacitacion"
+      ]
+    },
+    "8351": {
+      "code": "8351",
+      "description": "Child Care Services",
+      "category": "family",
+      "subcategory": "childcare",
+      "group": "services",
+      "defaultDirection": "expense",
+      "keywords": [
+        "childcare",
+        "guarderia",
+        "creche",
+        "daycare",
+        "estancia infantil"
+      ]
+    },
+    "8398": {
+      "code": "8398",
+      "description": "Charitable and Social Service Organizations",
+      "category": "donations",
+      "subcategory": "charity",
+      "group": "donations",
+      "defaultDirection": "expense",
+      "keywords": [
+        "charity",
+        "donacion",
+        "doacao",
+        "fundacion",
+        "ong"
+      ]
+    },
+    "8641": {
+      "code": "8641",
+      "description": "Civic, Social, and Fraternal Associations",
+      "category": "subscriptions",
+      "subcategory": "association_dues",
+      "group": "membership",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "8651": {
+      "code": "8651",
+      "description": "Political Organizations",
+      "category": "donations",
+      "subcategory": "political",
+      "group": "donations",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "8661": {
+      "code": "8661",
+      "description": "Religious Organizations",
+      "category": "donations",
+      "subcategory": "religious",
+      "group": "donations",
+      "defaultDirection": "expense",
+      "keywords": [
+        "religious org",
+        "iglesia",
+        "igreja",
+        "diezmo",
+        "dizimo",
+        "parroquia"
+      ]
+    },
+    "8675": {
+      "code": "8675",
+      "description": "Automobile Associations",
+      "category": "auto_transport",
+      "subcategory": "auto_membership",
+      "group": "membership",
+      "defaultDirection": "expense",
+      "keywords": [
+        "auto association",
+        "club automovilistico"
+      ]
+    },
+    "8699": {
+      "code": "8699",
+      "description": "Membership Organizations, Not Elsewhere Classified",
+      "category": "subscriptions",
+      "subcategory": "membership",
+      "group": "membership",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "8734": {
+      "code": "8734",
+      "description": "Testing Laboratories",
+      "category": "health",
+      "subcategory": "testing_lab",
+      "group": "professional_services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "8911": {
+      "code": "8911",
+      "description": "Architectural, Engineering, and Surveying Services",
+      "category": "professional_services",
+      "subcategory": "architecture_engineering",
+      "group": "professional_services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "8931": {
+      "code": "8931",
+      "description": "Accounting, Auditing, and Bookkeeping Services",
+      "category": "professional_services",
+      "subcategory": "accounting",
+      "group": "professional_services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "8999": {
+      "code": "8999",
+      "description": "Professional Services, Not Elsewhere Classified",
+      "category": "professional_services",
+      "subcategory": "professional_services",
+      "group": "professional_services",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "9211": {
+      "code": "9211",
+      "description": "Court Costs, Alimony, Child Support",
+      "category": "government_taxes",
+      "subcategory": "court",
+      "group": "government",
+      "defaultDirection": "expense",
+      "keywords": [
+        "court costs",
+        "costas judiciales"
+      ]
+    },
+    "9222": {
+      "code": "9222",
+      "description": "Fines",
+      "category": "government_taxes",
+      "subcategory": "fines",
+      "group": "government",
+      "defaultDirection": "expense",
+      "keywords": [
+        "fines",
+        "multa",
+        "multas",
+        "infraccion"
+      ]
+    },
+    "9223": {
+      "code": "9223",
+      "description": "Bail and Bond Payments",
+      "category": "government_taxes",
+      "subcategory": "bail_bond",
+      "group": "government",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "9311": {
+      "code": "9311",
+      "description": "Tax Payments",
+      "category": "taxes",
+      "subcategory": "tax_payment",
+      "group": "government",
+      "defaultDirection": "expense",
+      "keywords": [
+        "tax payment",
+        "impuestos",
+        "impostos",
+        "dgii",
+        "sat",
+        "hacienda",
+        "receita federal",
+        "tributos"
+      ]
+    },
+    "9399": {
+      "code": "9399",
+      "description": "Government Services, Not Elsewhere Classified",
+      "category": "government_taxes",
+      "subcategory": "government_service",
+      "group": "government",
+      "defaultDirection": "expense",
+      "keywords": [
+        "government services",
+        "servicios gubernamentales",
+        "gobierno",
+        "governo",
+        "tramites"
+      ]
+    },
+    "9402": {
+      "code": "9402",
+      "description": "Postal Services - Government Only",
+      "category": "shipping",
+      "subcategory": "postal_service",
+      "group": "government",
+      "defaultDirection": "expense",
+      "keywords": [
+        "postal",
+        "correo",
+        "correos",
+        "correios",
+        "postage"
+      ]
+    },
+    "9405": {
+      "code": "9405",
+      "description": "Intra-Government Purchases",
+      "category": "government_taxes",
+      "subcategory": "government",
+      "group": "government",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3012": {
+      "code": "3012",
+      "description": "Qantas",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3015": {
+      "code": "3015",
+      "description": "Swiss International Air Lines",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3016": {
+      "code": "3016",
+      "description": "SAS Scandinavian Airlines",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3025": {
+      "code": "3025",
+      "description": "Air New Zealand",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3030": {
+      "code": "3030",
+      "description": "Aerolineas Argentinas",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3035": {
+      "code": "3035",
+      "description": "TAP Air Portugal",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3039": {
+      "code": "3039",
+      "description": "Avianca",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3042": {
+      "code": "3042",
+      "description": "Finnair",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3043": {
+      "code": "3043",
+      "description": "Aer Lingus",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3047": {
+      "code": "3047",
+      "description": "Turkish Airlines",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3050": {
+      "code": "3050",
+      "description": "Icelandair",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3051": {
+      "code": "3051",
+      "description": "Austrian Airlines",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3052": {
+      "code": "3052",
+      "description": "LATAM (LAN) Airlines",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3075": {
+      "code": "3075",
+      "description": "Singapore Airlines",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3076": {
+      "code": "3076",
+      "description": "Aeromexico",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3082": {
+      "code": "3082",
+      "description": "Korean Air",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3096": {
+      "code": "3096",
+      "description": "Iberia",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3136": {
+      "code": "3136",
+      "description": "Qatar Airways",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3144": {
+      "code": "3144",
+      "description": "Virgin Atlantic",
+      "category": "travel",
+      "subcategory": "airline",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3381": {
+      "code": "3381",
+      "description": "Europcar",
+      "category": "auto_transport",
+      "subcategory": "car_rental",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3387": {
+      "code": "3387",
+      "description": "Alamo Rent A Car",
+      "category": "auto_transport",
+      "subcategory": "car_rental",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3390": {
+      "code": "3390",
+      "description": "Dollar Rent A Car",
+      "category": "auto_transport",
+      "subcategory": "car_rental",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3393": {
+      "code": "3393",
+      "description": "National Car Rental",
+      "category": "auto_transport",
+      "subcategory": "car_rental",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3395": {
+      "code": "3395",
+      "description": "Thrifty Car Rental",
+      "category": "auto_transport",
+      "subcategory": "car_rental",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3510": {
+      "code": "3510",
+      "description": "Days Inn",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3512": {
+      "code": "3512",
+      "description": "InterContinental Hotels",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3516": {
+      "code": "3516",
+      "description": "La Quinta Inns",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3520": {
+      "code": "3520",
+      "description": "Le Meridien",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3543": {
+      "code": "3543",
+      "description": "Four Seasons Hotels",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3548": {
+      "code": "3548",
+      "description": "Hoteles Melia",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3577": {
+      "code": "3577",
+      "description": "Mandarin Oriental",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3590": {
+      "code": "3590",
+      "description": "Fairmont Hotels",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3615": {
+      "code": "3615",
+      "description": "Travelodge",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3637": {
+      "code": "3637",
+      "description": "Ramada Inns",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3638": {
+      "code": "3638",
+      "description": "Howard Johnson",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3641": {
+      "code": "3641",
+      "description": "Sofitel Hotels",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3649": {
+      "code": "3649",
+      "description": "Radisson Hotels",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3650": {
+      "code": "3650",
+      "description": "Red Roof Inns",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3654": {
+      "code": "3654",
+      "description": "Loews Hotels",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3665": {
+      "code": "3665",
+      "description": "Hampton Inns",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3700": {
+      "code": "3700",
+      "description": "Motel 6",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3710": {
+      "code": "3710",
+      "description": "The Ritz-Carlton",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3722": {
+      "code": "3722",
+      "description": "Wyndham Hotels and Resorts",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3742": {
+      "code": "3742",
+      "description": "Club Med",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "3750": {
+      "code": "3750",
+      "description": "Crowne Plaza Hotels",
+      "category": "travel",
+      "subcategory": "hotel",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "4723": {
+      "code": "4723",
+      "description": "Package Tour Operators",
+      "category": "travel",
+      "subcategory": "travel_agency",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "5262": {
+      "code": "5262",
+      "description": "Marketplaces (Online Marketplaces)",
+      "category": "shopping",
+      "subcategory": "online_marketplace",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "marketplace",
+        "mercado en linea",
+        "marketplace online"
+      ]
+    },
+    "5531": {
+      "code": "5531",
+      "description": "Auto and Home Supply Stores",
+      "category": "auto_transport",
+      "subcategory": "auto_parts",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": [
+        "auto supply",
+        "refacciones",
+        "autopecas",
+        "auto parts"
+      ]
+    },
+    "5552": {
+      "code": "5552",
+      "description": "Electric Vehicle Charging",
+      "category": "auto_transport",
+      "subcategory": "ev_charging",
+      "group": "auto",
+      "defaultDirection": "expense",
+      "keywords": [
+        "ev charging",
+        "supercharger",
+        "carga electrica",
+        "eletroposto",
+        "recarga electrica"
+      ]
+    },
+    "5963": {
+      "code": "5963",
+      "description": "Door-to-Door Sales",
+      "category": "shopping",
+      "subcategory": "direct_sales",
+      "group": "retail",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "6536": {
+      "code": "6536",
+      "description": "MoneySend Intracountry",
+      "category": "transfers",
+      "subcategory": "p2p",
+      "group": "financial",
+      "defaultDirection": "expense",
+      "keywords": [
+        "moneysend",
+        "transferencia",
+        "transferencia nacional"
+      ]
+    },
+    "6537": {
+      "code": "6537",
+      "description": "MoneySend Intercountry",
+      "category": "transfers",
+      "subcategory": "p2p",
+      "group": "financial",
+      "defaultDirection": "expense",
+      "keywords": [
+        "moneysend",
+        "transferencia internacional",
+        "remesa"
+      ]
+    },
+    "6538": {
+      "code": "6538",
+      "description": "MoneySend Funding",
+      "category": "transfers",
+      "subcategory": "wallet_funding",
+      "group": "financial",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "6540": {
+      "code": "6540",
+      "description": "POI Funding / Stored Value Load",
+      "category": "transfers",
+      "subcategory": "wallet_funding",
+      "group": "financial",
+      "defaultDirection": "expense",
+      "keywords": [
+        "recarga",
+        "stored value",
+        "wallet load",
+        "fondeo"
+      ]
+    },
+    "7012": {
+      "code": "7012",
+      "description": "Timeshares",
+      "category": "travel",
+      "subcategory": "timeshare",
+      "group": "travel",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7511": {
+      "code": "7511",
+      "description": "Truck Stops",
+      "category": "auto_transport",
+      "subcategory": "gas",
+      "group": "auto",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7800": {
+      "code": "7800",
+      "description": "Government-Owned Lottery (US)",
+      "category": "entertainment",
+      "subcategory": "lottery",
+      "group": "entertainment",
+      "defaultDirection": "expense",
+      "keywords": [
+        "lottery",
+        "loteria"
+      ]
+    },
+    "7801": {
+      "code": "7801",
+      "description": "Government-Licensed Online Casinos (US)",
+      "category": "entertainment",
+      "subcategory": "casino",
+      "group": "entertainment",
+      "defaultDirection": "expense",
+      "keywords": [
+        "casino",
+        "online casino"
+      ]
+    },
+    "7802": {
+      "code": "7802",
+      "description": "Government-Licensed Horse/Dog Racing (US)",
+      "category": "entertainment",
+      "subcategory": "betting",
+      "group": "entertainment",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "7829": {
+      "code": "7829",
+      "description": "Motion Picture Distribution",
+      "category": "entertainment",
+      "subcategory": "movies",
+      "group": "entertainment",
+      "defaultDirection": "expense",
+      "keywords": []
+    },
+    "9406": {
+      "code": "9406",
+      "description": "Government-Owned Lottery (Non-US)",
+      "category": "entertainment",
+      "subcategory": "lottery",
+      "group": "entertainment",
+      "defaultDirection": "expense",
+      "keywords": [
+        "loteria",
+        "loterias",
+        "loteria nacional",
+        "banca"
+      ]
+    },
+    "9950": {
+      "code": "9950",
+      "description": "Intra-Company Purchases",
+      "category": "business",
+      "subcategory": "intra_company",
+      "group": "business",
+      "defaultDirection": "expense",
+      "keywords": []
+    }
+  }
+}

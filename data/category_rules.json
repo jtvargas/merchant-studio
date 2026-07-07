@@ -1,0 +1,2741 @@
+{
+  "schemaVersion": "1.1.0",
+  "generatedAt": "2026-07-06",
+  "name": "Starter category and disambiguation rules for transaction enrichment",
+  "description": "Rules are intended to run after descriptor cleaning and before/alongside MCC fallback. Higher priority wins. User-created rules should use priority above 2000.",
+  "evaluationGuidance": {
+    "priority": "Sort descending. First high-confidence exact merchant rules should beat generic category rules.",
+    "containsAny": "Case-insensitive substring match after normalization.",
+    "containsAll": "All listed phrases must be present.",
+    "notContainsAny": "Skip rule if any listed phrase is present.",
+    "regexAny": "Use cautiously; regex strings are JSON escaped and should be compiled case-insensitively.",
+    "amountSign": "Optional hint: debit, credit, or either. Use it to distinguish income/refunds/ATM withdrawals.",
+    "result": "May set merchantId, displayName, category, subcategory, processor, or tags."
+  },
+  "rules": [
+    {
+      "id": "amazon_marketplace_purchase",
+      "priority": 1000,
+      "name": "Amazon Marketplace purchase",
+      "match": {
+        "containsAny": [
+          "amazon mktpl",
+          "amzn mktpl",
+          "amzn mktp",
+          "amzn.com/bill",
+          "amzn com bill"
+        ],
+        "notContainsAny": [
+          "aws",
+          "amazon web services",
+          "audible"
+        ]
+      },
+      "result": {
+        "merchantId": "amazon",
+        "displayName": "Amazon Purchase",
+        "category": "shopping",
+        "subcategory": "online_marketplace"
+      },
+      "confidence": 0.97,
+      "notes": null
+    },
+    {
+      "id": "payroll_income",
+      "priority": 1000,
+      "name": "Payroll/direct deposit",
+      "match": {
+        "containsAny": [
+          "payroll",
+          "direct deposit",
+          "salary",
+          "paycheck",
+          "pay cheque"
+        ],
+        "amountSign": "credit"
+      },
+      "result": {
+        "category": "income",
+        "subcategory": "payroll"
+      },
+      "confidence": 0.88,
+      "notes": null
+    },
+    {
+      "id": "amazon_prime_subscription",
+      "priority": 995,
+      "name": "Amazon Prime subscription",
+      "match": {
+        "containsAny": [
+          "amazon prime",
+          "amzn prime",
+          "prime membership",
+          "prime video channels"
+        ]
+      },
+      "result": {
+        "merchantId": "amazon_prime",
+        "displayName": "Amazon Prime",
+        "category": "subscriptions",
+        "subcategory": "membership"
+      },
+      "confidence": 0.95,
+      "notes": null
+    },
+    {
+      "id": "aws_cloud",
+      "priority": 990,
+      "name": "AWS cloud service",
+      "match": {
+        "containsAny": [
+          "amazon web services",
+          "aws marketplace",
+          "aws support",
+          "aws"
+        ],
+        "notContainsAny": [
+          "amazon mktpl",
+          "amazon prime"
+        ]
+      },
+      "result": {
+        "merchantId": "aws",
+        "displayName": "AWS",
+        "category": "software",
+        "subcategory": "cloud_services"
+      },
+      "confidence": 0.94,
+      "notes": null
+    },
+    {
+      "id": "oxxo_gas_station",
+      "priority": 988,
+      "name": "OXXO Gas fuel purchase",
+      "match": {
+        "containsAny": [
+          "oxxo gas"
+        ]
+      },
+      "result": {
+        "merchantId": "oxxo_gas",
+        "displayName": "OXXO Gas",
+        "category": "auto_transport",
+        "subcategory": "gas"
+      },
+      "confidence": 0.95,
+      "notes": null
+    },
+    {
+      "id": "spin_by_oxxo_wallet",
+      "priority": 986,
+      "name": "Spin by OXXO wallet",
+      "match": {
+        "containsAny": [
+          "spin by oxxo",
+          "oxxo spin",
+          "spin premia"
+        ]
+      },
+      "result": {
+        "merchantId": "spin_by_oxxo",
+        "displayName": "Spin by OXXO",
+        "category": "financial",
+        "subcategory": "digital_wallet"
+      },
+      "confidence": 0.93,
+      "notes": null
+    },
+    {
+      "id": "uber_eats_delivery",
+      "priority": 985,
+      "name": "Uber Eats delivery",
+      "match": {
+        "containsAny": [
+          "uber eats",
+          "ubereats",
+          "eats trip",
+          "postmates"
+        ]
+      },
+      "result": {
+        "merchantId": "uber_eats",
+        "displayName": "Uber Eats",
+        "category": "food_dining",
+        "subcategory": "food_delivery"
+      },
+      "confidence": 0.96,
+      "notes": null
+    },
+    {
+      "id": "oxxo_pay_payment",
+      "priority": 984,
+      "name": "OXXO Pay bill/e-commerce payment",
+      "match": {
+        "containsAny": [
+          "oxxo pay"
+        ]
+      },
+      "result": {
+        "displayName": "OXXO Pay",
+        "category": "transfers",
+        "subcategory": "cash_payment_network",
+        "processor": "oxxo_pay"
+      },
+      "confidence": 0.85,
+      "notes": null
+    },
+    {
+      "id": "oxxo_store_purchase",
+      "priority": 982,
+      "name": "OXXO convenience store",
+      "match": {
+        "containsAny": [
+          "oxxo"
+        ],
+        "notContainsAny": [
+          "oxxo gas",
+          "oxxo spin",
+          "spin by oxxo",
+          "oxxo pay"
+        ]
+      },
+      "result": {
+        "merchantId": "oxxo",
+        "displayName": "OXXO",
+        "category": "groceries",
+        "subcategory": "convenience"
+      },
+      "confidence": 0.93,
+      "notes": null
+    },
+    {
+      "id": "uber_ride",
+      "priority": 980,
+      "name": "Uber ride",
+      "match": {
+        "containsAny": [
+          "uber trip",
+          "uber *trip",
+          "uber ride",
+          "help.uber.com"
+        ],
+        "notContainsAny": [
+          "uber eats",
+          "ubereats"
+        ]
+      },
+      "result": {
+        "merchantId": "uber",
+        "displayName": "Uber Ride",
+        "category": "auto_transport",
+        "subcategory": "rideshare"
+      },
+      "confidence": 0.94,
+      "notes": null
+    },
+    {
+      "id": "mercado_libre_purchase",
+      "priority": 980,
+      "name": "Mercado Libre marketplace purchase",
+      "match": {
+        "containsAny": [
+          "mercado libre",
+          "mercadolibre",
+          "mercado livre",
+          "mercadolivre",
+          "mercadoli"
+        ]
+      },
+      "result": {
+        "merchantId": "mercado_libre",
+        "displayName": "Mercado Libre",
+        "category": "shopping",
+        "subcategory": "online_marketplace"
+      },
+      "confidence": 0.95,
+      "notes": null
+    },
+    {
+      "id": "mercado_pago_payment",
+      "priority": 978,
+      "name": "Mercado Pago wallet/processor",
+      "match": {
+        "containsAny": [
+          "mercado pago",
+          "mercadopago"
+        ],
+        "notContainsAny": [
+          "mercado libre",
+          "mercadolibre",
+          "mercado livre"
+        ]
+      },
+      "result": {
+        "merchantId": "mercado_pago",
+        "displayName": "Mercado Pago",
+        "category": "financial",
+        "subcategory": "digital_wallet",
+        "processor": "mercadopago"
+      },
+      "confidence": 0.9,
+      "notes": null
+    },
+    {
+      "id": "didi_food_delivery",
+      "priority": 976,
+      "name": "Didi Food delivery",
+      "match": {
+        "containsAny": [
+          "didi food",
+          "didifood"
+        ]
+      },
+      "result": {
+        "merchantId": "didi_food",
+        "displayName": "Didi Food",
+        "category": "food_dining",
+        "subcategory": "food_delivery"
+      },
+      "confidence": 0.95,
+      "notes": null
+    },
+    {
+      "id": "google_youtube",
+      "priority": 975,
+      "name": "YouTube subscription",
+      "match": {
+        "containsAny": [
+          "youtube premium",
+          "youtube tv",
+          "youtube music",
+          "google youtube"
+        ]
+      },
+      "result": {
+        "merchantId": "youtube",
+        "displayName": "YouTube Subscription",
+        "category": "subscriptions",
+        "subcategory": "streaming_video"
+      },
+      "confidence": 0.94,
+      "notes": null
+    },
+    {
+      "id": "didi_ride",
+      "priority": 974,
+      "name": "Didi rideshare",
+      "match": {
+        "containsAny": [
+          "didi"
+        ],
+        "notContainsAny": [
+          "didi food",
+          "didifood"
+        ]
+      },
+      "result": {
+        "merchantId": "didi",
+        "displayName": "Didi",
+        "category": "auto_transport",
+        "subcategory": "rideshare"
+      },
+      "confidence": 0.88,
+      "notes": null
+    },
+    {
+      "id": "rappi_delivery",
+      "priority": 972,
+      "name": "Rappi delivery",
+      "match": {
+        "containsAny": [
+          "rappi"
+        ]
+      },
+      "result": {
+        "merchantId": "rappi",
+        "displayName": "Rappi",
+        "category": "food_dining",
+        "subcategory": "food_delivery"
+      },
+      "confidence": 0.93,
+      "notes": null
+    },
+    {
+      "id": "google_cloud",
+      "priority": 970,
+      "name": "Google Cloud",
+      "match": {
+        "containsAny": [
+          "google cloud",
+          "gcp",
+          "google cloud platform"
+        ]
+      },
+      "result": {
+        "merchantId": "google_cloud",
+        "displayName": "Google Cloud",
+        "category": "software",
+        "subcategory": "cloud_services"
+      },
+      "confidence": 0.93,
+      "notes": null
+    },
+    {
+      "id": "ifood_delivery",
+      "priority": 970,
+      "name": "iFood delivery (incl. IFD* prefix)",
+      "match": {
+        "containsAny": [
+          "ifood"
+        ],
+        "regexAny": [
+          "\\bifd\\s*\\*"
+        ]
+      },
+      "result": {
+        "merchantId": "ifood",
+        "displayName": "iFood",
+        "category": "food_dining",
+        "subcategory": "food_delivery"
+      },
+      "confidence": 0.95,
+      "notes": null
+    },
+    {
+      "id": "glovo_delivery",
+      "priority": 968,
+      "name": "Glovo delivery",
+      "match": {
+        "containsAny": [
+          "glovo",
+          "glovoapp"
+        ]
+      },
+      "result": {
+        "merchantId": "glovo",
+        "displayName": "Glovo",
+        "category": "food_dining",
+        "subcategory": "food_delivery"
+      },
+      "confidence": 0.95,
+      "notes": null
+    },
+    {
+      "id": "carrefour_fuel",
+      "priority": 966,
+      "name": "Carrefour gas station",
+      "match": {
+        "containsAny": [
+          "posto carrefour",
+          "carrefour posto",
+          "gasolinera carrefour"
+        ]
+      },
+      "result": {
+        "displayName": "Carrefour Gasolinera",
+        "category": "auto_transport",
+        "subcategory": "gas"
+      },
+      "confidence": 0.9,
+      "notes": null
+    },
+    {
+      "id": "apple_bill",
+      "priority": 965,
+      "name": "Apple digital bill",
+      "match": {
+        "containsAny": [
+          "apple.com/bill",
+          "apple com bill",
+          "apl*apple",
+          "itunes.com/bill",
+          "app store"
+        ]
+      },
+      "result": {
+        "merchantId": "apple_store",
+        "displayName": "Apple Purchase",
+        "category": "software",
+        "subcategory": "digital_services"
+      },
+      "confidence": 0.94,
+      "notes": null
+    },
+    {
+      "id": "uber_eats_es_pt",
+      "priority": 964,
+      "name": "Uber Eats Spanish/Portuguese variants",
+      "match": {
+        "containsAny": [
+          "uber eats pedido",
+          "ubr pending eats",
+          "uber *eats pending"
+        ]
+      },
+      "result": {
+        "merchantId": "uber_eats",
+        "displayName": "Uber Eats",
+        "category": "food_dining",
+        "subcategory": "food_delivery"
+      },
+      "confidence": 0.9,
+      "notes": null
+    },
+    {
+      "id": "disney_parks_vs_plus",
+      "priority": 962,
+      "name": "Disney parks vs Disney+ disambiguation",
+      "match": {
+        "containsAny": [
+          "walt disney world",
+          "disney world",
+          "disney parks",
+          "disneyland"
+        ],
+        "notContainsAny": [
+          "disney plus",
+          "disney+"
+        ]
+      },
+      "result": {
+        "merchantId": "disney_world",
+        "displayName": "Disney Parks",
+        "category": "entertainment",
+        "subcategory": "theme_park"
+      },
+      "confidence": 0.92,
+      "notes": null
+    },
+    {
+      "id": "br_installment_tag",
+      "priority": 946,
+      "name": "Brazilian installment marker (PARC n/m)",
+      "match": {
+        "regexAny": [
+          "\\bparc\\s*\\d{1,2}\\s*/\\s*\\d{1,2}\\b",
+          "\\bparcela\\s*\\d{1,2}\\b"
+        ]
+      },
+      "result": {
+        "tags": [
+          "installment"
+        ]
+      },
+      "confidence": 0.9,
+      "notes": "Annotation-only rule: apply the tag and continue matching for merchant/category."
+    },
+    {
+      "id": "mx_msi_tag",
+      "priority": 944,
+      "name": "Mexican months-without-interest marker (MSI)",
+      "match": {
+        "regexAny": [
+          "\\b\\d{1,2}\\s*msi\\b"
+        ],
+        "containsAny": [
+          "meses sin intereses"
+        ]
+      },
+      "result": {
+        "tags": [
+          "installment"
+        ]
+      },
+      "confidence": 0.9,
+      "notes": "Annotation-only rule: apply the tag and continue matching for merchant/category."
+    },
+    {
+      "id": "br_iof_fee",
+      "priority": 942,
+      "name": "Brazilian IOF tax on FX transactions",
+      "match": {
+        "regexAny": [
+          "\\biof\\b"
+        ]
+      },
+      "result": {
+        "displayName": "IOF (imposto)",
+        "category": "fees_charges",
+        "subcategory": "foreign_transaction_fee"
+      },
+      "confidence": 0.88,
+      "notes": null
+    },
+    {
+      "id": "foreign_transaction_fee_intl",
+      "priority": 940,
+      "name": "Foreign transaction fee (multi-language)",
+      "match": {
+        "containsAny": [
+          "foreign transaction fee",
+          "intl transaction fee",
+          "international service assessment",
+          "comision por transaccion extranjera",
+          "comision internacional"
+        ]
+      },
+      "result": {
+        "displayName": "Foreign Transaction Fee",
+        "category": "fees_charges",
+        "subcategory": "foreign_transaction_fee"
+      },
+      "confidence": 0.92,
+      "notes": null
+    },
+    {
+      "id": "br_bank_fees",
+      "priority": 938,
+      "name": "Brazilian bank fees (anuidade/tarifa)",
+      "match": {
+        "containsAny": [
+          "anuidade",
+          "tarifa bancaria",
+          "manutencao de conta",
+          "tarifa pacote"
+        ]
+      },
+      "result": {
+        "displayName": "Tarifa bancaria",
+        "category": "fees_charges",
+        "subcategory": "bank_fee"
+      },
+      "confidence": 0.88,
+      "notes": null
+    },
+    {
+      "id": "es_mx_bank_fees",
+      "priority": 936,
+      "name": "Spanish-language bank fees (comision)",
+      "match": {
+        "containsAny": [
+          "comision bancaria",
+          "comision por manejo de cuenta",
+          "comision manejo cuenta",
+          "manejo de cuenta",
+          "cargo por servicio bancario",
+          "comision membresia"
+        ]
+      },
+      "result": {
+        "displayName": "Comision bancaria",
+        "category": "fees_charges",
+        "subcategory": "bank_fee"
+      },
+      "confidence": 0.85,
+      "notes": null
+    },
+    {
+      "id": "es_pt_refund",
+      "priority": 934,
+      "name": "Spanish/Portuguese refund credit",
+      "match": {
+        "containsAny": [
+          "reembolso",
+          "estorno",
+          "devolucion",
+          "devolucao"
+        ],
+        "amountSign": "credit"
+      },
+      "result": {
+        "displayName": "Refund",
+        "category": "refunds",
+        "subcategory": "refund"
+      },
+      "confidence": 0.85,
+      "notes": null
+    },
+    {
+      "id": "food_delivery_words",
+      "priority": 930,
+      "name": "Food delivery",
+      "match": {
+        "containsAny": [
+          "doordash",
+          "door dash",
+          "grubhub",
+          "grub hub",
+          "seamless",
+          "uber eats",
+          "ubereats",
+          "postmates",
+          "pedidosya",
+          "pedidos ya"
+        ]
+      },
+      "result": {
+        "category": "food_dining",
+        "subcategory": "food_delivery"
+      },
+      "confidence": 0.93,
+      "notes": null
+    },
+    {
+      "id": "interest_income",
+      "priority": 920,
+      "name": "Interest income",
+      "match": {
+        "containsAny": [
+          "interest paid",
+          "interest credit",
+          "dividend",
+          "apy interest"
+        ],
+        "amountSign": "credit"
+      },
+      "result": {
+        "category": "income",
+        "subcategory": "interest"
+      },
+      "confidence": 0.84,
+      "notes": null
+    },
+    {
+      "id": "toast_processor_restaurant",
+      "priority": 910,
+      "name": "Toast restaurant processor",
+      "match": {
+        "regexAny": [
+          "\\btst\\s*\\*|\\btoasttab\\b|\\btoast tab\\b"
+        ]
+      },
+      "result": {
+        "displayName": "Restaurant Purchase",
+        "category": "food_dining",
+        "subcategory": "restaurant_processor",
+        "processor": "toast"
+      },
+      "confidence": 0.72,
+      "notes": null
+    },
+    {
+      "id": "square_processor_restaurant",
+      "priority": 900,
+      "name": "Square merchant food hint",
+      "match": {
+        "regexAny": [
+          "\\bsq\\s*\\*\\s*(coffee|cafe|pizza|taco|burger|restaurant|bakery|kitchen|grill|bar)"
+        ]
+      },
+      "result": {
+        "displayName": "Square Merchant",
+        "category": "food_dining",
+        "subcategory": "restaurant_processor",
+        "processor": "square"
+      },
+      "confidence": 0.76,
+      "notes": null
+    },
+    {
+      "id": "atm_cash_withdrawal",
+      "priority": 880,
+      "name": "ATM withdrawal",
+      "match": {
+        "containsAny": [
+          "atm withdrawal",
+          "atm cash",
+          "cash withdrawal"
+        ],
+        "regexAny": [
+          "\\batm\\b"
+        ],
+        "amountSign": "debit"
+      },
+      "result": {
+        "category": "cash_atm",
+        "subcategory": "atm_withdrawal"
+      },
+      "confidence": 0.86,
+      "notes": null
+    },
+    {
+      "id": "pix_transfer",
+      "priority": 878,
+      "name": "Brazilian PIX transfer",
+      "match": {
+        "containsAny": [
+          "pix transf",
+          "pix enviado",
+          "pix recebido",
+          "pix qr",
+          "pagamento pix",
+          "transferencia pix",
+          "pix credito",
+          "pix debito"
+        ],
+        "regexAny": [
+          "\\bpix\\b"
+        ]
+      },
+      "result": {
+        "displayName": "PIX Transfer",
+        "category": "transfers",
+        "subcategory": "p2p"
+      },
+      "confidence": 0.9,
+      "notes": null
+    },
+    {
+      "id": "spei_transfer",
+      "priority": 876,
+      "name": "Mexican SPEI transfer",
+      "match": {
+        "containsAny": [
+          "spei enviado",
+          "spei recibido",
+          "transferencia spei"
+        ],
+        "regexAny": [
+          "\\bspei\\b"
+        ]
+      },
+      "result": {
+        "displayName": "SPEI Transfer",
+        "category": "transfers",
+        "subcategory": "bank_transfer"
+      },
+      "confidence": 0.92,
+      "notes": null
+    },
+    {
+      "id": "zelle_transfer",
+      "priority": 875,
+      "name": "Zelle transfer",
+      "match": {
+        "containsAny": [
+          "zelle"
+        ]
+      },
+      "result": {
+        "merchantId": "zelle",
+        "category": "transfers",
+        "subcategory": "peer_to_peer"
+      },
+      "confidence": 0.88,
+      "notes": null
+    },
+    {
+      "id": "bizum_transfer",
+      "priority": 874,
+      "name": "Spanish Bizum P2P transfer",
+      "match": {
+        "containsAny": [
+          "bizum"
+        ]
+      },
+      "result": {
+        "merchantId": "bizum",
+        "displayName": "Bizum",
+        "category": "transfers",
+        "subcategory": "p2p"
+      },
+      "confidence": 0.95,
+      "notes": null
+    },
+    {
+      "id": "boleto_payment",
+      "priority": 872,
+      "name": "Brazilian boleto payment",
+      "match": {
+        "containsAny": [
+          "pagamento boleto",
+          "pagamento de boleto",
+          "boleto bancario",
+          "pagto boleto"
+        ]
+      },
+      "result": {
+        "displayName": "Boleto",
+        "category": "bills_utilities",
+        "subcategory": "bill_payment"
+      },
+      "confidence": 0.8,
+      "notes": null
+    },
+    {
+      "id": "venmo_transfer",
+      "priority": 870,
+      "name": "Venmo transfer",
+      "match": {
+        "containsAny": [
+          "venmo"
+        ]
+      },
+      "result": {
+        "merchantId": "venmo",
+        "category": "transfers",
+        "subcategory": "peer_to_peer"
+      },
+      "confidence": 0.88,
+      "notes": null
+    },
+    {
+      "id": "ted_doc_transfer",
+      "priority": 870,
+      "name": "Brazilian TED/DOC bank transfer",
+      "match": {
+        "containsAny": [
+          "ted transf",
+          "doc transf",
+          "transferencia ted",
+          "ted enviada",
+          "ted recebida"
+        ]
+      },
+      "result": {
+        "displayName": "TED/DOC Transfer",
+        "category": "transfers",
+        "subcategory": "bank_transfer"
+      },
+      "confidence": 0.88,
+      "notes": null
+    },
+    {
+      "id": "es_transferencia_bancaria",
+      "priority": 868,
+      "name": "Spanish interbank transfer",
+      "match": {
+        "containsAny": [
+          "transferencia interbancaria",
+          "transferencia bancaria",
+          "transf interbancaria",
+          "transferencia a terceros",
+          "transferencia recibida",
+          "transferencia enviada"
+        ]
+      },
+      "result": {
+        "displayName": "Transferencia",
+        "category": "transfers",
+        "subcategory": "bank_transfer"
+      },
+      "confidence": 0.85,
+      "notes": null
+    },
+    {
+      "id": "br_saque_atm",
+      "priority": 866,
+      "name": "Brazilian ATM withdrawal (saque)",
+      "match": {
+        "containsAny": [
+          "saque",
+          "banco24horas",
+          "saque 24h",
+          "saque eletronico"
+        ],
+        "amountSign": "debit"
+      },
+      "result": {
+        "displayName": "Saque ATM",
+        "category": "cash_atm",
+        "subcategory": "atm_withdrawal"
+      },
+      "confidence": 0.9,
+      "notes": null
+    },
+    {
+      "id": "cash_app_transfer",
+      "priority": 865,
+      "name": "Cash App transfer",
+      "match": {
+        "containsAny": [
+          "cash app",
+          "cashapp",
+          "sq cash",
+          "square cash"
+        ]
+      },
+      "result": {
+        "merchantId": "cash_app",
+        "category": "transfers",
+        "subcategory": "peer_to_peer"
+      },
+      "confidence": 0.88,
+      "notes": null
+    },
+    {
+      "id": "es_retiro_atm",
+      "priority": 864,
+      "name": "Spanish ATM withdrawal (retiro/disposicion)",
+      "match": {
+        "containsAny": [
+          "retiro cajero",
+          "retiro atm",
+          "retiro en efectivo",
+          "disposicion de efectivo",
+          "cajero automatico",
+          "retiro sin tarjeta"
+        ],
+        "amountSign": "debit"
+      },
+      "result": {
+        "displayName": "Retiro de efectivo",
+        "category": "cash_atm",
+        "subcategory": "atm_withdrawal"
+      },
+      "confidence": 0.9,
+      "notes": null
+    },
+    {
+      "id": "es_recarga_topup",
+      "priority": 862,
+      "name": "Mobile top-up (recarga / tiempo aire)",
+      "match": {
+        "containsAny": [
+          "recarga telcel",
+          "recarga claro",
+          "recarga viva",
+          "recarga altice",
+          "recarga movil",
+          "recarga celular",
+          "tiempo aire",
+          "recarga tim",
+          "recarga vivo",
+          "recarga digital"
+        ]
+      },
+      "result": {
+        "displayName": "Recarga movil",
+        "category": "bills_utilities",
+        "subcategory": "mobile"
+      },
+      "confidence": 0.88,
+      "notes": null
+    },
+    {
+      "id": "brokerage_words",
+      "priority": 860,
+      "name": "Brokerage/investment",
+      "match": {
+        "containsAny": [
+          "fidelity",
+          "vanguard",
+          "robinhood",
+          "schwab",
+          "brokerage",
+          "coinbase",
+          "acorns"
+        ]
+      },
+      "result": {
+        "category": "investments",
+        "subcategory": "brokerage"
+      },
+      "confidence": 0.82,
+      "notes": null
+    },
+    {
+      "id": "es_remesa",
+      "priority": 860,
+      "name": "Remittance keywords (Spanish)",
+      "match": {
+        "containsAny": [
+          "remesa",
+          "remesas",
+          "envio de dinero",
+          "giro internacional"
+        ]
+      },
+      "result": {
+        "displayName": "Remesa",
+        "category": "transfers",
+        "subcategory": "remittance"
+      },
+      "confidence": 0.82,
+      "notes": null
+    },
+    {
+      "id": "oxxo_deposit_cash",
+      "priority": 858,
+      "name": "Cash deposit via convenience network",
+      "match": {
+        "containsAny": [
+          "deposito oxxo",
+          "deposito en efectivo",
+          "deposito efectivo"
+        ]
+      },
+      "result": {
+        "displayName": "Deposito en efectivo",
+        "category": "transfers",
+        "subcategory": "cash_deposit",
+        "amountSign": null
+      },
+      "confidence": 0.8,
+      "notes": null
+    },
+    {
+      "id": "streaming_words",
+      "priority": 850,
+      "name": "Streaming service",
+      "match": {
+        "containsAny": [
+          "netflix",
+          "hulu",
+          "disney plus",
+          "disney+",
+          "hbo max",
+          "max.com",
+          "peacock",
+          "paramount plus",
+          "spotify",
+          "siriusxm",
+          "youtube premium"
+        ]
+      },
+      "result": {
+        "category": "subscriptions",
+        "subcategory": "streaming"
+      },
+      "confidence": 0.88,
+      "notes": null
+    },
+    {
+      "id": "gas_station_words",
+      "priority": 820,
+      "name": "Gas station keywords",
+      "match": {
+        "containsAny": [
+          "gas",
+          "fuel",
+          "gasoline",
+          "petroleum",
+          "service station"
+        ]
+      },
+      "result": {
+        "category": "auto_transport",
+        "subcategory": "gas"
+      },
+      "confidence": 0.78,
+      "notes": null
+    },
+    {
+      "id": "toll_words",
+      "priority": 815,
+      "name": "Toll keywords",
+      "match": {
+        "containsAny": [
+          "toll",
+          "turnpike",
+          "ezpass",
+          "e-zpass",
+          "sunpass",
+          "express lane",
+          "bridge toll"
+        ]
+      },
+      "result": {
+        "category": "auto_transport",
+        "subcategory": "tolls"
+      },
+      "confidence": 0.85,
+      "notes": null
+    },
+    {
+      "id": "parking_words",
+      "priority": 810,
+      "name": "Parking keywords",
+      "match": {
+        "containsAny": [
+          "parking",
+          "parkmobile",
+          "paybyphone",
+          "parking meter",
+          "garage"
+        ]
+      },
+      "result": {
+        "category": "auto_transport",
+        "subcategory": "parking"
+      },
+      "confidence": 0.84,
+      "notes": null
+    },
+    {
+      "id": "rideshare_words",
+      "priority": 805,
+      "name": "Rideshare keywords",
+      "match": {
+        "containsAny": [
+          "uber trip",
+          "lyft",
+          "rideshare",
+          "taxi",
+          "cab"
+        ]
+      },
+      "result": {
+        "category": "auto_transport",
+        "subcategory": "rideshare"
+      },
+      "confidence": 0.84,
+      "notes": null
+    },
+    {
+      "id": "mobile_phone_words",
+      "priority": 800,
+      "name": "Mobile phone bill",
+      "match": {
+        "containsAny": [
+          "wireless",
+          "mobile",
+          "cellular",
+          "tmobile",
+          "t-mobile",
+          "verizon wireless",
+          "att wireless",
+          "claro",
+          "altice"
+        ]
+      },
+      "result": {
+        "category": "bills_utilities",
+        "subcategory": "mobile_phone"
+      },
+      "confidence": 0.78,
+      "notes": null
+    },
+    {
+      "id": "internet_cable_words",
+      "priority": 795,
+      "name": "Internet/cable bill",
+      "match": {
+        "containsAny": [
+          "internet",
+          "cable",
+          "xfinity",
+          "comcast",
+          "spectrum",
+          "cox communications",
+          "fios"
+        ]
+      },
+      "result": {
+        "category": "bills_utilities",
+        "subcategory": "internet_cable"
+      },
+      "confidence": 0.78,
+      "notes": null
+    },
+    {
+      "id": "electric_words",
+      "priority": 790,
+      "name": "Electric bill",
+      "match": {
+        "containsAny": [
+          "electric",
+          "power and light",
+          "duke energy",
+          "fpl",
+          "con edison",
+          "edenorte",
+          "edesur",
+          "edeeste"
+        ]
+      },
+      "result": {
+        "category": "bills_utilities",
+        "subcategory": "electric"
+      },
+      "confidence": 0.85,
+      "notes": null
+    },
+    {
+      "id": "water_words",
+      "priority": 785,
+      "name": "Water/sewer bill",
+      "match": {
+        "containsAny": [
+          "water bill",
+          "water utility",
+          "sewer",
+          "wastewater"
+        ]
+      },
+      "result": {
+        "category": "bills_utilities",
+        "subcategory": "water"
+      },
+      "confidence": 0.78,
+      "notes": null
+    },
+    {
+      "id": "insurance_words",
+      "priority": 780,
+      "name": "Insurance bill",
+      "match": {
+        "containsAny": [
+          "insurance",
+          "geico",
+          "progressive",
+          "state farm",
+          "allstate",
+          "liberty mutual",
+          "premium"
+        ]
+      },
+      "result": {
+        "category": "insurance",
+        "subcategory": "insurance"
+      },
+      "confidence": 0.76,
+      "notes": null
+    },
+    {
+      "id": "subscription_words",
+      "priority": 760,
+      "name": "Subscription keywords",
+      "match": {
+        "containsAny": [
+          "subscription",
+          "membership",
+          "monthly plan",
+          "premium plan",
+          "annual plan",
+          "renewal"
+        ]
+      },
+      "result": {
+        "category": "subscriptions",
+        "subcategory": "subscription"
+      },
+      "confidence": 0.68,
+      "notes": null
+    },
+    {
+      "id": "airline_words",
+      "priority": 750,
+      "name": "Airline keywords",
+      "match": {
+        "containsAny": [
+          "airlines",
+          "airways",
+          "flight",
+          "air line",
+          "jetblue",
+          "delta air",
+          "american airlines",
+          "united airlines",
+          "southwest airlines",
+          "spirit airlines",
+          "frontier airlines"
+        ]
+      },
+      "result": {
+        "category": "travel",
+        "subcategory": "airline"
+      },
+      "confidence": 0.84,
+      "notes": null
+    },
+    {
+      "id": "bank_fee",
+      "priority": 750,
+      "name": "Bank fee",
+      "match": {
+        "containsAny": [
+          "monthly maintenance fee",
+          "overdraft fee",
+          "atm fee",
+          "service charge",
+          "wire fee",
+          "foreign transaction fee",
+          "nsf fee"
+        ],
+        "amountSign": "debit"
+      },
+      "result": {
+        "category": "fees_charges",
+        "subcategory": "bank_fee"
+      },
+      "confidence": 0.86,
+      "notes": null
+    },
+    {
+      "id": "software_words",
+      "priority": 745,
+      "name": "Software/SaaS",
+      "match": {
+        "containsAny": [
+          "software",
+          "cloud",
+          "saas",
+          "github",
+          "gitlab",
+          "adobe",
+          "canva",
+          "figma",
+          "notion",
+          "slack",
+          "dropbox",
+          "zoom",
+          "openai",
+          "anthropic",
+          "cursor",
+          "vercel",
+          "digitalocean",
+          "cloudflare"
+        ]
+      },
+      "result": {
+        "category": "software",
+        "subcategory": "software_service"
+      },
+      "confidence": 0.76,
+      "notes": null
+    },
+    {
+      "id": "hotel_words",
+      "priority": 745,
+      "name": "Hotel keywords",
+      "match": {
+        "containsAny": [
+          "hotel",
+          "motel",
+          "resort",
+          "inn",
+          "marriott",
+          "hilton",
+          "hyatt",
+          "holiday inn",
+          "airbnb"
+        ]
+      },
+      "result": {
+        "category": "travel",
+        "subcategory": "lodging"
+      },
+      "confidence": 0.8,
+      "notes": null
+    },
+    {
+      "id": "rental_car_words",
+      "priority": 740,
+      "name": "Rental car keywords",
+      "match": {
+        "containsAny": [
+          "rental car",
+          "rent-a-car",
+          "hertz",
+          "enterprise",
+          "avis",
+          "budget rent",
+          "turo"
+        ]
+      },
+      "result": {
+        "category": "travel",
+        "subcategory": "car_rental"
+      },
+      "confidence": 0.82,
+      "notes": null
+    },
+    {
+      "id": "travel_agency_words",
+      "priority": 735,
+      "name": "Travel agency/booking",
+      "match": {
+        "containsAny": [
+          "expedia",
+          "booking.com",
+          "hotels.com",
+          "priceline",
+          "hopper",
+          "travelocity",
+          "trip.com"
+        ]
+      },
+      "result": {
+        "category": "travel",
+        "subcategory": "travel_booking"
+      },
+      "confidence": 0.8,
+      "notes": null
+    },
+    {
+      "id": "refund_credit",
+      "priority": 730,
+      "name": "Refund/credit",
+      "match": {
+        "containsAny": [
+          "refund",
+          "return credit",
+          "purchase return",
+          "credit adjustment"
+        ],
+        "amountSign": "credit"
+      },
+      "result": {
+        "category": "refunds",
+        "subcategory": "refund"
+      },
+      "confidence": 0.74,
+      "notes": null
+    },
+    {
+      "id": "mercadopago_prefix",
+      "priority": 728,
+      "name": "Mercado Pago MP* processor prefix",
+      "match": {
+        "regexAny": [
+          "\\bmp\\s*\\*"
+        ]
+      },
+      "result": {
+        "displayName": "Mercado Pago Merchant",
+        "category": "shopping",
+        "subcategory": "payment_processor",
+        "processor": "mercadopago"
+      },
+      "confidence": 0.6,
+      "notes": null
+    },
+    {
+      "id": "pagseguro_processor",
+      "priority": 726,
+      "name": "PagSeguro PAG* processor prefix",
+      "match": {
+        "containsAny": [
+          "pagseguro",
+          "pagbank"
+        ],
+        "regexAny": [
+          "\\bpag\\s*\\*"
+        ]
+      },
+      "result": {
+        "displayName": "PagSeguro Merchant",
+        "category": "shopping",
+        "subcategory": "payment_processor",
+        "processor": "pagseguro"
+      },
+      "confidence": 0.62,
+      "notes": null
+    },
+    {
+      "id": "cielo_processor",
+      "priority": 724,
+      "name": "Cielo acquirer descriptor",
+      "match": {
+        "containsAny": [
+          "cielo"
+        ]
+      },
+      "result": {
+        "displayName": "Cielo Merchant",
+        "category": "shopping",
+        "subcategory": "payment_processor",
+        "processor": "cielo"
+      },
+      "confidence": 0.55,
+      "notes": null
+    },
+    {
+      "id": "rede_processor",
+      "priority": 722,
+      "name": "Rede acquirer descriptor",
+      "match": {
+        "containsAny": [
+          "redecard",
+          "rede pagamentos"
+        ]
+      },
+      "result": {
+        "displayName": "Rede Merchant",
+        "category": "shopping",
+        "subcategory": "payment_processor",
+        "processor": "rede"
+      },
+      "confidence": 0.55,
+      "notes": null
+    },
+    {
+      "id": "paypal_processor",
+      "priority": 720,
+      "name": "PayPal processor",
+      "match": {
+        "containsAny": [
+          "paypal *",
+          "paypal payment",
+          "paypal inst xfer",
+          "paypal transfer"
+        ]
+      },
+      "result": {
+        "merchantId": "paypal",
+        "displayName": "PayPal Payment",
+        "category": "transfers",
+        "subcategory": "digital_wallet",
+        "processor": "paypal"
+      },
+      "confidence": 0.68,
+      "notes": null
+    },
+    {
+      "id": "stone_processor",
+      "priority": 720,
+      "name": "Stone acquirer descriptor",
+      "match": {
+        "containsAny": [
+          "stone pagamentos",
+          "stone instituicao"
+        ]
+      },
+      "result": {
+        "displayName": "Stone Merchant",
+        "category": "shopping",
+        "subcategory": "payment_processor",
+        "processor": "stone"
+      },
+      "confidence": 0.55,
+      "notes": null
+    },
+    {
+      "id": "getnet_processor",
+      "priority": 718,
+      "name": "GetNet acquirer descriptor",
+      "match": {
+        "containsAny": [
+          "getnet"
+        ]
+      },
+      "result": {
+        "displayName": "GetNet Merchant",
+        "category": "shopping",
+        "subcategory": "payment_processor",
+        "processor": "getnet"
+      },
+      "confidence": 0.55,
+      "notes": null
+    },
+    {
+      "id": "clip_processor",
+      "priority": 716,
+      "name": "Clip MX reader prefix",
+      "match": {
+        "containsAny": [
+          "pago clip"
+        ],
+        "regexAny": [
+          "\\bclip\\s*(mx)?\\s*\\*"
+        ]
+      },
+      "result": {
+        "displayName": "Clip Merchant",
+        "category": "shopping",
+        "subcategory": "payment_processor",
+        "processor": "clip"
+      },
+      "confidence": 0.62,
+      "notes": null
+    },
+    {
+      "id": "shopify_processor",
+      "priority": 715,
+      "name": "Shopify merchant",
+      "match": {
+        "containsAny": [
+          "shopify payments",
+          "shop pay",
+          "shoppay"
+        ],
+        "regexAny": [
+          "\\bsp\\s*\\*"
+        ]
+      },
+      "result": {
+        "merchantId": "shopify",
+        "displayName": "Shopify Merchant",
+        "category": "shopping",
+        "subcategory": "ecommerce_processor",
+        "processor": "shopify"
+      },
+      "confidence": 0.62,
+      "notes": null
+    },
+    {
+      "id": "sumup_zettle_processor",
+      "priority": 714,
+      "name": "SumUp/Zettle reader prefix",
+      "match": {
+        "containsAny": [
+          "sumup",
+          "zettle"
+        ],
+        "regexAny": [
+          "\\bzettle_"
+        ]
+      },
+      "result": {
+        "displayName": "Card Reader Merchant",
+        "category": "shopping",
+        "subcategory": "payment_processor",
+        "processor": "sumup_zettle"
+      },
+      "confidence": 0.6,
+      "notes": null
+    },
+    {
+      "id": "stripe_processor",
+      "priority": 710,
+      "name": "Stripe merchant",
+      "match": {
+        "containsAny": [
+          "stripe",
+          "stripe payments"
+        ]
+      },
+      "result": {
+        "merchantId": "stripe",
+        "displayName": "Stripe Payment",
+        "category": "shopping",
+        "subcategory": "payment_processor",
+        "processor": "stripe"
+      },
+      "confidence": 0.58,
+      "notes": null
+    },
+    {
+      "id": "square_processor_generic",
+      "priority": 700,
+      "name": "Square merchant generic",
+      "match": {
+        "regexAny": [
+          "\\bsq\\s*\\*"
+        ]
+      },
+      "result": {
+        "displayName": "Square Merchant",
+        "category": "shopping",
+        "subcategory": "payment_processor",
+        "processor": "square"
+      },
+      "confidence": 0.55,
+      "notes": null
+    },
+    {
+      "id": "wire_transfer",
+      "priority": 700,
+      "name": "Wire transfer",
+      "match": {
+        "containsAny": [
+          "wire transfer",
+          "domestic wire",
+          "international wire"
+        ]
+      },
+      "result": {
+        "category": "transfers",
+        "subcategory": "wire_transfer"
+      },
+      "confidence": 0.8,
+      "notes": null
+    },
+    {
+      "id": "ach_transfer",
+      "priority": 690,
+      "name": "ACH transfer",
+      "match": {
+        "containsAny": [
+          "ach",
+          "electronic funds transfer",
+          "eft"
+        ]
+      },
+      "result": {
+        "category": "transfers",
+        "subcategory": "ach_transfer"
+      },
+      "confidence": 0.58,
+      "notes": null
+    },
+    {
+      "id": "es_colmado_supermercado",
+      "priority": 658,
+      "name": "Spanish grocery words",
+      "match": {
+        "containsAny": [
+          "colmado",
+          "abarrotes",
+          "autoservicio",
+          "minisuper",
+          "mini market",
+          "minimarket",
+          "bodega express"
+        ]
+      },
+      "result": {
+        "category": "groceries",
+        "subcategory": "convenience"
+      },
+      "confidence": 0.8,
+      "notes": null
+    },
+    {
+      "id": "es_carniceria_fruteria",
+      "priority": 656,
+      "name": "Spanish fresh-food shop words",
+      "match": {
+        "containsAny": [
+          "carniceria",
+          "fruteria",
+          "verduleria",
+          "pescaderia",
+          "polleria"
+        ]
+      },
+      "result": {
+        "category": "groceries",
+        "subcategory": "specialty_food"
+      },
+      "confidence": 0.82,
+      "notes": null
+    },
+    {
+      "id": "es_panaderia",
+      "priority": 654,
+      "name": "Spanish bakery words",
+      "match": {
+        "containsAny": [
+          "panaderia",
+          "reposteria",
+          "pasteleria",
+          "tortilleria",
+          "heladeria"
+        ]
+      },
+      "result": {
+        "category": "food_dining",
+        "subcategory": "bakery"
+      },
+      "confidence": 0.82,
+      "notes": null
+    },
+    {
+      "id": "es_restaurante_extra",
+      "priority": 652,
+      "name": "Spanish restaurant words",
+      "match": {
+        "containsAny": [
+          "restaurante",
+          "comedor",
+          "cocina economica",
+          "marisqueria",
+          "asador",
+          "parrillada",
+          "pica pollo",
+          "picapollo",
+          "cafeteria el",
+          "fonda",
+          "antojitos",
+          "catering",
+          "tacos"
+        ]
+      },
+      "result": {
+        "category": "food_dining",
+        "subcategory": "restaurant"
+      },
+      "confidence": 0.78,
+      "notes": null
+    },
+    {
+      "id": "grocery_words",
+      "priority": 650,
+      "name": "Grocery keywords",
+      "match": {
+        "containsAny": [
+          "grocery",
+          "supermarket",
+          "super market",
+          "food market",
+          "farmers market",
+          "mercado",
+          "supermercado"
+        ]
+      },
+      "result": {
+        "category": "groceries",
+        "subcategory": "supermarket"
+      },
+      "confidence": 0.72,
+      "notes": null
+    },
+    {
+      "id": "es_farmacia_extra",
+      "priority": 650,
+      "name": "Spanish pharmacy words",
+      "match": {
+        "containsAny": [
+          "botica",
+          "farmacias del",
+          "farmacia la",
+          "farmacia san",
+          "farmacia el",
+          "drogueria"
+        ]
+      },
+      "result": {
+        "category": "health",
+        "subcategory": "pharmacy"
+      },
+      "confidence": 0.82,
+      "notes": null
+    },
+    {
+      "id": "es_gasolinera",
+      "priority": 648,
+      "name": "Spanish gas-station words",
+      "match": {
+        "containsAny": [
+          "gasolinera",
+          "estacion de servicio",
+          "combustible",
+          "estacion de combustible",
+          "bomba de gasolina",
+          "envasadora de gas"
+        ]
+      },
+      "result": {
+        "category": "auto_transport",
+        "subcategory": "gas"
+      },
+      "confidence": 0.82,
+      "notes": null
+    },
+    {
+      "id": "es_ferreteria",
+      "priority": 646,
+      "name": "Spanish hardware-store words",
+      "match": {
+        "containsAny": [
+          "ferreteria",
+          "materiales de construccion",
+          "deposito de materiales"
+        ]
+      },
+      "result": {
+        "category": "home",
+        "subcategory": "hardware"
+      },
+      "confidence": 0.85,
+      "notes": null
+    },
+    {
+      "id": "es_peaje",
+      "priority": 644,
+      "name": "Spanish toll words",
+      "match": {
+        "containsAny": [
+          "peaje",
+          "caseta de cobro",
+          "telepeaje",
+          "autopista",
+          "cuota carretera"
+        ]
+      },
+      "result": {
+        "category": "auto_transport",
+        "subcategory": "tolls"
+      },
+      "confidence": 0.82,
+      "notes": null
+    },
+    {
+      "id": "es_parqueo",
+      "priority": 642,
+      "name": "Spanish parking words",
+      "match": {
+        "containsAny": [
+          "parqueo",
+          "estacionamiento",
+          "parquimetro",
+          "aparcamiento",
+          "pension de autos"
+        ]
+      },
+      "result": {
+        "category": "auto_transport",
+        "subcategory": "parking"
+      },
+      "confidence": 0.82,
+      "notes": null
+    },
+    {
+      "id": "restaurant_words",
+      "priority": 640,
+      "name": "Restaurant keywords",
+      "match": {
+        "containsAny": [
+          "restaurant",
+          "kitchen",
+          "grill",
+          "bistro",
+          "cafe",
+          "cafeteria",
+          "diner",
+          "taqueria",
+          "pizzeria",
+          "pizza",
+          "sushi",
+          "ramen",
+          "bbq",
+          "bar and grill"
+        ]
+      },
+      "result": {
+        "category": "food_dining",
+        "subcategory": "restaurant"
+      },
+      "confidence": 0.7,
+      "notes": null
+    },
+    {
+      "id": "es_taller_auto",
+      "priority": 640,
+      "name": "Spanish auto-service words",
+      "match": {
+        "containsAny": [
+          "taller mecanico",
+          "taller automotriz",
+          "vulcanizadora",
+          "gomera",
+          "llantera",
+          "autolavado",
+          "car wash",
+          "lavado de autos"
+        ]
+      },
+      "result": {
+        "category": "auto_transport",
+        "subcategory": "auto_service"
+      },
+      "confidence": 0.8,
+      "notes": null
+    },
+    {
+      "id": "es_gimnasio",
+      "priority": 638,
+      "name": "Spanish gym words",
+      "match": {
+        "containsAny": [
+          "gimnasio",
+          "crossfit",
+          "box fitness"
+        ]
+      },
+      "result": {
+        "category": "health",
+        "subcategory": "gym"
+      },
+      "confidence": 0.8,
+      "notes": null
+    },
+    {
+      "id": "es_colegio_universidad",
+      "priority": 636,
+      "name": "Spanish education words",
+      "match": {
+        "containsAny": [
+          "colegio",
+          "universidad",
+          "colegiatura",
+          "matricula",
+          "instituto tecnico",
+          "academia de idiomas",
+          "escuela"
+        ]
+      },
+      "result": {
+        "category": "education",
+        "subcategory": "tuition"
+      },
+      "confidence": 0.76,
+      "notes": null
+    },
+    {
+      "id": "coffee_words",
+      "priority": 635,
+      "name": "Coffee keywords",
+      "match": {
+        "containsAny": [
+          "coffee",
+          "cafe",
+          "espresso",
+          "roasters",
+          "bakery cafe"
+        ]
+      },
+      "result": {
+        "category": "food_dining",
+        "subcategory": "coffee"
+      },
+      "confidence": 0.72,
+      "notes": null
+    },
+    {
+      "id": "es_seguros",
+      "priority": 634,
+      "name": "Spanish insurance words",
+      "match": {
+        "containsAny": [
+          "seguros",
+          "aseguradora",
+          "poliza",
+          "ars "
+        ]
+      },
+      "result": {
+        "category": "insurance",
+        "subcategory": "insurance"
+      },
+      "confidence": 0.76,
+      "notes": null
+    },
+    {
+      "id": "fast_food_words",
+      "priority": 632,
+      "name": "Fast food keywords",
+      "match": {
+        "containsAny": [
+          "drive thru",
+          "drive-thru",
+          "burger",
+          "taco",
+          "wings",
+          "chicken",
+          "sandwich",
+          "subs"
+        ]
+      },
+      "result": {
+        "category": "food_dining",
+        "subcategory": "fast_food"
+      },
+      "confidence": 0.63,
+      "notes": null
+    },
+    {
+      "id": "es_lavanderia",
+      "priority": 632,
+      "name": "Spanish laundry words",
+      "match": {
+        "containsAny": [
+          "lavanderia",
+          "tintoreria",
+          "lavado en seco"
+        ]
+      },
+      "result": {
+        "category": "personal_care",
+        "subcategory": "laundry"
+      },
+      "confidence": 0.82,
+      "notes": null
+    },
+    {
+      "id": "es_peluqueria",
+      "priority": 630,
+      "name": "Spanish salon/barber words",
+      "match": {
+        "containsAny": [
+          "peluqueria",
+          "barberia",
+          "salon de belleza",
+          "estetica",
+          "unas",
+          "spa ",
+          "barber",
+          "barbershop",
+          "nail salon",
+          "hair studio"
+        ]
+      },
+      "result": {
+        "category": "personal_care",
+        "subcategory": "salon_spa"
+      },
+      "confidence": 0.8,
+      "notes": null
+    },
+    {
+      "id": "es_veterinaria",
+      "priority": 628,
+      "name": "Spanish veterinary words",
+      "match": {
+        "containsAny": [
+          "veterinaria",
+          "veterinario",
+          "clinica veterinaria",
+          "pet shop"
+        ]
+      },
+      "result": {
+        "category": "pets",
+        "subcategory": "veterinary"
+      },
+      "confidence": 0.84,
+      "notes": null
+    },
+    {
+      "id": "es_clinica_medica",
+      "priority": 626,
+      "name": "Spanish medical words",
+      "match": {
+        "containsAny": [
+          "clinica",
+          "consultorio",
+          "centro medico",
+          "laboratorio clinico",
+          "hospital ",
+          "sanatorio"
+        ]
+      },
+      "result": {
+        "category": "health",
+        "subcategory": "medical"
+      },
+      "confidence": 0.76,
+      "notes": null
+    },
+    {
+      "id": "bar_nightlife_words",
+      "priority": 625,
+      "name": "Bar/nightlife keywords",
+      "match": {
+        "containsAny": [
+          "bar",
+          "pub",
+          "tavern",
+          "brewery",
+          "taproom",
+          "nightclub",
+          "lounge"
+        ]
+      },
+      "result": {
+        "category": "food_dining",
+        "subcategory": "bar"
+      },
+      "confidence": 0.67,
+      "notes": null
+    },
+    {
+      "id": "es_optica",
+      "priority": 624,
+      "name": "Spanish optician words",
+      "match": {
+        "containsAny": [
+          "optica"
+        ]
+      },
+      "result": {
+        "category": "health",
+        "subcategory": "vision"
+      },
+      "confidence": 0.84,
+      "notes": null
+    },
+    {
+      "id": "es_libreria_papeleria",
+      "priority": 622,
+      "name": "Spanish bookstore/stationery words",
+      "match": {
+        "containsAny": [
+          "libreria",
+          "papeleria"
+        ]
+      },
+      "result": {
+        "category": "office",
+        "subcategory": "books_stationery"
+      },
+      "confidence": 0.78,
+      "notes": null
+    },
+    {
+      "id": "do_banca_loteria",
+      "priority": 620,
+      "name": "Dominican lottery bank words",
+      "match": {
+        "containsAny": [
+          "banca loteka",
+          "banca la primera",
+          "banca de loteria",
+          "bancas de loteria",
+          "banca de apuestas"
+        ]
+      },
+      "result": {
+        "category": "entertainment",
+        "subcategory": "lottery"
+      },
+      "confidence": 0.82,
+      "notes": null
+    },
+    {
+      "id": "es_alquiler_renta",
+      "priority": 618,
+      "name": "Spanish rent words",
+      "match": {
+        "containsAny": [
+          "alquiler",
+          "arrendamiento",
+          "renta depto",
+          "renta de local"
+        ]
+      },
+      "result": {
+        "category": "housing",
+        "subcategory": "rent"
+      },
+      "confidence": 0.72,
+      "notes": null
+    },
+    {
+      "id": "es_donacion",
+      "priority": 616,
+      "name": "Spanish/Portuguese donation words",
+      "match": {
+        "containsAny": [
+          "donativo",
+          "donacion",
+          "doacao",
+          "diezmo",
+          "dizimo"
+        ]
+      },
+      "result": {
+        "category": "donations",
+        "subcategory": "donation"
+      },
+      "confidence": 0.8,
+      "notes": null
+    },
+    {
+      "id": "pt_mercado",
+      "priority": 614,
+      "name": "Portuguese grocery words",
+      "match": {
+        "containsAny": [
+          "mercearia",
+          "hipermercado",
+          "hortifruti",
+          "sacolao",
+          "emporio",
+          "atacadista",
+          "acougue"
+        ]
+      },
+      "result": {
+        "category": "groceries",
+        "subcategory": "supermarket"
+      },
+      "confidence": 0.8,
+      "notes": null
+    },
+    {
+      "id": "pt_drogaria",
+      "priority": 612,
+      "name": "Portuguese pharmacy words",
+      "match": {
+        "containsAny": [
+          "drogaria",
+          "drogarias"
+        ]
+      },
+      "result": {
+        "category": "health",
+        "subcategory": "pharmacy"
+      },
+      "confidence": 0.86,
+      "notes": null
+    },
+    {
+      "id": "auto_parts_words",
+      "priority": 610,
+      "name": "Auto parts keywords",
+      "match": {
+        "containsAny": [
+          "auto parts",
+          "autozone",
+          "o'reilly",
+          "oreilly auto",
+          "advance auto",
+          "carquest"
+        ]
+      },
+      "result": {
+        "category": "auto_transport",
+        "subcategory": "auto_parts"
+      },
+      "confidence": 0.82,
+      "notes": null
+    },
+    {
+      "id": "pt_posto",
+      "priority": 610,
+      "name": "Portuguese gas-station words",
+      "match": {
+        "containsAny": [
+          "auto posto",
+          "posto de gasolina",
+          "posto de combustivel",
+          "postos ",
+          "posto "
+        ]
+      },
+      "result": {
+        "category": "auto_transport",
+        "subcategory": "gas"
+      },
+      "confidence": 0.78,
+      "notes": null
+    },
+    {
+      "id": "pt_restaurante",
+      "priority": 608,
+      "name": "Portuguese restaurant words",
+      "match": {
+        "containsAny": [
+          "lanchonete",
+          "churrascaria",
+          "pastelaria",
+          "pizzaria",
+          "restaurante e",
+          "comida a kilo",
+          "self service"
+        ]
+      },
+      "result": {
+        "category": "food_dining",
+        "subcategory": "restaurant"
+      },
+      "confidence": 0.78,
+      "notes": null
+    },
+    {
+      "id": "pt_padaria",
+      "priority": 606,
+      "name": "Portuguese bakery words",
+      "match": {
+        "containsAny": [
+          "padaria",
+          "confeitaria",
+          "doceria",
+          "sorveteria"
+        ]
+      },
+      "result": {
+        "category": "food_dining",
+        "subcategory": "bakery"
+      },
+      "confidence": 0.82,
+      "notes": null
+    },
+    {
+      "id": "auto_service_words",
+      "priority": 605,
+      "name": "Auto service keywords",
+      "match": {
+        "containsAny": [
+          "auto service",
+          "car wash",
+          "oil change",
+          "jiffy lube",
+          "tire",
+          "mechanic",
+          "brake",
+          "towing"
+        ]
+      },
+      "result": {
+        "category": "auto_transport",
+        "subcategory": "auto_service"
+      },
+      "confidence": 0.74,
+      "notes": null
+    },
+    {
+      "id": "pt_pedagio",
+      "priority": 604,
+      "name": "Portuguese toll words",
+      "match": {
+        "containsAny": [
+          "pedagio"
+        ]
+      },
+      "result": {
+        "category": "auto_transport",
+        "subcategory": "tolls"
+      },
+      "confidence": 0.88,
+      "notes": null
+    },
+    {
+      "id": "pt_estacionamento",
+      "priority": 602,
+      "name": "Portuguese parking words",
+      "match": {
+        "containsAny": [
+          "estacionamento",
+          "zona azul"
+        ]
+      },
+      "result": {
+        "category": "auto_transport",
+        "subcategory": "parking"
+      },
+      "confidence": 0.85,
+      "notes": null
+    },
+    {
+      "id": "clothing_words",
+      "priority": 600,
+      "name": "Clothing/apparel keywords",
+      "match": {
+        "containsAny": [
+          "clothing",
+          "apparel",
+          "fashion",
+          "outlet",
+          "shoes",
+          "footwear",
+          "nike",
+          "adidas",
+          "zara",
+          "uniqlo",
+          "lululemon"
+        ]
+      },
+      "result": {
+        "category": "shopping",
+        "subcategory": "clothing"
+      },
+      "confidence": 0.68,
+      "notes": null
+    },
+    {
+      "id": "pt_academia",
+      "priority": 600,
+      "name": "Portuguese gym words",
+      "match": {
+        "containsAny": [
+          "academia"
+        ]
+      },
+      "result": {
+        "category": "health",
+        "subcategory": "gym"
+      },
+      "confidence": 0.74,
+      "notes": "In BR descriptors 'academia' is overwhelmingly a gym, not a school."
+    },
+    {
+      "id": "pt_mensalidade_escola",
+      "priority": 598,
+      "name": "Portuguese education words",
+      "match": {
+        "containsAny": [
+          "mensalidade",
+          "faculdade",
+          "universidade",
+          "curso de",
+          "escola "
+        ]
+      },
+      "result": {
+        "category": "education",
+        "subcategory": "tuition"
+      },
+      "confidence": 0.74,
+      "notes": null
+    },
+    {
+      "id": "pt_papelaria",
+      "priority": 596,
+      "name": "Portuguese stationery words",
+      "match": {
+        "containsAny": [
+          "papelaria"
+        ]
+      },
+      "result": {
+        "category": "office",
+        "subcategory": "books_stationery"
+      },
+      "confidence": 0.82,
+      "notes": null
+    },
+    {
+      "id": "electronics_words",
+      "priority": 595,
+      "name": "Electronics keywords",
+      "match": {
+        "containsAny": [
+          "electronics",
+          "best buy",
+          "apple store",
+          "computer",
+          "laptop",
+          "phone accessory"
+        ]
+      },
+      "result": {
+        "category": "shopping",
+        "subcategory": "electronics"
+      },
+      "confidence": 0.67,
+      "notes": null
+    },
+    {
+      "id": "pt_otica",
+      "priority": 594,
+      "name": "Portuguese optician words",
+      "match": {
+        "containsAny": [
+          "otica",
+          "oticas"
+        ]
+      },
+      "result": {
+        "category": "health",
+        "subcategory": "vision"
+      },
+      "confidence": 0.84,
+      "notes": null
+    },
+    {
+      "id": "pt_supermercado_nome",
+      "priority": 592,
+      "name": "Portuguese supermarket prefix",
+      "match": {
+        "containsAny": [
+          "supermercados ",
+          "supermercado "
+        ]
+      },
+      "result": {
+        "category": "groceries",
+        "subcategory": "supermarket"
+      },
+      "confidence": 0.8,
+      "notes": null
+    },
+    {
+      "id": "home_improvement_words",
+      "priority": 590,
+      "name": "Home improvement keywords",
+      "match": {
+        "containsAny": [
+          "home depot",
+          "lowes",
+          "hardware",
+          "lumber",
+          "paint",
+          "plumbing",
+          "hvac",
+          "garden center"
+        ]
+      },
+      "result": {
+        "category": "home",
+        "subcategory": "home_improvement"
+      },
+      "confidence": 0.72,
+      "notes": null
+    },
+    {
+      "id": "furniture_words",
+      "priority": 585,
+      "name": "Furniture/home goods",
+      "match": {
+        "containsAny": [
+          "furniture",
+          "homegoods",
+          "home goods",
+          "ikea",
+          "wayfair",
+          "mattress",
+          "decor"
+        ]
+      },
+      "result": {
+        "category": "home",
+        "subcategory": "furniture_home_goods"
+      },
+      "confidence": 0.71,
+      "notes": null
+    },
+    {
+      "id": "beauty_words",
+      "priority": 580,
+      "name": "Beauty/personal care",
+      "match": {
+        "containsAny": [
+          "beauty",
+          "salon",
+          "barber",
+          "sephora",
+          "ulta",
+          "cosmetic",
+          "spa",
+          "nails"
+        ]
+      },
+      "result": {
+        "category": "personal_care",
+        "subcategory": "beauty"
+      },
+      "confidence": 0.72,
+      "notes": null
+    },
+    {
+      "id": "pharmacy_words",
+      "priority": 575,
+      "name": "Pharmacy keywords",
+      "match": {
+        "containsAny": [
+          "pharmacy",
+          "drug store",
+          "drugstore",
+          "cvs",
+          "walgreens",
+          "rite aid",
+          "farmacia"
+        ]
+      },
+      "result": {
+        "category": "health",
+        "subcategory": "pharmacy"
+      },
+      "confidence": 0.78,
+      "notes": null
+    },
+    {
+      "id": "medical_words",
+      "priority": 570,
+      "name": "Medical keywords",
+      "match": {
+        "containsAny": [
+          "doctor",
+          "clinic",
+          "hospital",
+          "urgent care",
+          "medical",
+          "dentist",
+          "dental",
+          "labcorp",
+          "quest diagnostics"
+        ]
+      },
+      "result": {
+        "category": "health",
+        "subcategory": "medical"
+      },
+      "confidence": 0.76,
+      "notes": null
+    }
+  ]
+}

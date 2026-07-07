@@ -1,0 +1,22 @@
+{
+  "name": "merchant-studio",
+  "version": "1.0.0",
+  "description": "GUI to inspect, add, and export merchants for the transaction enrichment pack",
+  "type": "module",
+  "scripts": {
+    "predev": "node scripts/sync-data.mjs",
+    "dev": "astro dev",
+    "prebuild": "node scripts/sync-data.mjs",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/node": "^9.0.0",
+    "@astrojs/preact": "^4.0.0",
+    "@tailwindcss/vite": "^4.0.0",
+    "astro": "^5.0.0",
+    "fflate": "^0.8.2",
+    "preact": "^10.25.0",
+    "tailwindcss": "^4.0.0"
+  }
+}

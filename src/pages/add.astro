@@ -1,0 +1,9 @@
+---
+import Layout from '../layouts/Layout.astro';
+import AddMerchant from '../components/AddMerchant';
+---
+
+<Layout title="Add merchant" active="add">
+  <h1 class="mb-6 text-2xl font-bold text-white">Add a merchant</h1>
+  <AddMerchant client:load />
+</Layout>
