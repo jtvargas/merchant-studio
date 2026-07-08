@@ -22,7 +22,7 @@ config (EN/ES/PT), and a labeled test set to measure recognition. Regions covere
 | **Validate** | One-click integrity check: duplicate ids, alias collisions, invalid categories, unknown MCC hints, manifest drift |
 | **Rules / MCC** | Read-only searchable reference of the rule set and MCC table |
 | **Export pack** | Download all 6 files (manifest recomputed) as a zip — ready to drop into your app |
-| **Data API** | The same files served as public JSON endpoints + a generated `index.json` discovery document (URLs, sizes, sha256 hashes) so apps can fetch the dataset at runtime — see [Use the data in your app](#use-the-data-in-your-app-public-data-api) |
+| **Data API** | The same files served as public JSON endpoints + a generated `index.json` discovery document (URLs, sizes, sha256 hashes) so apps can fetch the dataset at runtime — see [Use the data in your app](#use-the-data-in-your-app-public-data-api). Includes a stack picker (Swift, Kotlin, React Native, JS, Flutter…) with a **Copy LLM prompt** button that emits a full implementation brief — models, algorithm, caching contract, acceptance tests — for your AI assistant; humans get the same content in the [client integration guide](docs/CLIENT_INTEGRATION.md) |
 
 ## Two ways to use it
 
@@ -137,6 +137,12 @@ for file in index.files where file.sha256 != storedHashes[file.name] {
 The 6 source files are also readable at
 `https://raw.githubusercontent.com/jtvargas/merchant-studio/main/data/<name>.json`, but
 `index.json` exists only on Pages — it's generated at build time (`public/data/` is gitignored).
+
+**Building a full client?** The step-by-step [client integration guide](docs/CLIENT_INTEGRATION.md)
+covers the data models, the exact matching pipeline to port, and per-stack quick starts
+(Swift, Kotlin, React Native, JS/TS, Flutter) — or use the
+[Data API page](https://jtvargas.github.io/merchant-studio/data)'s stack picker to copy a
+ready-made LLM implementation prompt.
 
 ### Matching pipeline (implemented in `src/lib/pipeline.ts`, mirrored by consuming apps)
 

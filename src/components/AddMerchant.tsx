@@ -2,25 +2,8 @@ import { useEffect, useState } from 'preact/hooks';
 import type { Merchant, MccDoc } from '../lib/schema';
 import { loadAll, withBase } from '../lib/store';
 import { buildLlmPrompt, parseLlmJson } from '../lib/llm';
+import { copyToClipboard } from '../lib/clipboard';
 import MerchantForm, { EMPTY_MERCHANT } from './MerchantForm';
-
-async function copyToClipboard(text: string): Promise<boolean> {
-  try {
-    await navigator.clipboard.writeText(text);
-    return true;
-  } catch {
-    // fallback for non-secure contexts
-    const ta = document.createElement('textarea');
-    ta.value = text;
-    ta.style.position = 'fixed';
-    ta.style.opacity = '0';
-    document.body.appendChild(ta);
-    ta.select();
-    const ok = document.execCommand('copy');
-    ta.remove();
-    return ok;
-  }
-}
 
 function AiAssist({ mcc, onImport }: { mcc: MccDoc; onImport: (m: Merchant, warnings: string[]) => void }) {
   const [descriptor, setDescriptor] = useState('');
