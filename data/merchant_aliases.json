@@ -27404,6 +27404,254 @@
       "negativeAliases": [],
       "defaultConfidence": 0.92,
       "notes": "Hong Kong startup selling Monako Glass AI smart glasses; charges bill from Tsim Sha Tsui HK and are typically $19 reservations or $399 unit preorders via monako.ai."
+    },
+    {
+      "id": "belkin",
+      "canonicalName": "Belkin",
+      "displayName": "Belkin",
+      "category": "shopping",
+      "subcategory": "electronics",
+      "mccHints": [
+        "5969"
+      ],
+      "website": "belkin.com",
+      "iconSlug": "belkin",
+      "countryHints": [
+        "US",
+        "GLOBAL"
+      ],
+      "aliases": [
+        "belkin",
+        "belkin corporation",
+        "belkin corporation 800-546-5797",
+        "belkin.com"
+      ],
+      "negativeAliases": [
+        "linksys by belkin",
+        "wemo by belkin",
+        "phyn by belkin"
+      ],
+      "defaultConfidence": 0.92,
+      "notes": "Statements can appear as BELKIN CORPORATION 800-546-5797 CA."
+    },
+    {
+      "id": "polymarket_us",
+      "canonicalName": "Polymarket US",
+      "displayName": "Polymarket US",
+      "category": "investments",
+      "subcategory": "prediction_market",
+      "mccHints": [],
+      "website": "polymarket.us",
+      "iconSlug": "polymarket",
+      "countryHints": [
+        "US"
+      ],
+      "aliases": [
+        "polymarket us",
+        "polymarket us boca raton",
+        "qcx llc d b a polymarket us",
+        "polymarket.us"
+      ],
+      "negativeAliases": [],
+      "defaultConfidence": 0.92,
+      "notes": "Polymarket US is QCX LLC d/b/a Polymarket US, based in Boca Raton, FL."
+    },
+    {
+      "id": "reddit_ads",
+      "canonicalName": "Reddit Ads",
+      "displayName": "Reddit Ads",
+      "category": "business",
+      "subcategory": "advertising",
+      "mccHints": [
+        "7311"
+      ],
+      "website": "business.reddit.com",
+      "iconSlug": "reddit",
+      "countryHints": [
+        "US"
+      ],
+      "aliases": [
+        "reddit inc ads",
+        "reddit.inc ads",
+        "reddit inc ads reddit com",
+        "reddit ads"
+      ],
+      "negativeAliases": [
+        "reddit premium",
+        "reddit gold",
+        "reddit collectible avatars"
+      ],
+      "defaultConfidence": 0.92,
+      "notes": "Statements for Reddit advertising can appear as REDDIT INC ADS or REDDIT.INC ADS."
+    },
+    {
+      "id": "intl_txn_fee",
+      "canonicalName": "International Transaction Fee",
+      "displayName": "International Transaction Fee",
+      "category": "financial",
+      "subcategory": "foreign_transaction_fee",
+      "mccHints": [],
+      "website": null,
+      "iconSlug": null,
+      "countryHints": [
+        "GLOBAL"
+      ],
+      "aliases": [
+        "intl txn fee",
+        "intl txn fee fee",
+        "international transaction fee",
+        "foreign transaction fee"
+      ],
+      "negativeAliases": [],
+      "defaultConfidence": 0.86,
+      "notes": "Bank/card issuer fee, not a retail merchant."
+    },
+    {
+      "id": "icon_parking",
+      "canonicalName": "Icon Parking",
+      "displayName": "Icon Parking",
+      "category": "auto_transport",
+      "subcategory": "parking",
+      "mccHints": [
+        "7523"
+      ],
+      "website": "iconparking.com",
+      "iconSlug": "iconparking",
+      "countryHints": [
+        "US"
+      ],
+      "aliases": [
+        "tez icon parking citypla",
+        "icon parking citypla",
+        "icon parking",
+        "icon parking systems"
+      ],
+      "negativeAliases": [],
+      "defaultConfidence": 0.92,
+      "notes": "TEZ appears to be a parking payment technology prefix; money goes to Icon Parking."
+    },
+    {
+      "id": "rubio_arts",
+      "canonicalName": "Rubio Arts Corporation",
+      "displayName": "Rubio Arts - Disney Parks",
+      "category": "shopping",
+      "subcategory": "souvenirs",
+      "mccHints": [],
+      "website": "rubioarts.com",
+      "iconSlug": "rubioarts",
+      "countryHints": [
+        "US"
+      ],
+      "aliases": [
+        "rubio arts corporation",
+        "rubio arts corporation orlando",
+        "rubio arts corporation anaheim",
+        "rubio arts",
+        "rubioarts.com"
+      ],
+      "negativeAliases": [
+        "marco rubio",
+        "rubio campaign"
+      ],
+      "defaultConfidence": 0.92,
+      "notes": "Disney Parks operating participant; statements may show Orlando, FL or Anaheim, CA."
+    },
+    {
+      "id": "summer_house_on_the_lake",
+      "canonicalName": "Summer House on the Lake",
+      "displayName": "Summer House on the Lake",
+      "category": "food_dining",
+      "subcategory": "restaurant",
+      "mccHints": [
+        "5812"
+      ],
+      "website": "summerhouserestaurants.com",
+      "iconSlug": "summerhouse",
+      "countryHints": [
+        "US"
+      ],
+      "aliases": [
+        "sunday summer house on t",
+        "summer house on t",
+        "summer house on the lake",
+        "summer house on the lake disney springs",
+        "summerhouserestaurants.com"
+      ],
+      "negativeAliases": [],
+      "defaultConfidence": 0.92,
+      "notes": "SUNDAY appears to be a restaurant payment prefix; descriptor truncates Summer House on the Lake."
+    },
+    {
+      "id": "lean_kitchen_catering",
+      "canonicalName": "Lean Kitchen Catering",
+      "displayName": "Lean Kitchen Catering",
+      "category": "food_dining",
+      "subcategory": "catering",
+      "mccHints": [
+        "5811"
+      ],
+      "website": "leankitchencatering.com",
+      "iconSlug": "leankitchencatering",
+      "countryHints": [
+        "US"
+      ],
+      "aliases": [
+        "wp lean kitchen cateri",
+        "lean kitchen catering",
+        "leankitchencatering.com"
+      ],
+      "negativeAliases": [
+        "lean kitchen company",
+        "lean kitchen guntersville"
+      ],
+      "defaultConfidence": 0.92,
+      "notes": "Descriptor truncates Lean Kitchen Catering and includes WP as a payment prefix."
+    },
+    {
+      "id": "chime_transfer",
+      "canonicalName": "Chime",
+      "displayName": "Chime Transfer",
+      "category": "transfers",
+      "subcategory": "bank_transfer",
+      "mccHints": [],
+      "website": "chime.com",
+      "iconSlug": "chime",
+      "countryHints": [
+        "US"
+      ],
+      "aliases": [
+        "chime financial",
+        "chime txfr",
+        "chime financial co",
+        "chime financial co chime txfr",
+        "chime financial inc"
+      ],
+      "negativeAliases": [],
+      "defaultConfidence": 0.92,
+      "notes": "Bank/account transfer descriptor, not a retail merchant."
+    },
+    {
+      "id": "supercasas_supercarros",
+      "canonicalName": "SuperCasas SuperCarros",
+      "displayName": "SuperCasas / SuperCarros",
+      "category": "business",
+      "subcategory": "classifieds",
+      "mccHints": [],
+      "website": "supercarros.com",
+      "iconSlug": null,
+      "countryHints": [
+        "DO"
+      ],
+      "aliases": [
+        "supercasas supercarros",
+        "supercasas",
+        "supercarros",
+        "supercasas.com",
+        "supercarros.com"
+      ],
+      "negativeAliases": [],
+      "defaultConfidence": 0.92,
+      "notes": "Dominican Republic classifieds portals operated by Cibermercado S.R.L."
     }
   ]
 }
