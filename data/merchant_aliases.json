@@ -27652,6 +27652,33 @@
       "negativeAliases": [],
       "defaultConfidence": 0.92,
       "notes": "Dominican Republic classifieds portals operated by Cibermercado S.R.L."
+    },
+    {
+      "id": "simplefin_bridge",
+      "canonicalName": "SimpleFIN Bridge",
+      "displayName": "SimpleFIN Bridge",
+      "category": "software",
+      "subcategory": "financial_data",
+      "mccHints": [],
+      "website": "bridge.simplefin.org",
+      "iconSlug": "simplefin",
+      "countryHints": [
+        "US",
+        "CA"
+      ],
+      "aliases": [
+        "link com simplefin br",
+        "link.com simplefin br",
+        "simplefin bridge",
+        "simplefin",
+        "bridge.simplefin.org"
+      ],
+      "negativeAliases": [
+        "simplefin protocol",
+        "link.com"
+      ],
+      "defaultConfidence": 0.92,
+      "notes": "LINK.COM is the Stripe Link payment prefix; descriptor truncates SimpleFIN Bridge."
     }
   ]
 }
