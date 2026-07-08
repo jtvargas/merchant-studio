@@ -1,9 +1,99 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Dashboard from '../components/Dashboard';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const useCases = [
+  {
+    icon: '🏦',
+    title: 'Source of truth for transaction enrichment',
+    text: 'Turn raw statement descriptors like SQ *BLUE BOTTLE COFF into Blue Bottle Coffee · food_dining — fully on-device. Your app fetches the pack once from the Data API, runs the matching pipeline locally, and never makes a per-transaction network call.',
+    href: '/data',
+    link: 'Integrate in your app →',
+  },
+  {
+    icon: '📊',
+    title: 'Power personal-finance features',
+    text: 'Clean merchant names for transaction rows, spend breakdowns across 28 categories, subscription and installment detection via tag rules, plus merchant websites and icon slugs — everything a budgeting or PFM feature needs.',
+    href: '/playground',
+    link: 'Try the playground →',
+  },
+  {
+    icon: '🧪',
+    title: 'Benchmark your categorizer',
+    text: 'A labeled set of real-world descriptors across the US, Florida, Dominican Republic, Mexico, Brazil, and Spain. Score any enrichment engine against it, catch regressions, and know your recognition rate before shipping.',
+    href: '/tests',
+    link: 'See the test set →',
+  },
+  {
+    icon: '🤖',
+    title: 'Ground AI assistants',
+    text: 'Structured, versioned merchant facts — canonical ids, statement aliases, MCCs, operating countries — that an LLM or agent can cite instead of hallucinating merchant info. Per-file sha256 hashes tell agents exactly when knowledge changed.',
+    href: '/data',
+    link: 'Copy the integration prompt →',
+  },
+];
 ---
 
 <Layout title="Dashboard" active="dashboard">
-  <h1 class="mb-6 text-2xl font-bold text-white">Transaction Enrichment Pack</h1>
+  <h1 class="mb-4 text-2xl font-bold text-white">Transaction Enrichment Pack</h1>
+
+  <div class="mb-6 rounded-xl border border-emerald-800/60 bg-emerald-900/15 p-4 text-sm text-zinc-300">
+    <span class="font-semibold text-emerald-300">Community-driven merchant data.</span>
+    Every raw descriptor decoded here becomes structured, open data — canonical ids, statement aliases,
+    categories, MCC codes — that anyone's app can fetch. Use it, spot a gap,
+    <a class="text-emerald-400 hover:underline" href={`${base}/add`}>add the merchant</a>, publish a PR:
+    the dataset gets smarter for everyone, and transactions start making sense. Consume it through the
+    <a class="text-emerald-400 hover:underline" href={`${base}/data`}>Data API</a>.
+  </div>
+
   <Dashboard client:load />
+
+  <section class="mt-8">
+    <h2 class="mb-3 text-lg font-bold text-white">What can you do with this data?</h2>
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+      {useCases.map((u) => (
+        <div class="card flex flex-col">
+          <p class="mb-1 text-sm font-semibold text-zinc-100">{u.icon} {u.title}</p>
+          <p class="flex-1 text-sm text-zinc-400">{u.text}</p>
+          <a class="mt-2 text-sm text-emerald-400 hover:underline" href={`${base}${u.href}`}>{u.link}</a>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="mt-8">
+    <h2 class="mb-3 text-lg font-bold text-white">The vision</h2>
+    <div class="card space-y-4 text-sm">
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <div>
+          <p class="mb-1 font-semibold text-emerald-300">1 · Use</p>
+          <p class="text-zinc-400">
+            Apps consume the pack through the <a class="text-emerald-400 hover:underline" href={`${base}/data`}>Data API</a> —
+            no bundling, no scraping, no per-user lookups. One dataset, verified by hash, shared by everyone.
+          </p>
+        </div>
+        <div>
+          <p class="mb-1 font-semibold text-emerald-300">2 · Contribute</p>
+          <p class="text-zinc-400">
+            Hit a descriptor your app couldn't match? <a class="text-emerald-400 hover:underline" href={`${base}/add`}>Add the merchant</a> with
+            the guided or AI-assisted form and publish it as a pull request — right from this site, no local setup needed.
+          </p>
+        </div>
+        <div>
+          <p class="mb-1 font-semibold text-emerald-300">3 · Everyone benefits</p>
+          <p class="text-zinc-400">
+            Merged data redeploys automatically, and every consuming app picks it up on its next
+            <code class="text-zinc-300">packHash</code> check. Your one merchant fixes that descriptor for every user of the data.
+          </p>
+        </div>
+      </div>
+      <p class="border-t border-zinc-800 pt-3 text-zinc-400">
+        The goal is a <span class="text-zinc-200">structured, easy-to-access, open source of truth about merchants</span> that
+        grows with the people using it — so that any pair of amount + cryptic descriptor can be turned into financial
+        information that actually makes sense: who you paid, what for, and where it fits in your spending.
+      </p>
+    </div>
+  </section>
 </Layout>

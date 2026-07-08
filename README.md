@@ -9,6 +9,9 @@ The dataset itself lives in this repo under [`data/`](data/) — 6 JSON files co
 config (EN/ES/PT), and a labeled test set to measure recognition. Regions covered: USA
 (national + Florida + California), Dominican Republic, Mexico, Brazil, Spain.
 
+The goal: **community-driven, structured merchant data** — use it in your app, contribute the
+merchants it's missing, and everyone's transactions get easier to understand.
+
 ## What you can do
 
 | Page | Purpose |
