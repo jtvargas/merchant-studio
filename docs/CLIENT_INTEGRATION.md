@@ -274,7 +274,10 @@ const hex = [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, '0
 ## Step 6 · Or let an LLM implement it
 
 Open the [Data API page](https://jtvargas.github.io/merchant-studio/data), pick your stack,
-press **Copy LLM prompt**, and paste it into your AI assistant. The prompt contains the
-endpoints, update contract, all models, the exact algorithm with its invariants, per-stack
-deliverables, and the acceptance criteria above — then review what it writes and run the
-Step 4 test before shipping.
+press **Copy LLM prompt**, and paste it into your AI assistant. The prompt is a production
+integration brief: it asks for a layered implementation (DataSource → Repository with an
+atomically-swapped immutable snapshot → Enricher with `enrich`/`enrichBatch`/`explain`/`diagnostics`)
+of this dataset as your app's transaction-enrichment data source — with the full update
+contract and failure handling, all models, the exact algorithm with its invariants, per-stack
+deliverables, and the acceptance criteria above. Review what it writes and run the Step 4
+test before shipping.

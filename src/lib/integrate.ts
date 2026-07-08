@@ -1,6 +1,8 @@
-// Builds the "implement this client in <stack>" LLM prompt for the Data API page.
-// Same pattern as buildLlmPrompt in llm.ts: pure function over the loaded docs
-// returning one prompt string with #-heading sections.
+// Builds the "integrate this dataset as your transaction-enrichment data source
+// in <stack>" LLM prompt for the Data API page. Same pattern as buildLlmPrompt
+// in llm.ts: pure function over the loaded docs returning one prompt string
+// with #-heading sections (role → context → objective → contracts → requirements
+// → output format → self-check).
 import type { MccDoc, Manifest } from './schema';
 import { RULE_ONLY_CATEGORIES } from './schema';
 
@@ -16,56 +18,56 @@ export const INTEGRATION_STACKS: IntegrationStack[] = [
   {
     id: 'swift',
     label: 'Swift / iOS',
-    deliverables: `1. Codable models for all six files (nullable fields as optionals; every key inside Rule.match and Rule.result is optional).
-2. An \`EnrichmentDataStore\` actor: loads a bundled seed copy on first launch, refreshes from index.json in the background, verifies sha256 with CryptoKit, atomically swaps files in Application Support, persists packHash + per-file hashes.
-3. A \`TransactionEnricher\` that builds the alias/rule indexes once per dataset load (cache them) and exposes \`func enrich(_ rawDescriptor: String) -> MatchResult\`.
-4. Unicode/regex details: NFKD unaccent via \`decomposedStringWithCanonicalMapping\` + strip combining marks (or \`folding(options: .diacriticInsensitive)\`); NSRegularExpression/Swift Regex with case-insensitive options.
-5. An XCTest suite that runs sample_test_descriptors.json (bundle it as a fixture) and asserts the score.`,
+    deliverables: `1. Codable models for all six files (nullable fields as optionals; every key inside Rule.match and Rule.result optional).
+2. \`EnrichmentDataSource\`: URLSession fetcher implementing the data contract — index check, per-file downloads, CryptoKit SHA256 verification, atomic file swaps in Application Support, packHash/per-file hashes persisted, bundled seed fallback.
+3. \`EnrichmentRepository\` (an actor): owns the current immutable \`DatasetSnapshot\` (parsed docs + prebuilt indexes), swaps it atomically after a successful refresh, never blocks readers.
+4. \`TransactionEnricher\`: enrich / enrichBatch / explain / diagnostics over the snapshot. Unicode: NFKD via \`decomposedStringWithCanonicalMapping\` + strip combining marks (or \`folding(options: .diacriticInsensitive)\`); NSRegularExpression or Swift Regex, case-insensitive.
+5. XCTest suite: the labeled acceptance test (fixture), the update-contract tests, and a concurrency test (enrich while refreshing).`,
   },
   {
     id: 'kotlin',
     label: 'Kotlin / Android',
     deliverables: `1. kotlinx.serialization data classes for all six files (nullable fields as nullable types; every key inside Rule.match and Rule.result nullable).
-2. A repository that loads a bundled seed from assets on first launch, refreshes from index.json on a coroutine, verifies sha256 with java.security.MessageDigest, atomically swaps files in filesDir, persists packHash + per-file hashes (DataStore).
-3. A \`TransactionEnricher\` building the alias/rule indexes once per dataset load, exposing \`fun enrich(rawDescriptor: String): MatchResult\`.
-4. Unicode/regex details: java.text.Normalizer.Form.NFKD + strip combining marks for unaccent; Pattern.CASE_INSENSITIVE for rule/noise regexes.
-5. A JUnit test that runs sample_test_descriptors.json (test resource) and asserts the score.`,
+2. \`EnrichmentDataSource\`: OkHttp/Ktor fetcher implementing the data contract — index check, per-file downloads, MessageDigest SHA-256 verification, atomic file swaps in filesDir, packHash/per-file hashes in DataStore, seed in assets.
+3. \`EnrichmentRepository\`: holds the current immutable dataset snapshot (parsed docs + prebuilt indexes) behind a thread-safe reference (e.g. AtomicReference/StateFlow), swapped only after a successful refresh on a coroutine.
+4. \`TransactionEnricher\`: enrich / enrichBatch / explain / diagnostics. Unicode: java.text.Normalizer NFKD + strip combining marks; Pattern.CASE_INSENSITIVE for regexes.
+5. JUnit tests: the labeled acceptance test (test resource), the update-contract tests, and a concurrency test (enrich while refreshing).`,
   },
   {
     id: 'react-native',
     label: 'React Native',
     deliverables: `1. TypeScript interfaces for all six files (nullable fields as \`| null\`; every key inside Rule.match and Rule.result optional).
-2. A data store module: bundles a seed copy of the JSONs, refreshes from index.json in the background, computes sha256 with react-native-quick-crypto or expo-crypto (crypto.subtle is NOT available in Hermes), caches files with expo-file-system (or react-native-fs) and hashes in MMKV/AsyncStorage.
-3. A \`createEnricher(docs)\` factory that builds the alias/rule indexes once (module singleton, not per-render) and returns \`enrich(rawDescriptor: string): MatchResult\`.
-4. Unicode note: \`String.prototype.normalize('NFKD')\` works in Hermes — use it + strip \\u0300-\\u036f for unaccent.
-5. A Jest test that loads the JSON files as fixtures, runs sample_test_descriptors.json, and asserts the score.`,
+2. \`enrichmentDataSource\`: fetch-based module implementing the data contract — sha256 via react-native-quick-crypto or expo-crypto (crypto.subtle is NOT available in Hermes), files cached with expo-file-system/react-native-fs, packHash/per-file hashes in MMKV or AsyncStorage, bundled seed JSONs for first launch.
+3. \`enrichmentRepository\`: a module-level singleton holding the current immutable snapshot (parsed docs + prebuilt indexes) — rebuilt off the render path and swapped atomically after a successful refresh (never rebuild per render/call).
+4. \`createEnricher(snapshot)\`: enrich / enrichBatch / explain / diagnostics. Unicode: \`normalize('NFKD')\` works in Hermes — strip \\u0300-\\u036f after it.
+5. Jest tests: the labeled acceptance test (JSON fixtures), the update-contract tests, and a refresh-during-enrich consistency test.`,
   },
   {
     id: 'javascript',
     label: 'JavaScript / TS',
     deliverables: `1. TypeScript interfaces for all six files (nullable fields as \`| null\`; every key inside Rule.match and Rule.result optional).
-2. A loader module: fetches index.json, computes sha256 with crypto.subtle (browser) or node:crypto (Node), caches files + hashes in IndexedDB/localStorage (browser) or on disk (Node), and only re-downloads changed files.
-3. An ESM module exporting \`createEnricher(docs)\` that builds the alias/rule indexes once and returns \`enrich(rawDescriptor: string): MatchResult\`.
-4. Unicode: \`normalize('NFKD').replace(/[\\u0300-\\u036f]/g, '')\` for unaccent; \`new RegExp(pattern, 'gi')\` for noise/rule regexes.
-5. A vitest/jest test that runs sample_test_descriptors.json and asserts the score.`,
+2. \`enrichmentDataSource\`: fetch-based loader implementing the data contract — sha256 via crypto.subtle (browser) or node:crypto (Node), files + hashes cached in IndexedDB (browser) or on disk (Node), optional seed bundle for first paint/offline.
+3. \`enrichmentRepository\`: holds the current immutable snapshot (parsed docs + prebuilt indexes); refresh builds a new snapshot and swaps the reference atomically — readers never see a half-built dataset.
+4. \`createEnricher(snapshot)\` (ESM): enrich / enrichBatch / explain / diagnostics. Unicode: \`normalize('NFKD').replace(/[\\u0300-\\u036f]/g, '')\`; \`new RegExp(pattern, 'gi')\`.
+5. vitest/jest tests: the labeled acceptance test, the update-contract tests, and a refresh-during-enrich consistency test.`,
   },
   {
     id: 'flutter',
     label: 'Flutter / Dart',
     deliverables: `1. Dart model classes with fromJson for all six files (nullable fields as nullable types; every key inside Rule.match and Rule.result nullable).
-2. A data store: bundles a seed copy as assets, refreshes from index.json in the background, verifies sha256 with package:crypto, caches files via path_provider, persists packHash + per-file hashes.
-3. A \`TransactionEnricher\` building the alias/rule indexes once per dataset load, exposing \`MatchResult enrich(String rawDescriptor)\` (build indexes off the UI thread if needed).
-4. Unicode note: Dart has no built-in NFKD — use package:unorm_dart for the unaccent step (do not skip it; aliases are stored unaccented).
-5. A flutter_test that runs sample_test_descriptors.json as a fixture and asserts the score.`,
+2. \`EnrichmentDataSource\`: http/dio fetcher implementing the data contract — sha256 via package:crypto, files cached via path_provider, packHash/per-file hashes persisted, seed copies shipped as assets.
+3. \`EnrichmentRepository\`: owns the current immutable snapshot (parsed docs + prebuilt indexes), built off the UI thread (isolate if needed) and swapped atomically after a successful refresh.
+4. \`TransactionEnricher\`: enrich / enrichBatch / explain / diagnostics. Unicode: Dart has no built-in NFKD — use package:unorm_dart for the unaccent step (do not skip it; aliases are stored unaccented).
+5. flutter_test suite: the labeled acceptance test (fixture), the update-contract tests, and a refresh-during-enrich consistency test.`,
   },
   {
     id: 'generic',
     label: 'Other / any language',
     deliverables: `1. Typed models for all six files (respect nullable fields; every key inside Rule.match and Rule.result is optional).
-2. A data store: seed copy shipped with the app, background refresh from index.json, sha256 verification before swapping files, packHash + per-file hashes persisted locally.
-3. An enricher that builds the alias/rule indexes once per dataset load and exposes enrich(rawDescriptor) -> MatchResult.
-4. Correct Unicode NFKD unaccenting and case-insensitive regex support (aliases are stored lowercase + unaccented).
-5. A test runner that scores your pipeline against sample_test_descriptors.json.`,
+2. A DataSource implementing the data contract: index check, per-file downloads, sha256 verification before swapping, atomic file replacement, packHash/per-file hashes persisted, seed copy shipped with the app.
+3. A Repository owning the current immutable dataset snapshot (parsed docs + prebuilt indexes), swapped atomically after a successful refresh so readers never see partial state.
+4. An Enricher exposing enrich / enrichBatch / explain / diagnostics, with correct Unicode NFKD unaccenting and case-insensitive regex support (aliases are stored lowercase + unaccented).
+5. Tests: the labeled acceptance test, the update-contract tests, and a refresh-during-enrich consistency test.`,
   },
 ];
 
@@ -74,27 +76,50 @@ export function buildIntegrationPrompt(stackId: string, mcc: MccDoc, manifest: M
   const taxonomy = mcc.categoryTaxonomy.map((t) => t.id).join(', ');
   const c = manifest.fileCounts;
 
-  return `# ROLE & GOAL
-You are a senior ${stack.label} engineer. Implement a **transaction-enrichment client** that turns raw bank
-statement descriptors (e.g. "SQ *BLUE BOTTLE COFF SAN FRANC") into a clean merchant + spending category
-(Blue Bottle Coffee / food_dining). The dataset lives at a public URL and your implementation's accuracy is
-machine-verifiable against a labeled test set, so port the data models and the matching algorithm EXACTLY.
+  return `# ROLE
+You are a senior ${stack.label} engineer. Integrate a remote, versioned dataset as this app's
+**transaction-enrichment data source**: raw bank-statement descriptors (e.g. "SQ *BLUE BOTTLE COFF SAN FRANC")
+go in, clean merchant + spending category come out (Blue Bottle Coffee / food_dining), fully on-device.
+This is production code: it must be reliable (bad network or a bad download must never break enrichment),
+scalable (enrichment is called for every transaction in a feed), and debuggable (a wrong category must be
+explainable). Work autonomously — where something is ambiguous, pick the sensible production default and note
+it in one line; do not ask questions.
 
-# DATA SOURCE (fetch at runtime — do NOT hardcode the data)
+# CONTEXT
+The dataset is 6 public JSON files (schema ${manifest.schemaVersion}): ${c.merchants} merchants with statement aliases,
+${c.mccCodes} MCC codes + a category taxonomy, ${c.categoryRules} matching rules, descriptor-cleaning config, ${c.testDescriptors} labeled
+test descriptors, and a manifest. It is updated every few days; the app must pick up changes automatically,
+keep working offline, and never hit the network while enriching.
+
+# OBJECTIVE — definition of done
+Four layers, cleanly separated:
+1. **DataSource** — implements the data contract below (download, verify, cache, refresh, failure handling).
+2. **Repository** — owns an immutable dataset snapshot (parsed docs + prebuilt matching indexes) and swaps it
+   atomically when a refresh succeeds.
+3. **Enricher** — the matching pipeline over the snapshot, exposed as enrich / enrichBatch / explain / diagnostics.
+4. **Tests** — the labeled acceptance suite plus contract and concurrency tests (see ACCEPTANCE CRITERIA).
+
+# DATA CONTRACT (implement exactly)
 Discovery index: ${DATA_INDEX_URL}
-It lists all 6 data files as { name, path, url, bytes, sha256, description, counts } plus top-level
-schemaVersion and packHash (sha256 of the per-file sha256s, in order). CORS is open; responses are plain JSON.
+It lists all 6 files as { name, path, url, bytes, sha256, description, counts } plus top-level schemaVersion
+and packHash (sha256 of the per-file sha256s, in order). CORS is open; responses are plain JSON; the CDN
+caches ~10 minutes. Hashes are the change signal — generatedAt churns on every deploy.
 
-Update contract (implement exactly):
-1. Fetch index.json. If packHash equals the stored one, the dataset is current — download nothing.
-2. Otherwise download only the files whose sha256 differs from your stored copy, resolving \`path\` against the index URL.
-3. Verify each download's sha256 against its index entry BEFORE swapping it in (the CDN caches ~10 min, so index
-   and files can briefly disagree after a deploy). On mismatch keep the previous copy and retry later.
-4. Ship a seed copy of all 6 files inside the app so first launch and offline work; refresh in the background.
+Refresh protocol:
+1. Fetch index.json. If packHash equals the stored one → dataset is current, download nothing.
+2. Otherwise download ONLY the files whose sha256 differs, resolving \`path\` against the index URL.
+3. Verify each download's sha256 against its index entry BEFORE swapping it in.
+4. Only after all changed files verify: persist them atomically, store the new packHash + per-file hashes,
+   build a new snapshot, and swap it in.
+
+Failure handling (never crash, never serve partial data):
+- Network error / timeout → keep serving the current snapshot; log; retry with exponential backoff.
+- Hash mismatch on a download → discard it, keep the previous copy, retry later (post-deploy CDN skew is normal).
+- Corrupted local cache (rehash files on load) → fall back to the bundled seed copy and force a refresh.
+- index schemaVersion with a newer MAJOR than ${manifest.schemaVersion.split('.')[0]}.x → keep the last compatible dataset and surface a diagnostic.
+- First launch / offline → load the seed copy bundled with the app; refresh in the background when possible.
 
 # DATA MODELS (schema ${manifest.schemaVersion})
-Live counts: ${c.merchants} merchants · ${c.mccCodes} MCC codes · ${c.categoryRules} rules · ${c.testDescriptors} labeled test descriptors.
-
 merchant_aliases.json → { schemaVersion, generatedAt, name, description, matchingGuidance, merchants: Merchant[] }
   Merchant: { id: string, canonicalName: string, displayName: string, category: string, subcategory: string,
     mccHints: string[], website: string|null, iconSlug: string|null, countryHints: string[],
@@ -130,7 +155,7 @@ sample_test_descriptors.json → { descriptors: { rawDescription: string, region
 manifest.json → { schemaVersion, generatedAt, fileCounts, files, supportedRegions }
 
 # MATCHING ALGORITHM (port exactly — ordering matters)
-Setup, once per dataset load:
+Snapshot build, once per dataset load:
 - unaccent(s): Unicode NFKD normalize, then strip combining marks (U+0300–U+036F).
 - rawNormalize(s): unaccent → lowercase → apostrophes (' ’) become spaces → collapse whitespace → trim.
 - Compile noise.regexPatterns with case-insensitive+global flags; skip invalid patterns silently.
@@ -164,25 +189,54 @@ Invariants your port MUST preserve: exact beats contains · longest alias wins �
 negativeAliases veto contains-matches · aliases shorter than 3 chars never contains-match · tag-only rules
 annotate without stopping the pipeline · rules evaluate in descending priority.
 
-MatchResult should expose at least: merchantId, displayName, category, subcategory, confidence, tags,
-matchedAlias/rule id and method (e.g. "exact:raw", "contains:light", "rule") for debugging.
+# RELIABILITY & PERFORMANCE REQUIREMENTS
+1. The snapshot is IMMUTABLE and replaced atomically — enrichment never blocks on a refresh, never sees a
+   half-built dataset, and is safe to call from any thread.
+2. Indexes and regexes are compiled once per snapshot — never per enrich() call.
+3. enrich() is pure and synchronous over the snapshot: no I/O, no network, no disk on the hot path.
+4. Provide enrichBatch(descriptors) for feeds/backfills (single snapshot read, results in input order).
+5. Refresh policy: on app start and on foregrounding, but at most once per a few hours; always in the
+   background; failures degrade gracefully per the failure-handling table.
+6. Tag every enrichment result (or the batch) with the snapshot's packHash and expose the active packHash —
+   so the app can re-enrich stored transactions when the dataset changes.
+
+# DEBUGGING & OBSERVABILITY
+1. MatchResult carries: merchantId, displayName, category, subcategory, confidence, tags, PLUS debug fields:
+   method ("exact:raw" | "contains:light" | "rule" | null), matchedAlias, ruleId, the cleaning stages
+   { rawnorm, light, full, prefixRemainder }, and negativeSkips (merchants vetoed by a negative alias).
+2. explain(descriptor): returns a human-readable trace — each cleaning stage, which index/rule was consulted,
+   why candidates were skipped, and the final decision. This is the first tool for "why is this categorized wrong?".
+3. Injectable logger hooks (no hard dependency on a logging framework): refresh started / succeeded (files
+   updated, new packHash) / failed (reason), cache corruption detected, seed fallback used.
+4. diagnostics(): counters since launch — enrich calls, match-method distribution, unmatched rate, last
+   refresh time + outcome, active packHash + schemaVersion.
 
 # DELIVERABLES (${stack.label})
 ${stack.deliverables}
 
 # ACCEPTANCE CRITERIA
-1. Run every entry of sample_test_descriptors.json (${c.testDescriptors} descriptors) through your pipeline. A test
-   passes when each non-null expected field (merchantId, category) equals your output. The reference
-   implementation scores ${c.testDescriptors}/${c.testDescriptors} — treat anything below 99% as a porting bug (usual culprits:
-   stage order, phrase sort order, the negative-alias veto, or skipping the unaccent step).
-2. Update-contract tests: unchanged packHash → zero downloads; one changed file → only that file re-downloaded;
-   corrupted download (hash mismatch) → previous copy kept.
-3. No network on the enrichment hot path — matching runs entirely on the locally cached dataset.
+1. Labeled test set: run every entry of sample_test_descriptors.json (${c.testDescriptors} descriptors). A test passes when
+   each non-null expected field (merchantId, category) equals your output. The reference implementation scores
+   ${c.testDescriptors}/${c.testDescriptors} — treat anything below 99% as a porting bug (usual culprits: stage order, phrase sort order,
+   the negative-alias veto, or a skipped unaccent).
+2. Update contract: unchanged packHash → zero file downloads; one changed file → exactly that file
+   re-downloaded; corrupted download (hash mismatch) → previous copy kept and enrichment unaffected.
+3. Concurrency: enriching while a refresh swaps the snapshot returns consistent results (each call sees
+   exactly one snapshot).
+4. No network or disk I/O on the enrichment hot path (verifiable in the tests).
+
+# OUTPUT FORMAT
+Reply in this order, no placeholders, no TODOs, no "left as an exercise" — every file complete and compilable:
+1. Architecture summary (max 10 lines): the layers, where state lives, how the snapshot swap works.
+2. The code, file by file, each preceded by its filename.
+3. The tests, file by file.
+4. A short usage example: app startup wiring + enriching a list of transactions + printing explain() for one.
 
 # SELF-CHECK BEFORE REPLYING
-- [ ] All 6 files modeled, nullable fields included (website, iconSlug, notes, expected.merchantId/category)
+- [ ] All 6 files modeled; nullable fields included (website, iconSlug, notes, expected.merchantId/category)
 - [ ] Every key inside Rule.match and Rule.result treated as optional
-- [ ] Algorithm steps in the exact order above; all invariants honored
-- [ ] sha256 verified before swapping any file; seed + background refresh included
-- [ ] Test runner reports passed/${c.testDescriptors} against the labeled set`;
+- [ ] Algorithm steps in the exact order above; all invariants honored; unaccent not skipped
+- [ ] sha256 verified before any swap; snapshot replaced atomically; seed + backoff + corruption fallback in place
+- [ ] enrich() does no I/O; indexes built once per snapshot; enrichBatch / explain / diagnostics implemented
+- [ ] Tests report passed/${c.testDescriptors} against the labeled set and cover the update contract + concurrency`;
 }

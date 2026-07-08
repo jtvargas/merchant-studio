@@ -39,14 +39,15 @@ export default function IntegrateCard() {
             <button
               key={s.id}
               type="button"
+              aria-pressed={s.id === stack}
               class={`chip cursor-pointer transition-colors ${
                 s.id === stack
-                  ? 'border-emerald-600 bg-emerald-900/30 text-emerald-300'
-                  : 'hover:border-zinc-600 hover:text-zinc-200'
+                  ? 'border-emerald-500 bg-emerald-600/20 font-semibold text-emerald-300'
+                  : 'hover:border-zinc-500 hover:text-zinc-100'
               }`}
               onClick={() => setStack(s.id)}
             >
-              {s.label}
+              {s.id === stack ? '✓ ' : ''}{s.label}
             </button>
           ))}
         </div>
@@ -62,9 +63,11 @@ export default function IntegrateCard() {
           {copied ? '✓ Copied' : mcc ? '📋 Copy LLM prompt' : 'Loading dataset…'}
         </button>
         <p class="mt-1 text-xs text-zinc-500">
-          Paste it into ChatGPT / Claude / Gemini — it contains the endpoints, the update contract, all six data
-          models, the exact matching algorithm, stack-specific deliverables, and acceptance tests (score against
-          the {manifest?.fileCounts.testDescriptors ?? 285} labeled descriptors).
+          Paste it into ChatGPT / Claude / Gemini — it's a production integration brief: use this dataset as your
+          app's transaction-enrichment data source, with the full update contract and failure handling, all six
+          data models, the exact matching algorithm, reliability &amp; observability requirements
+          (atomic refresh, explain/diagnostics), and acceptance tests (score against the{' '}
+          {manifest?.fileCounts.testDescriptors ?? 285} labeled descriptors).
         </p>
       </div>
       <p class="text-xs text-zinc-500">
