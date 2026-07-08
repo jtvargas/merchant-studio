@@ -13,6 +13,17 @@ export function run(cmd: string, args: string[], cwd = CWD): string {
   return execFileSync(cmd, args, { cwd, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim();
 }
 
+// schemaVersion currently on origin/main — the base a publish bump is computed
+// against (so repeated local publishes don't double-bump).
+export function baseSchemaVersion(): string | null {
+  try {
+    const manifest = JSON.parse(run('git', ['show', 'origin/main:data/manifest.json']));
+    return typeof manifest.schemaVersion === 'string' ? manifest.schemaVersion : null;
+  } catch {
+    return null;
+  }
+}
+
 export function dataChangedVsOrigin(): boolean {
   run('git', ['fetch', 'origin', 'main']);
   try {

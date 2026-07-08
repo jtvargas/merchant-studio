@@ -137,7 +137,7 @@ export default function PublishPanel({ mode }: { mode: Mode }) {
         testsNote: payload.replaceTests ? `replaced (${payload.testDescriptors?.length ?? 0})` : undefined,
         via: 'Merchant Studio **⇪ Publish data** button (hosted, GitHub token)',
       });
-      const result = await createDataPr(buildFiles(docs), title, body, token, setProgress);
+      const result = await createDataPr(buildFiles(docs, { bumpPatch: true }), title, body, token, setProgress);
       setTokenState(null);
       setLogin(null);
       setStatus({ kind: 'ok', text: `Pull request created (${result.changedFiles.length} files) — your token was discarded from memory:`, url: result.url });

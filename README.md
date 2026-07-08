@@ -96,7 +96,7 @@ All flows end in a **pull request against `data/`** that waits for maintainer re
 | `category_rules.json` | Priority-ordered rules: brand disambiguation, payment rails (PIX/SPEI/Bizum), installment tags, processor prefixes, ES/PT keyword fallbacks |
 | `descriptor_noise_terms.json` | Cleaning config: noise words/phrases (EN/ES/PT), preserve-list, processor tokens, regex patterns |
 | `sample_test_descriptors.json` | Labeled raw descriptors → expected merchant/category (the recognition benchmark) |
-| `manifest.json` | Counts + supported regions (recomputed on every save/export) |
+| `manifest.json` | Counts + supported regions (recomputed on every save/export) + `schemaVersion` — `MAJOR.MINOR` is the file structure, `PATCH` is the data revision, bumped automatically by every publish flow (token PR, local PR, `apply-update.mjs`). The published `index.json` additionally carries a monotonic `dataRevision` (count of commits touching `data/`) and a combined `version` like `1.1.2+r58`, so consumers see a new version even if a hand-edited PR forgot the bump |
 
 ## Use the data in your app (public data API)
 

@@ -4,6 +4,7 @@
 // public/data is gitignored; data/ is the source of truth.
 import { cpSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
+import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
@@ -49,6 +50,22 @@ mkdirSync(`${root}public/data`, { recursive: true });
 cpSync(`${root}data`, `${root}public/data`, { recursive: true });
 
 const manifest = JSON.parse(readFileSync(`${root}data/manifest.json`, 'utf8'));
+
+// Monotonic data revision derived from git history (count of commits touching
+// data/). A safety net for consumers: it advances on EVERY merged data change,
+// even if a hand-edited PR forgot to bump manifest.schemaVersion. Needs full
+// history — deploy.yml checks out with fetch-depth: 0. Null when git or
+// history is unavailable (e.g. tarball builds).
+let dataRevision = null;
+try {
+  const count = execFileSync('git', ['rev-list', '--count', 'HEAD', '--', 'data'], {
+    cwd: root, encoding: 'utf8',
+  }).trim();
+  const shallow = execFileSync('git', ['rev-parse', '--is-shallow-repository'], {
+    cwd: root, encoding: 'utf8',
+  }).trim();
+  if (shallow !== 'true' && /^\d+$/.test(count)) dataRevision = Number(count);
+} catch { /* not a git checkout — leave null */ }
 const files = Object.entries(FILE_META).map(([name, meta]) => {
   const buf = readFileSync(`${root}data/${name}`);
   return {
@@ -68,6 +85,8 @@ const index = {
   name: 'transaction-enrichment-pack',
   indexVersion: 1,
   schemaVersion: manifest.schemaVersion,
+  dataRevision,
+  version: dataRevision === null ? manifest.schemaVersion : `${manifest.schemaVersion}+r${dataRevision}`,
   generatedAt: new Date().toISOString(),
   baseUrl: DATA_URL,
   // Single "did anything change?" signal: sha256 of the per-file hashes in order.
@@ -76,4 +95,4 @@ const index = {
   files,
 };
 writeFileSync(`${root}public/data/index.json`, JSON.stringify(index, null, 2) + '\n');
-console.log(`synced data/ -> public/data/ + index.json (${files.length} files, pack ${index.packHash.slice(0, 12)})`);
+console.log(`synced data/ -> public/data/ + index.json (${files.length} files, ${index.version}, pack ${index.packHash.slice(0, 12)})`);

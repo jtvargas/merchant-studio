@@ -149,6 +149,12 @@ manifest.fileCounts = {
   testDescriptors: testsDoc.descriptors.length,
 };
 manifest.generatedAt = new Date().toISOString().slice(0, 10);
+// Every applied update is a new data revision: bump the schemaVersion PATCH
+// (MAJOR.MINOR = schema shape, PATCH = data revision — mirrors src/lib/manifest.ts).
+manifest.schemaVersion = manifest.schemaVersion.replace(
+  /^(\d+)\.(\d+)\.(\d+)$/,
+  (_, ma, mi, pa) => `${ma}.${mi}.${Number(pa) + 1}`,
+);
 
 writeJson('merchant_aliases.json', merchantsDoc);
 writeJson('sample_test_descriptors.json', testsDoc);
@@ -158,5 +164,5 @@ console.log('## Data update applied');
 if (added.length) console.log(`### Added (${added.length})\n` + added.map((i) => `- \`${i}\``).join('\n'));
 if (updated.length) console.log(`### Updated (${updated.length})\n` + updated.map((i) => `- \`${i}\``).join('\n'));
 if (deletions.length) console.log(`### Deleted (${deletions.length})\n` + deletions.map((i) => `- \`${i}\``).join('\n'));
-console.log(`\nmerchants: ${manifest.fileCounts.merchants} · testDescriptors: ${manifest.fileCounts.testDescriptors}`);
+console.log(`\nmerchants: ${manifest.fileCounts.merchants} · testDescriptors: ${manifest.fileCounts.testDescriptors} · schemaVersion: ${manifest.schemaVersion}`);
 console.log('\nNow review the diff and publish it (git commit or the Publish button in npm run dev).');

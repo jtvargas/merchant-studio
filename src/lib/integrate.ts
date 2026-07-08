@@ -101,9 +101,12 @@ Four layers, cleanly separated:
 
 # DATA CONTRACT (implement exactly)
 Discovery index: ${DATA_INDEX_URL}
-It lists all 6 files as { name, path, url, bytes, sha256, description, counts } plus top-level schemaVersion
-and packHash (sha256 of the per-file sha256s, in order). CORS is open; responses are plain JSON; the CDN
-caches ~10 minutes. Hashes are the change signal — generatedAt churns on every deploy.
+It lists all 6 files as { name, path, url, bytes, sha256, description, counts } plus top-level schemaVersion,
+dataRevision, and packHash (sha256 of the per-file sha256s, in order). Version semantics: schemaVersion
+MAJOR.MINOR = file structure (what your models guard on), PATCH = data revision (bumped on every published
+data update); dataRevision is a monotonic counter that advances with every merged data change. CORS is open;
+responses are plain JSON; the CDN caches ~10 minutes. Hashes are the change signal — generatedAt churns on
+every deploy.
 
 Refresh protocol:
 1. Fetch index.json. If packHash equals the stored one → dataset is current, download nothing.

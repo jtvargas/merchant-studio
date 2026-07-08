@@ -161,6 +161,10 @@ interface Rule {
 { schemaVersion, generatedAt, fileCounts: Record<string, number>, files, supportedRegions }
 ```
 
+Version semantics: `schemaVersion` `MAJOR.MINOR` = file structure (guard your models on this),
+`PATCH` = data revision, bumped on every published data update. The index additionally carries
+`dataRevision` (monotonic count of data commits) and a combined `version` (e.g. `1.1.2+r58`).
+
 ## Step 3 · Port the matching pipeline
 
 Reference implementation: [`src/lib/pipeline.ts`](../src/lib/pipeline.ts) (scores 285/285 on

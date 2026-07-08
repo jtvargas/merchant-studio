@@ -9,8 +9,10 @@ function stringify(doc: unknown): string {
   return JSON.stringify(doc, null, 2) + '\n';
 }
 
-export function buildFiles(docs: AllDocs): Record<string, string> {
-  const manifest = refreshManifest(docs.manifest, docs);
+// bumpPatch: pass true when the files are being *published* as a new data
+// revision (PR flows) — plain zip/file downloads keep the current version.
+export function buildFiles(docs: AllDocs, opts: { bumpPatch?: boolean } = {}): Record<string, string> {
+  const manifest = refreshManifest(docs.manifest, docs, opts);
   return {
     'merchant_aliases.json': stringify(docs.merchants),
     'mcc_categories.json': stringify(docs.mcc),
