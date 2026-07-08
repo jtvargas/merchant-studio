@@ -22,6 +22,7 @@ config (EN/ES/PT), and a labeled test set to measure recognition. Regions covere
 | **Validate** | One-click integrity check: duplicate ids, alias collisions, invalid categories, unknown MCC hints, manifest drift |
 | **Rules / MCC** | Read-only searchable reference of the rule set and MCC table |
 | **Export pack** | Download all 6 files (manifest recomputed) as a zip — ready to drop into your app |
+| **Data API** | The same files served as public JSON endpoints + a generated `index.json` discovery document (URLs, sizes, sha256 hashes) so apps can fetch the dataset at runtime — see [Use the data in your app](#use-the-data-in-your-app-public-data-api) |
 
 ## Two ways to use it
 
@@ -79,6 +80,63 @@ All flows end in a **pull request against `data/`** that waits for maintainer re
 | `descriptor_noise_terms.json` | Cleaning config: noise words/phrases (EN/ES/PT), preserve-list, processor tokens, regex patterns |
 | `sample_test_descriptors.json` | Labeled raw descriptors → expected merchant/category (the recognition benchmark) |
 | `manifest.json` | Counts + supported regions (recomputed on every save/export) |
+
+## Use the data in your app (public data API)
+
+Every file in `data/` is served as a plain public JSON asset on GitHub Pages — no auth, open
+CORS (`Access-Control-Allow-Origin: *`), ~10-minute cache with ETags. So your mobile/web app
+can **fetch the dataset at runtime instead of bundling it**:
+
+- **Discovery index**: `https://jtvargas.github.io/merchant-studio/data/index.json` — lists all
+  6 files with `url`, `path`, `bytes`, `sha256`, per-file counts, `schemaVersion`, and a single
+  `packHash` (also browsable on the site's [Data API page](https://jtvargas.github.io/merchant-studio/data)).
+- **Files**: `https://jtvargas.github.io/merchant-studio/data/<name>.json`
+
+Update-check contract (hashes are the change signal — `generatedAt` changes on every deploy):
+
+1. Fetch `index.json`; if `packHash` equals what you stored, you're up to date.
+2. Otherwise re-download only the files whose `sha256` differs, resolving `path` against the index URL.
+3. Verify each download's sha256 against its index entry before swapping it in — right after a
+   deploy the CDN can briefly (~10 min) serve index and files from different builds; on mismatch
+   keep your previous copy and retry later.
+
+JavaScript:
+
+```js
+const INDEX_URL = 'https://jtvargas.github.io/merchant-studio/data/index.json';
+const index = await (await fetch(INDEX_URL)).json();
+if (index.packHash !== stored.packHash) {
+  for (const f of index.files.filter((f) => f.sha256 !== stored.hashes[f.name])) {
+    const bytes = await (await fetch(new URL(f.path, INDEX_URL))).arrayBuffer();
+    const digest = await crypto.subtle.digest('SHA-256', bytes);
+    const hex = [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, '0')).join('');
+    if (hex === f.sha256) save(f.name, bytes, hex); // else keep old copy, retry later
+  }
+}
+```
+
+Swift:
+
+```swift
+struct DataIndex: Codable { let schemaVersion, packHash: String; let files: [DataFile] }
+struct DataFile: Codable { let name, path, sha256: String; let bytes: Int }
+
+let indexURL = URL(string: "https://jtvargas.github.io/merchant-studio/data/index.json")!
+let (data, _) = try await URLSession.shared.data(from: indexURL)
+let index = try JSONDecoder().decode(DataIndex.self, from: data)
+guard index.packHash != storedPackHash else { return } // up to date
+
+for file in index.files where file.sha256 != storedHashes[file.name] {
+    let (bytes, _) = try await URLSession.shared.data(
+        from: URL(string: file.path, relativeTo: indexURL)!)
+    let hex = SHA256.hash(data: bytes).map { String(format: "%02x", $0) }.joined()
+    if hex == file.sha256 { save(file.name, bytes, hex) } // else keep old copy, retry later
+}
+```
+
+The 6 source files are also readable at
+`https://raw.githubusercontent.com/jtvargas/merchant-studio/main/data/<name>.json`, but
+`index.json` exists only on Pages — it's generated at build time (`public/data/` is gitignored).
 
 ### Matching pipeline (implemented in `src/lib/pipeline.ts`, mirrored by consuming apps)
 
