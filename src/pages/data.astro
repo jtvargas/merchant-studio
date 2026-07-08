@@ -24,6 +24,23 @@ const fmtCounts = (c: Record<string, number> | null) =>
     </div>
 
     <div class="card space-y-2">
+      <p class="label">License &amp; attribution — required</p>
+      <p class="text-sm text-zinc-400">
+        The dataset is licensed under <a class="text-emerald-400 hover:underline" href="https://github.com/jtvargas/merchant-studio/blob/main/data/LICENSE" target="_blank">CC BY 4.0</a> —
+        free for any purpose, including commercially, as long as you credit it. Show this credit somewhere your
+        app displays data sources (About/Settings screen, footer, "powered by" line):
+      </p>
+      <div class="flex flex-wrap items-center gap-2">
+        <code class="rounded-lg bg-zinc-950 px-3 py-1.5 text-sm text-emerald-300">Enrichment from Merchant Studio by Jonathan Taveras</code>
+        <button type="button" class="btn copy-url" data-url="Enrichment from Merchant Studio by Jonathan Taveras">📋 Copy attribution</button>
+      </div>
+      <p class="text-xs text-zinc-500">
+        Link it to <code>https://github.com/jtvargas/merchant-studio</code> where your UI supports links. Full
+        terms and a short-form alternative: <a class="text-emerald-400 hover:underline" href="https://github.com/jtvargas/merchant-studio/blob/main/data/ATTRIBUTION.md" target="_blank">data/ATTRIBUTION.md</a>.
+      </p>
+    </div>
+
+    <div class="card space-y-2">
       <p class="label">Discovery index — fetch this first</p>
       <div class="flex flex-wrap items-center gap-2">
         <code class="rounded-lg bg-zinc-950 px-3 py-1.5 text-sm text-emerald-300">{index.baseUrl}index.json</code>

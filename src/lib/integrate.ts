@@ -119,6 +119,14 @@ Failure handling (never crash, never serve partial data):
 - index schemaVersion with a newer MAJOR than ${manifest.schemaVersion.split('.')[0]}.x → keep the last compatible dataset and surface a diagnostic.
 - First launch / offline → load the seed copy bundled with the app; refresh in the background when possible.
 
+# LICENSE & ATTRIBUTION (required — not optional)
+The dataset is licensed under CC BY 4.0: free for any use, including commercial, PROVIDED the app gives
+attribution. You MUST display this exact credit somewhere a user can reasonably find it — an About/Settings/
+credits screen, not just buried in a bundled LICENSE file:
+  "Enrichment from Merchant Studio by Jonathan Taveras"
+Link it to https://github.com/jtvargas/merchant-studio wherever the UI supports links. Include this in your
+deliverables (e.g. an About screen entry or a constant the app is wired to display) — do not skip it.
+
 # DATA MODELS (schema ${manifest.schemaVersion})
 merchant_aliases.json → { schemaVersion, generatedAt, name, description, matchingGuidance, merchants: Merchant[] }
   Merchant: { id: string, canonicalName: string, displayName: string, category: string, subcategory: string,
@@ -238,5 +246,6 @@ Reply in this order, no placeholders, no TODOs, no "left as an exercise" — eve
 - [ ] Algorithm steps in the exact order above; all invariants honored; unaccent not skipped
 - [ ] sha256 verified before any swap; snapshot replaced atomically; seed + backoff + corruption fallback in place
 - [ ] enrich() does no I/O; indexes built once per snapshot; enrichBatch / explain / diagnostics implemented
+- [ ] Attribution string displayed somewhere in the app, not just bundled as a license file
 - [ ] Tests report passed/${c.testDescriptors} against the labeled set and cover the update contract + concurrency`;
 }

@@ -2,6 +2,7 @@
   "name": "merchant-studio",
   "version": "1.0.0",
   "description": "GUI to inspect, add, and export merchants for the transaction enrichment pack",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "predev": "node scripts/sync-data.mjs",

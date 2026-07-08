@@ -12,6 +12,20 @@ config (EN/ES/PT), and a labeled test set to measure recognition. Regions covere
 The goal: **community-driven, structured merchant data** — use it in your app, contribute the
 merchants it's missing, and everyone's transactions get easier to understand.
 
+## License
+
+The **app code** (this Astro site) is [MIT](LICENSE). The **dataset** in [`data/`](data/) is
+licensed separately under **[CC BY 4.0](data/LICENSE)** — free to use for any purpose, including
+commercially, as long as you give attribution. Put this credit somewhere your app shows data
+sources or credits (About/Settings screen, footer, "powered by" line — see
+[`data/ATTRIBUTION.md`](data/ATTRIBUTION.md) for details and a short-form alternative):
+
+```
+Enrichment from Merchant Studio by Jonathan Taveras
+```
+
+Link it to `https://github.com/jtvargas/merchant-studio` wherever your UI supports links.
+
 ## What you can do
 
 | Page | Purpose |

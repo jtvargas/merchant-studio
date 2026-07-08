@@ -9,6 +9,19 @@ bundling the data files or calling any server at classification time.
 > button that packs everything in this guide into one implementation brief for ChatGPT/Claude.
 > This document is the same content for humans.
 
+## License & attribution (required)
+
+The dataset is licensed under **[CC BY 4.0](../data/LICENSE)** — free for any use, including
+commercial, as long as you give attribution. Display this credit somewhere your app shows data
+sources (About/Settings screen, footer, "powered by" line):
+
+```
+Enrichment from Merchant Studio by Jonathan Taveras
+```
+
+Link it to `https://github.com/jtvargas/merchant-studio` where your UI supports links. See
+[`data/ATTRIBUTION.md`](../data/ATTRIBUTION.md) for a short-form alternative and the full rationale.
+
 ## The big picture
 
 Your app keeps a local copy of 6 JSON files, refreshes them from a public URL when they change,
