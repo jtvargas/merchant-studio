@@ -27674,8 +27674,7 @@
         "bridge.simplefin.org"
       ],
       "negativeAliases": [
-        "simplefin protocol",
-        "link.com"
+        "simplefin protocol"
       ],
       "defaultConfidence": 0.92,
       "notes": "LINK.COM is the Stripe Link payment prefix; descriptor truncates SimpleFIN Bridge."
