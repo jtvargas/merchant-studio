@@ -1,8 +1,8 @@
 {
-  "schemaVersion": "1.1.2",
-  "generatedAt": "2026-07-09",
+  "schemaVersion": "1.1.3",
+  "generatedAt": "2026-07-14",
   "fileCounts": {
-    "merchants": 1089,
+    "merchants": 1091,
     "mccCodes": 371,
     "categoryRules": 130,
     "noiseExactWords": 115,

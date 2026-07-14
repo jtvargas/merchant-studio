@@ -27678,6 +27678,52 @@
       ],
       "defaultConfidence": 0.92,
       "notes": "LINK.COM is the Stripe Link payment prefix; descriptor truncates SimpleFIN Bridge."
+    },
+    {
+      "id": "fidelity_moneyline",
+      "canonicalName": "Fidelity Investments",
+      "displayName": "Fidelity Investments",
+      "category": "financial",
+      "subcategory": "brokerage",
+      "mccHints": [
+        "6012"
+      ],
+      "website": "fidelity.com",
+      "iconSlug": null,
+      "countryHints": [
+        "US"
+      ],
+      "aliases": [
+        "fid bkg svc llc moneyline",
+        "fid bkg svc llc",
+        "fidelity moneyline",
+        "fid bkg svc llc moneyline ppd"
+      ],
+      "negativeAliases": [],
+      "defaultConfidence": 0.95,
+      "notes": "Fidelity Brokerage Services LLC MoneyLine ACH transfers for funding brokerage accounts"
+    },
+    {
+      "id": "strike_zap_solutions",
+      "canonicalName": "Strike",
+      "displayName": "Strike",
+      "category": "financial",
+      "subcategory": "crypto",
+      "mccHints": [],
+      "website": "strike.me",
+      "iconSlug": null,
+      "countryHints": [
+        "US"
+      ],
+      "aliases": [
+        "strike zap solu",
+        "strike (zap solu",
+        "zap solutions strike",
+        "strike zap solutions"
+      ],
+      "negativeAliases": [],
+      "defaultConfidence": 0.92,
+      "notes": "Bitcoin payments app by Zap Solutions, Inc.; descriptor often includes date like 07/10"
     }
   ]
 }
