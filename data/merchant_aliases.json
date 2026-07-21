@@ -27724,6 +27724,147 @@
       "negativeAliases": [],
       "defaultConfidence": 0.92,
       "notes": "Bitcoin payments app by Zap Solutions, Inc.; descriptor often includes date like 07/10"
+    },
+    {
+      "id": "biltmore_hotel_coral_gables",
+      "canonicalName": "The Biltmore Hotel",
+      "displayName": "The Biltmore Hotel",
+      "category": "travel",
+      "subcategory": "hotel",
+      "mccHints": [
+        "7011"
+      ],
+      "website": "biltmorehotel.com",
+      "iconSlug": null,
+      "countryHints": [
+        "US"
+      ],
+      "aliases": [
+        "biltmore hotel",
+        "the biltmore hotel",
+        "biltmore hotel coral gables",
+        "the biltmore hotel f b coral gables"
+      ],
+      "negativeAliases": [],
+      "defaultConfidence": 0.95,
+      "notes": "Statements often show 'THE BILTMORE HOTEL F B CORAL GABLES' or similar truncations with 'FB' likely indicating Florida location."
+    },
+    {
+      "id": "blessed_brewed_by_vanessa",
+      "canonicalName": "Blessed & Brewed by Vanessa",
+      "displayName": "Blessed & Brewed by Vanessa",
+      "category": "food_dining",
+      "subcategory": "coffee_shop",
+      "mccHints": [
+        "5812"
+      ],
+      "website": null,
+      "iconSlug": null,
+      "countryHints": [
+        "US"
+      ],
+      "aliases": [
+        "blessed brewed",
+        "blessed & brewed by vanessa",
+        "sq blessed brewed",
+        "blessed brewed by coral gables"
+      ],
+      "negativeAliases": [],
+      "defaultConfidence": 0.92,
+      "notes": "Square (SQ) transaction for faith-inspired Miami coffee shop; descriptor includes location reference."
+    },
+    {
+      "id": "12_oaks_parking",
+      "canonicalName": "12 Oaks Parking",
+      "displayName": "12 Oaks Parking",
+      "category": "auto_transport",
+      "subcategory": "parking",
+      "mccHints": [
+        "7523"
+      ],
+      "website": "12oaksparking.com",
+      "iconSlug": null,
+      "countryHints": [
+        "US"
+      ],
+      "aliases": [
+        "12 oaks parking",
+        "sq 12 oaks parking",
+        "12 oaks parking gosq",
+        "12oaks parking"
+      ],
+      "negativeAliases": [],
+      "defaultConfidence": 0.92,
+      "notes": "Square-processed parking payments; operates multiple locations including South Florida."
+    },
+    {
+      "id": "first_class_parking",
+      "canonicalName": "First Class Parking",
+      "displayName": "First Class Parking",
+      "category": "auto_transport",
+      "subcategory": "parking",
+      "mccHints": [
+        "7523"
+      ],
+      "website": "1stclassparking.com",
+      "iconSlug": null,
+      "countryHints": [
+        "US"
+      ],
+      "aliases": [
+        "first class parking",
+        "sq first class parking",
+        "first class parking miami",
+        "1st class parking"
+      ],
+      "negativeAliases": [],
+      "defaultConfidence": 0.92,
+      "notes": "Square-processed valet/parking in Miami area."
+    },
+    {
+      "id": "acqua_e_farina",
+      "canonicalName": "Acqua e Farina",
+      "displayName": "Acqua e Farina",
+      "category": "food_dining",
+      "subcategory": "pizza",
+      "mccHints": [
+        "5812"
+      ],
+      "website": null,
+      "iconSlug": null,
+      "countryHints": [
+        "US"
+      ],
+      "aliases": [
+        "acqua e farina",
+        "sq acqua e farina",
+        "acqua e farina miami",
+        "acqua farinha"
+      ],
+      "negativeAliases": [],
+      "defaultConfidence": 0.92,
+      "notes": "Square transaction for Neapolitan pizza spot in Miami; 'e' often appears in descriptors."
+    },
+    {
+      "id": "kenneth_miller_miami",
+      "canonicalName": "Kenneth Miller",
+      "displayName": "Kenneth Miller",
+      "category": "professional_services",
+      "subcategory": "consulting",
+      "mccHints": [],
+      "website": null,
+      "iconSlug": null,
+      "countryHints": [
+        "US"
+      ],
+      "aliases": [
+        "kenneth miller",
+        "sq kenneth miller",
+        "kenneth miller miami"
+      ],
+      "negativeAliases": [],
+      "defaultConfidence": 0.83,
+      "notes": "Square transaction for individual service provider in Miami; likely professional services."
     }
   ]
 }
