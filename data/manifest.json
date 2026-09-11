@@ -1,14 +1,14 @@
 {
-  "schemaVersion": "1.1.4",
-  "generatedAt": "2026-07-21",
+  "schemaVersion": "1.1.5",
+  "generatedAt": "2026-09-11",
   "fileCounts": {
-    "merchants": 1097,
+    "merchants": 2912,
     "mccCodes": 371,
     "categoryRules": 130,
     "noiseExactWords": 115,
     "noisePhrases": 61,
     "regexPatterns": 26,
-    "testDescriptors": 285
+    "testDescriptors": 369
   },
   "files": [
     "merchant_aliases.json",
