@@ -2283,6 +2283,678 @@
         "merchantId": "magazine_luiza",
         "category": "refunds"
       }
+    },
+    {
+      "rawDescription": "FRED MEYER #00123 PORTLAND OR",
+      "region": "US",
+      "expected": {
+        "merchantId": "fred_meyer",
+        "category": "groceries"
+      }
+    },
+    {
+      "rawDescription": "SPEEDWAY 08234 COLUMBUS OH",
+      "region": "US",
+      "expected": {
+        "merchantId": "speedway",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "CONOCO 0612345 DENVER CO",
+      "region": "US",
+      "expected": {
+        "merchantId": "conoco",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "KUM&GO #0412 DES MOINES IA",
+      "region": "US",
+      "expected": {
+        "merchantId": "kum_and_go",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "HARDEES 1502345 CHARLOTTE NC",
+      "region": "US",
+      "expected": {
+        "merchantId": "hardees",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "TST* PORTILLOS HOT DOGS CHICAGO IL",
+      "region": "US",
+      "expected": {
+        "merchantId": "portillos",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "SQ *SCOOTERS COFFEE OMAHA NE",
+      "region": "US",
+      "expected": {
+        "merchantId": "scooters_coffee",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "CAPITAL GRILLE 8017 BOSTON MA",
+      "region": "US",
+      "expected": {
+        "merchantId": "capital_grille",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "COMENITY PAY VI WEB PYMT",
+      "region": "US",
+      "expected": {
+        "merchantId": "comenity_bread",
+        "category": "financial"
+      }
+    },
+    {
+      "rawDescription": "PENFED CREDIT UNION PAYMENT",
+      "region": "US",
+      "expected": {
+        "merchantId": "penfed",
+        "category": "financial"
+      }
+    },
+    {
+      "rawDescription": "TOYOTA FINANCIAL SVC PAYMENT 1234",
+      "region": "US",
+      "expected": {
+        "merchantId": "toyota_financial",
+        "category": "financial"
+      }
+    },
+    {
+      "rawDescription": "FREEDOM MORTGAGE CORP MTG PYMT",
+      "region": "US",
+      "expected": {
+        "merchantId": "freedom_mortgage",
+        "category": "financial"
+      }
+    },
+    {
+      "rawDescription": "SALLIE MAE PAYMENT",
+      "region": "US",
+      "expected": {
+        "merchantId": "sallie_mae",
+        "category": "financial"
+      }
+    },
+    {
+      "rawDescription": "MERRILL LYNCH TRANSFER",
+      "region": "US",
+      "expected": {
+        "merchantId": "merrill",
+        "category": "investments"
+      }
+    },
+    {
+      "rawDescription": "KRAKEN.COM PAYWARD",
+      "region": "US",
+      "expected": {
+        "merchantId": "kraken",
+        "category": "investments"
+      }
+    },
+    {
+      "rawDescription": "ERIE INSURANCE GROUP PREMIUM",
+      "region": "US",
+      "expected": {
+        "merchantId": "erie_insurance",
+        "category": "insurance"
+      }
+    },
+    {
+      "rawDescription": "TRUPANION INC PET INSURANCE",
+      "region": "US",
+      "expected": {
+        "merchantId": "trupanion",
+        "category": "insurance"
+      }
+    },
+    {
+      "rawDescription": "AMEREN ILLINOIS UTILITY PAYMENT",
+      "region": "US",
+      "expected": {
+        "merchantId": "ameren",
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "EVERSOURCE ENERGY BILL PAY",
+      "region": "US",
+      "expected": {
+        "merchantId": "eversource",
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "ATMOS ENERGY PAYMENT",
+      "region": "US",
+      "expected": {
+        "merchantId": "atmos_energy",
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "MEDIACOM CABLE 800-4790000",
+      "region": "US",
+      "expected": {
+        "merchantId": "mediacom",
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "DIRECTV STREAM 800-531-5000",
+      "region": "US",
+      "expected": {
+        "merchantId": "directv",
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "POSHMARK INC",
+      "region": "US",
+      "expected": {
+        "merchantId": "poshmark",
+        "category": "shopping"
+      }
+    },
+    {
+      "rawDescription": "DSW #12345 ORLANDO FL",
+      "region": "US",
+      "expected": {
+        "merchantId": "dsw",
+        "category": "shopping"
+      }
+    },
+    {
+      "rawDescription": "BOOT BARN #256 FORT WORTH TX",
+      "region": "US",
+      "expected": {
+        "merchantId": "boot_barn",
+        "category": "shopping"
+      }
+    },
+    {
+      "rawDescription": "MICRO CENTER #045 TUSTIN CA",
+      "region": "US",
+      "expected": {
+        "merchantId": "micro_center",
+        "category": "shopping"
+      }
+    },
+    {
+      "rawDescription": "TOTAL WINE AND MORE #1234",
+      "region": "US",
+      "expected": {
+        "merchantId": "total_wine",
+        "category": "shopping"
+      }
+    },
+    {
+      "rawDescription": "SLEEP NUMBER #0345 PLANO TX",
+      "region": "US",
+      "expected": {
+        "merchantId": "sleep_number",
+        "category": "home"
+      }
+    },
+    {
+      "rawDescription": "TWO MEN AND A TRUCK #123",
+      "region": "US",
+      "expected": {
+        "merchantId": "two_men_and_a_truck",
+        "category": "home"
+      }
+    },
+    {
+      "rawDescription": "EXPRESS SCRIPTS PHARMACY",
+      "region": "US",
+      "expected": {
+        "merchantId": "express_scripts",
+        "category": "health"
+      }
+    },
+    {
+      "rawDescription": "CITYMD URGENT CARE NEW YORK NY",
+      "region": "US",
+      "expected": {
+        "merchantId": "citymd",
+        "category": "health"
+      }
+    },
+    {
+      "rawDescription": "MAYO CLINIC ROCHESTER MN",
+      "region": "US",
+      "expected": {
+        "merchantId": "mayo_clinic",
+        "category": "health"
+      }
+    },
+    {
+      "rawDescription": "CLUB PILATES #321 AUSTIN TX",
+      "region": "US",
+      "expected": {
+        "merchantId": "club_pilates",
+        "category": "health"
+      }
+    },
+    {
+      "rawDescription": "SIX FLAGS GREAT ADVENTURE JACKSON NJ",
+      "region": "US",
+      "expected": {
+        "merchantId": "six_flags",
+        "category": "entertainment"
+      }
+    },
+    {
+      "rawDescription": "DRAFTKINGS INC BOSTON MA",
+      "region": "US",
+      "expected": {
+        "merchantId": "draftkings",
+        "category": "entertainment"
+      }
+    },
+    {
+      "rawDescription": "BETMGM.COM",
+      "region": "US",
+      "expected": {
+        "merchantId": "betmgm",
+        "category": "entertainment"
+      }
+    },
+    {
+      "rawDescription": "APPLE TV+ SUBSCRIPTION",
+      "region": "US",
+      "expected": {
+        "merchantId": "apple_tv_plus",
+        "category": "subscriptions"
+      }
+    },
+    {
+      "rawDescription": "ATLASSIAN JIRA SOFTWARE",
+      "region": "US",
+      "expected": {
+        "merchantId": "atlassian",
+        "category": "software"
+      }
+    },
+    {
+      "rawDescription": "INTUIT *QBOOKS ONLINE",
+      "region": "US",
+      "expected": {
+        "merchantId": "quickbooks_intuit",
+        "category": "software"
+      }
+    },
+    {
+      "rawDescription": "GODADDY.COM DOMAINS",
+      "region": "US",
+      "expected": {
+        "merchantId": "godaddy",
+        "category": "software"
+      }
+    },
+    {
+      "rawDescription": "EXPERIAN CREDITWORKS",
+      "region": "US",
+      "expected": {
+        "merchantId": "experian",
+        "category": "software"
+      }
+    },
+    {
+      "rawDescription": "CODECADEMY PRO",
+      "region": "US",
+      "expected": {
+        "merchantId": "codecademy",
+        "category": "education"
+      }
+    },
+    {
+      "rawDescription": "PRIMROSE SCHOOL OF ALPHARETTA TUITION",
+      "region": "US",
+      "expected": {
+        "merchantId": "primrose_schools",
+        "category": "family"
+      }
+    },
+    {
+      "rawDescription": "BANFIELD PET HOSPITAL #1234",
+      "region": "US",
+      "expected": {
+        "merchantId": "banfield",
+        "category": "pets"
+      }
+    },
+    {
+      "rawDescription": "GOOGLE *ADS 1234567890",
+      "region": "US",
+      "expected": {
+        "merchantId": "google_ads",
+        "category": "business"
+      }
+    },
+    {
+      "rawDescription": "PAY1040 IRS TAX PAYMENT FEE",
+      "region": "US",
+      "expected": {
+        "merchantId": "pay1040",
+        "category": "taxes"
+      }
+    },
+    {
+      "rawDescription": "SEPTA KEY TRAVEL WALLET",
+      "region": "US",
+      "expected": {
+        "merchantId": "septa",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "WMATA SMARTRIP AUTOLOAD",
+      "region": "US",
+      "expected": {
+        "merchantId": "wmata",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "SPOTHERO INC CHICAGO IL",
+      "region": "US",
+      "expected": {
+        "merchantId": "spothero",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "NTTA TOLLTAG REPLENISHMENT",
+      "region": "US",
+      "expected": {
+        "merchantId": "ntta_tolltag",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "TSA PRECHECK ENROLLMENT IDEMIA",
+      "region": "US",
+      "expected": {
+        "merchantId": "tsa_precheck",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "BRITISH AIRWAYS 1252345678",
+      "region": "US",
+      "expected": {
+        "merchantId": "british_airways",
+        "category": "travel"
+      }
+    },
+    {
+      "rawDescription": "SIXT RENT A CAR MIAMI FL",
+      "region": "US",
+      "expected": {
+        "merchantId": "sixt",
+        "category": "travel"
+      }
+    },
+    {
+      "rawDescription": "VIKING CRUISES INC",
+      "region": "US",
+      "expected": {
+        "merchantId": "viking_cruises",
+        "category": "travel"
+      }
+    },
+    {
+      "rawDescription": "GOFUNDME DONATION",
+      "region": "US",
+      "expected": {
+        "merchantId": "gofundme",
+        "category": "donations"
+      }
+    },
+    {
+      "rawDescription": "ALNAP APORTE PRESTAMO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "alnap",
+        "category": "financial"
+      }
+    },
+    {
+      "rawDescription": "COOPNAMA CUOTA PRESTAMO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "coopnama",
+        "category": "financial"
+      }
+    },
+    {
+      "rawDescription": "AFP CRECER APORTE VOLUNTARIO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "afp_crecer",
+        "category": "investments"
+      }
+    },
+    {
+      "rawDescription": "ARS FUTURO PLAN COMPLEMENTARIO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "ars_futuro",
+        "category": "insurance"
+      }
+    },
+    {
+      "rawDescription": "SEGUROS SURA RD POLIZA VEHICULO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "seguros_sura_rd",
+        "category": "insurance"
+      }
+    },
+    {
+      "rawDescription": "CORAAMOCA FACTURA AGUA",
+      "region": "DO",
+      "expected": {
+        "merchantId": "coraamoca",
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "AGUA PLANETA AZUL BOTELLON",
+      "region": "DO",
+      "expected": {
+        "merchantId": "agua_planeta_azul",
+        "category": "bills_utilities"
+      }
+    },
+    {
+      "rawDescription": "ESTACION ISLA AV 27 DE FEBRERO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "isla_dominicana",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "RECARGA PASO RAPIDO RD VIAL",
+      "region": "DO",
+      "expected": {
+        "merchantId": "paso_rapido",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "PASO RAPIDO RECARGA 500",
+      "region": "DO",
+      "expected": {
+        "merchantId": "paso_rapido",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "DELTA COMERCIAL TALLER SERVICIO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "delta_comercial",
+        "category": "auto_transport"
+      }
+    },
+    {
+      "rawDescription": "POLLO REY AV INDEPENDENCIA",
+      "region": "DO",
+      "expected": {
+        "merchantId": "pollo_rey",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "JALAO CIUDAD COLONIAL",
+      "region": "DO",
+      "expected": {
+        "merchantId": "jalao",
+        "category": "food_dining"
+      }
+    },
+    {
+      "rawDescription": "HOSPITAL GENERAL DE LA PLAZA DE LA SALUD",
+      "region": "DO",
+      "expected": {
+        "merchantId": "hospital_plaza_de_la_salud",
+        "category": "health"
+      }
+    },
+    {
+      "rawDescription": "LAB PATRIA RIVAS SUCURSAL NACO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "lab_patria_rivas",
+        "category": "health"
+      }
+    },
+    {
+      "rawDescription": "ITLA MATRICULA CUATRIMESTRE",
+      "region": "DO",
+      "expected": {
+        "merchantId": "itla",
+        "category": "education"
+      }
+    },
+    {
+      "rawDescription": "UEPA TICKETS CONCIERTO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "uepa_tickets",
+        "category": "entertainment"
+      }
+    },
+    {
+      "rawDescription": "TIGRES DEL LICEY BOLETERIA",
+      "region": "DO",
+      "expected": {
+        "merchantId": "estadio_quisqueya",
+        "category": "entertainment"
+      }
+    },
+    {
+      "rawDescription": "LOTEDOM BANCA 1234",
+      "region": "DO",
+      "expected": {
+        "merchantId": "lotedom",
+        "category": "entertainment"
+      }
+    },
+    {
+      "rawDescription": "SCAPE PARK CAP CANA",
+      "region": "DO",
+      "expected": {
+        "merchantId": "scape_park",
+        "category": "entertainment"
+      }
+    },
+    {
+      "rawDescription": "REMESAS QUISQUEYANA ENVIO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "remesas_quisqueyana",
+        "category": "transfers"
+      }
+    },
+    {
+      "rawDescription": "VIMENPAQ CASILLERO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "vimenpaq",
+        "category": "shipping"
+      }
+    },
+    {
+      "rawDescription": "CASA DE CAMPO LA ROMANA",
+      "region": "DO",
+      "expected": {
+        "merchantId": "casa_de_campo",
+        "category": "travel"
+      }
+    },
+    {
+      "rawDescription": "DREAMS MACAO BEACH PUNTA CANA",
+      "region": "DO",
+      "expected": {
+        "merchantId": "hyatt_inclusive_dreams",
+        "category": "travel"
+      }
+    },
+    {
+      "rawDescription": "JCE CERTIFICACION ACTA NACIMIENTO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "jce",
+        "category": "government_taxes"
+      }
+    },
+    {
+      "rawDescription": "DIGESETT MULTA TRANSITO",
+      "region": "DO",
+      "expected": {
+        "merchantId": "digesett",
+        "category": "government_taxes"
+      }
+    },
+    {
+      "rawDescription": "TSS APORTE SUIR PLUS",
+      "region": "DO",
+      "expected": {
+        "merchantId": "tss_do",
+        "category": "government_taxes"
+      }
+    },
+    {
+      "rawDescription": "AERODOM PARQUEO AILA",
+      "region": "DO",
+      "expected": {
+        "merchantId": "aerodom",
+        "category": "travel"
+      }
+    },
+    {
+      "rawDescription": "NELLY RENT A CAR SDQ",
+      "region": "DO",
+      "expected": {
+        "merchantId": "nelly_rent_a_car",
+        "category": "travel"
+      }
     }
   ]
 }

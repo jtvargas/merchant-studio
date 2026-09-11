@@ -5,8 +5,8 @@ transaction-enrichment dataset (the kind that turns `SQ *BLUE BOTTLE COFF SAN FR
 *Blue Bottle Coffee · food_dining*).
 
 The dataset itself lives in this repo under [`data/`](data/) — 6 JSON files covering
-**1,000+ merchants**, 370+ MCC codes, 130 matching rules, multilingual descriptor-cleaning
-config (EN/ES/PT), and a labeled test set to measure recognition. Regions covered: USA
+**2,900+ merchants** (13,900+ statement aliases), 370+ MCC codes, 130 matching rules, multilingual
+descriptor-cleaning config (EN/ES/PT), and a labeled test set to measure recognition. Regions covered: USA
 (national + Florida + California), Dominican Republic, Mexico, Brazil, Spain.
 
 The goal: **community-driven, structured merchant data** — use it in your app, contribute the
@@ -31,7 +31,7 @@ Link it to `https://github.com/jtvargas/merchant-studio` wherever your UI suppor
 | Page | Purpose |
 |---|---|
 | **Dashboard** | Counts by country/category, integrity summary |
-| **Merchants** | Search 1,000+ merchants by name/id/alias, filter by country & category, inspect every field, edit, duplicate, delete |
+| **Merchants** | Search 2,900+ merchants by name/id/alias, filter by country & category, inspect every field, edit, duplicate, delete |
 | **Add merchant** | Guided form (Identity → Classification → Matching → Metadata) with live validation: alias auto-normalization (lowercase, accents stripped), collision detection against every existing alias, risky-generic-word warnings, MCC autocomplete, duplicate-brand guard, inline error highlighting. Country hints accept **any ISO 3166-1 alpha-2 code** (US, DO, MX, BR, ES, HK, JP, …) plus LATAM/EU/APAC/GLOBAL |
 | **AI-assisted entry** | On the Add page: **Copy LLM prompt** builds a research-driven prompt (the AI is told to verify each field with web search/subagents when available, never guess, write null-or-useful notes only, and answer with **confidence ≥ 0.83**) with your descriptor baked in — paste it into ChatGPT/Claude/Gemini. Then **Fill form from JSON** imports the reply: fences stripped, aliases normalized, invalid MCCs/countries dropped with warnings, confidence floored at 0.83, and the regular validation still applies before saving |
 | **Playground** | Paste any raw bank descriptor and watch the cleaning stages + which merchant/rule matches |
